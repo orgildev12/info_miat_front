@@ -1,0 +1,143 @@
+@import './variable.scss';
+// @import "~@progress/kendo-theme-default/dist/all.scss";
+// @import "~@progress/kendo-theme/dist/all.scss";
+
+@import "~@progress/kendo-theme/scss/grid";
+@import "~@progress/kendo-theme/scss/utils";
+@import "~@progress/kendo-theme/scss/dataviz";
+@import "~@progress/kendo-theme/scss/avatar";
+@import "~@progress/kendo-theme/scss/treeview";
+@import "~@progress/kendo-theme/scss/tabstrip";
+@import "~@progress/kendo-theme/scss/loader";
+@import "~@progress/kendo-theme/scss/multiselect";
+
+@import "~@progress/kendo-theme/scss/dateinput";
+@import "~@progress/kendo-theme/scss/datepicker";
+@import "~@progress/kendo-theme/scss/daterangepicker";
+@import "~@progress/kendo-theme/scss/datetimepicker";
+@import "~@progress/kendo-theme/scss/stepper";
+@import "~@progress/kendo-theme/scss/progressbar";
+@import "~@progress/kendo-theme/scss/spreadsheet";
+@import "~@progress/kendo-theme/scss/pdf-viewer";
+// @import "~@progress/kendo-theme/scss/all";
+@import "message-box";
+@import "panel.component.scss";
+@import "browse.scss";
+
+.k-pager-numbers .k-link {
+    border-radius: 20px;
+}
+
+.k-required {
+    color: $primary;
+}
+
+.k-loading-image::before,
+.k-loading-image::after {
+    border-width: #{"max( 2px, .015em )"};
+    color: $primary;
+}
+.gridColumnRightText {
+    text-align: right !important;
+}
+
+.k-messagebox-error {
+    border-color: #f3bfc1;
+    color: $fiba-danger;
+    background-color: #f7d1d3;
+}
+
+.k-messagebox {
+    margin: 0 0 1em 0;
+    padding: 4px 8px;
+    border-width: 0 0 0 4px;
+    border-style: solid;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.4285714286;
+}
+
+.k-tabstrip {
+    .k-tabstrip-items-wrapper {
+        min-width: 150px;
+    }
+}
+
+.k-dialog {
+    max-height: 90vh;
+}
+
+.k-dialog-buttongroup {
+    border: 0;
+}
+
+.k-grid th,
+.k-grid td {
+    padding: 4px 6px;
+}
+
+.k-krid th {
+    padding: 20px 0px;
+} 
+
+.k-grid-header .k-header{
+    background-color: #3B6EB6;
+    color: white;
+}
+
+.k-grid-header th.k-grid-header-sticky {
+    background-color: #3B6EB6;
+    color: white;
+}
+
+.k-grid .k-i-more-vertical:before {
+    content: "\e129";
+}
+
+@media only screen and (max-width: 600px) {
+    .k-grid-table col,
+    .k-grid-header col {
+        width: 100px;
+    }
+}
+.k-grid-table col,
+.k-grid-header col {
+    min-width: 30px;
+}
+
+.k-filter-row td,
+.k-filter-row th {
+    padding: 4px 8px !important;
+}
+
+.k-column-title {
+    white-space: pre-wrap;
+}
+
+// change font in PDF
+
+@font-face {
+    font-family: "DejaVu Sans";
+    src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DejaVu Sans";
+    font-weight: bold;
+    src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DejaVu Sans";
+    font-style: italic;
+    src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "DejaVu Sans";
+    font-weight: bold;
+    font-style: italic;
+    src: url("https://kendo.cdn.telerik.com/2017.2.621/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf") format("truetype");
+}
+
+// END PDF

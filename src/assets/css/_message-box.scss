@@ -1,0 +1,111 @@
+.fiba-messagebox-parent {
+  .k-dialog {
+    border-radius: 0.5rem;
+  }
+}
+
+.fiba-messagebox {
+  .fiba-messagebox-title {
+    font-weight: 500;
+    font-size: 2rem;
+    margin-top: -2rem !important;
+  }
+  .fiba-messagebox-icon {
+    display: block;
+    text-align: center;
+    font-size: 5rem;
+    color: #c9dae1;
+    margin-top: 2rem;
+  }
+
+  .fiba-messagebox-body {
+    padding: 1rem;
+    font-size: 0.97rem;
+    text-align: center;
+    white-space: pre-line;
+  }
+  .fiba-messagebox-body-bottom {
+    font-size: 0.9rem;
+    text-align: center;
+    white-space: pre-line;
+  }
+  .k-dialog {
+    width: 400px;
+    min-height: 250px;
+    max-height: 70vh;
+    border-radius: $border-radius;
+  }
+  .k-dialog-titlebar {
+    display: none;
+  }
+
+  .k-window-actions {
+    margin: 0;
+  }
+  .k-dialog-content:before {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 5px;
+    height: 35px;
+    margin-left: -2px;
+    border-radius: 2px;
+    background-color: $fiba-warning;
+  }
+
+  .k-dialog-buttongroup {
+    border: 0;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    .k-button {
+      min-width: 6rem;
+      border: 1px solid $primary;
+      background-color: #ffffff;
+      color: black;
+      border-radius: 0.25rem;
+      &:hover {
+        background-color: $primary;
+        color: white;
+      }
+      &::before,
+      &::aflter {
+        display: none;
+      }
+    }
+
+    .k-button.btn-primary {
+      background-color: $primary;
+      color: white;
+    }
+
+    .k-button:not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+
+  &.fiba-messagebox-success {
+    .fiba-messagebox-icon,
+    .fiba-messagebox-body {
+      color: $fiba-success;
+    }
+  }
+  &.fiba-messagebox-warning {
+    .fiba-messagebox-icon,
+    .fiba-messagebox-body {
+      color: $fiba-warning;
+    }
+  }
+  &.fiba-messagebox-error {
+    .fiba-messagebox-icon,
+    .fiba-messagebox-body {
+      color: $fiba-danger;
+    }
+  }
+  &.fiba-messagebox-info {
+    .fiba-messagebox-icon,
+    .fiba-messagebox-body {
+      color: $fiba-info;
+    }
+  }
+}
