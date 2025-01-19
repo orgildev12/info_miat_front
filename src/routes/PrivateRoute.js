@@ -8,7 +8,7 @@ const PrivateRoute = () => {
         localStorage.setItem('sessionTimer', new Date());
     };
 
-    return <div className='bg-bg_pattern min-h-screen' onMouseMove={handleMouseMove}>
+    return <div className='min-h-screen' onMouseMove={handleMouseMove}>
         <Header />
         <Outlet />
         <Footer />

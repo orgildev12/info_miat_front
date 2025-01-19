@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@amcharts/amcharts5": "^5.10.11",
+    "@amcharts/amcharts5-geodata": "^5.1.4",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
