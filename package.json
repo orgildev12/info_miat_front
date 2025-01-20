@@ -1,5 +1,6 @@
 {
-  "name": "me-core",
+  "homepage": "http://khurgan99.github.io/miat-frontoffice",
+  "name": "miat",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,9 +9,9 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
-    "@progress/kendo-data-query": "^1.6.0",
-    "@progress/kendo-drawing": "^1.17.6",
-    "@progress/kendo-file-saver": "^1.1.1",
+    "@progress/kendo-data-query": "1.6.0",
+    "@progress/kendo-drawing": "1.17.6",
+    "@progress/kendo-file-saver": "1.1.1",
     "@progress/kendo-licensing": "git+ssh://git@103.229.177.13:components/kendo-licensing.git",
     "@progress/kendo-react-buttons": "5.15.0",
     "@progress/kendo-react-data-tools": "5.15.0",
@@ -23,7 +24,7 @@
     "@progress/kendo-react-progressbars": "5.15.0",
     "@progress/kendo-react-treeview": "5.15.0",
     "@progress/kendo-react-upload": "5.15.0",
-    "@progress/kendo-svg-icons": "^1.9.0",
+    "@progress/kendo-svg-icons": "1.9.0",
     "@progress/kendo-theme": "git+ssh://git@103.229.177.13:components/kendo-theme.git#2.0.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -45,6 +46,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -69,6 +72,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4"
   }
