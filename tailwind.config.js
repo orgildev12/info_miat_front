@@ -2,12 +2,7 @@ module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx,html}"],
     theme: {
         extend: {
-            backgroundImage: {
-                login_pattern: "url('/public/background-image/login-bg.jpg')",
-                bg_pattern: "url('/public/background-image/bg.png')",
-                logo_pattern: "url('/public/mecore-logos/main-logo/logo_v2.png')",
-                abstract_pattern1: "url('/public/background-image/abstract-background2.png')",
-            },
+            backgroundImage: {},
             border: ["focus"],
             colors: {
                 primary: {
