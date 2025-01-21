@@ -1,5 +1,29 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Carousel } from "../components/features/Carousel";
+
+let slides = [
+    // {
+    //     img: "/background-image/riah/Picture1.jpg",
+    //     title: ""
+    // },
+    {
+        img: "/background-image/livery/1.jpg",
+        title: ""
+    },
+    {
+        img: "/background-image/livery/2.jpg",
+        title: ""
+    },
+    {
+        img: "/background-image/livery/3.jpg",
+        title: ""
+    },
+    {
+        img: "/background-image/livery/4.jpg",
+        title: ""
+    }
+];
 
 const Home = () => {
     const navigate = useNavigate();
@@ -8,13 +32,7 @@ const Home = () => {
 
     return (
         <div className="h-full min-h-screen bg-slate-100/90">
-            {/* <ul className="cb-slideshow">
-                {Array.from({ length: 7 }, (_, i) => String(i + 1).padStart(2, "0")).map((elm, idx) => (
-                    <li key={idx}>
-                        <span>{elm}</span>
-                    </li>
-                ))}
-            </ul> */}
+            {/* <Carousel slides={slides} /> */}
         </div>
     );
 };

@@ -5,7 +5,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from "react-i18next";
 
 const navigation = [
-    { name: 'our', href: '/our', current: true },
+    { name: 'our', href: '/about-us', current: true },
     { name: 'destinations', href: '/destinations', current: false },
     { name: 'contact', href: '/contact', current: false },
     { name: 'cargo', href: '/cargo', current: false },
