@@ -4,7 +4,6 @@ import NotFound from '../layouts/error/NotFound'
 import PrivateRoute from './PrivateRoute'
 import Home from '../pages/Home'
 import Schedule from '../pages/Schedule'
-import AboutUs from '../pages/AboutUs'
 // import Destinations from '../pages/Destinations'
 const Destinations = React.lazy(() => import('../pages/Destinations'));
 
@@ -23,7 +22,6 @@ export default function CoreRoutes() {
                         <Route exact path='/' element={<Home />} />
                         <Route path='/destinations' element={<Destinations />} />
                         <Route path='/contact' element={<Destinations />} />
-                        {/* <Route path='/about-us' element={<AboutUs />} /> */}
                         <Route path='/schedule' element={<Schedule />} />
                     </Route>
                     <Route path='*' element={<NotFound />} />
