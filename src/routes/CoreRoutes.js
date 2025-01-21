@@ -19,7 +19,7 @@ export default function CoreRoutes() {
                 <Routes>
                     <Route exact path='/' element={<PrivateRoute />}>
                         <Route exact path='/' element={<Home />} />
-                        <Route exact path='/destinations' element={<Destinations />} />
+                        <Route path='/destinations' element={<Destinations />} />
                     </Route>
                     <Route path='*' element={<NotFound />} />
                 </Routes>
