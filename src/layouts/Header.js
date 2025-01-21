@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from "react-i18next";
-import { Dialog, Disclosure } from '@headlessui/react'
+import { Dialog } from '@headlessui/react'
+import { ChangeLanguage } from "../components/language/ChangeLanguage/ChangeLanguage";
 
 const navigation = [
     { name: 'our', href: '/' },
@@ -31,8 +32,8 @@ const Header = () => {
     return (
         <div className="bg-primary-500 sticky top-0 z-10">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                <div className="relative flex h-16 items-center justify-between">
-                    <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="relative flex min-h-[4rem] items-center justify-between">
+                    <div className="flex flex-1 items-center justify-between sm:items-stretch">
                         <div className="flex shrink-0 items-center">
                             <img
                                 alt="MIAT"
@@ -42,15 +43,15 @@ const Header = () => {
                         </div>
 
                         <div className="hidden sm:ml-6 sm:block">
-                            <div className="flex space-x-4">
+                            <div className="flex space-x-2 flex-wrap text-center">
                                 {navigation.map((item) => (
                                     <Link
                                         key={item.name}
                                         to={item.href}
                                         aria-current={(item.href === location.pathname) ? 'page' : undefined}
                                         className={classNames(
-                                            (item.href === location.pathname) ? 'bg-primary-700 text-white' : 'hover:text-gray-300 hover:bg-primary-500 text-white',
-                                            'rounded-md px-3 py-2 text-sm font-medium',
+                                            (item.href === location.pathname) ? 'bg-primary-700 text-white' : 'hover:text-gray-300 hover:bg-primary-700 text-white',
+                                            'rounded-md px-2 py-2 text-sm font-medium',
                                         )}
                                     >
                                         {t(item.name)}
@@ -58,6 +59,10 @@ const Header = () => {
                                 ))}
                             </div>
                         </div>
+                        <div className="hidden sm:ml-6 sm:block">
+                            <ChangeLanguage />
+                        </div>
+
                     </div>
                     <div className="sm:hidden">
                         <button

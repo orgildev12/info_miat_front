@@ -1,6 +1,7 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
 import { Carousel } from "../components/features/Carousel";
+import { useTranslation } from "react-i18next";
 
 let slides = [
     // {
@@ -27,7 +28,7 @@ let slides = [
 
 const Home = () => {
     // const navigate = useNavigate();
-
+    const { t } = useTranslation()
 
     return (
         <div className="h-full min-h-screen">
@@ -42,13 +43,11 @@ const Home = () => {
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
                         {/* <h1 class="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">We’re changing the way people connect</h1> */}
                         <h1 className="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
-                            We’re a passionate group of people building the future of ecommerce
+                            {t('bluesky')}
                         </h1>
                         <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                            <p className="text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
-                                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                                amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt. Qui
-                                irure qui lorem cupidatat commodo.
+                            <p className="text-pretty text-lg font-medium text-gray-500 sm:text-xl/8 text-justify">
+                                {t('airlinehistory')}
                             </p>
                         </div>
                         <img
@@ -65,44 +64,43 @@ const Home = () => {
             <div className="mx-auto mt-32 max-w-7xl sm:mt-40 sm:px-6 lg:px-8">
                 <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
                     <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                        Our customers love us
+                        {t('priority')}
                     </h2>
-                    <p className="mx-auto mt-6 max-w-xl text-lg/8 text-gray-300">
-                        Aliquip reprehenderit incididunt amet quis fugiat ut velit. Sit occaecat labore proident cillum in nisi
-                        adipisicing officia excepteur tempor deserunt.
+                    <p className="mx-auto mt-6 max-w-3xl text-lg/8 text-gray-300">
+                        {t('routemap')}
                     </p>
                     <div className="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:max-w-4xl lg:grid-cols-5">
                         <img
-                            alt="Transistor"
-                            src="https://tailwindui.com/plus/img/logos/158x48/transistor-logo-white.svg"
+                            alt="Cathay_Pacific"
+                            src="/logos/airlines/Cathay_Pacific-Logo.wine.png"
                             width={158}
                             height={48}
                             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
                         />
                         <img
-                            alt="Reform"
-                            src="https://tailwindui.com/plus/img/logos/158x48/reform-logo-white.svg"
+                            alt="Japan-Airlines"
+                            src="/logos/airlines/Japan-Airlines-Logo.png"
                             width={158}
                             height={48}
                             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
                         />
                         <img
-                            alt="Tuple"
-                            src="https://tailwindui.com/plus/img/logos/158x48/tuple-logo-white.svg"
+                            alt="miat"
+                            src="/logos/main-logo/logo_w.png"
                             width={158}
                             height={48}
                             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
                         />
                         <img
-                            alt="SavvyCal"
-                            src="https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-white.svg"
+                            alt="korean-air"
+                            src="/logos/airlines/korean-air.png"
                             width={158}
                             height={48}
                             className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
                         />
                         <img
-                            alt="Statamic"
-                            src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-white.svg"
+                            alt="Turkish_Airlines_logo"
+                            src="/logos/airlines/Turkish_Airlines_logo.png"
                             width={158}
                             height={48}
                             className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
@@ -125,14 +123,11 @@ const Home = () => {
                 <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
                         <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
-                            <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">Our people</h2>
-                            <p className="mt-6 text-xl/8 text-gray-600">
-                                Quasi est quaerat. Sit molestiae et. Provident ad dolorem occaecati eos iste. Soluta rerum quidem
-                                minus ut molestiae velit error quod. Excepturi quidem expedita molestias quas.
-                            </p>
-                            <p className="mt-6 text-base/7 text-gray-600">
-                                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt
-                                amet fugiat veniam occaecat fugiat. Quasi aperiam sit non sit neque reprehenderit.
+                            <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                                MIAT Mongolian Airlines
+                            </h2>
+                            <p className="mt-6 text-xl/8 text-gray-600 text-justify">
+                                {t('collaborates')}
                             </p>
                         </div>
                         <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
