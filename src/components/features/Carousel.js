@@ -57,17 +57,17 @@ export const Carousel = ({ slides, delay = 7 }) => {
                         key={index}
                         className="
                             max-w-[100vw] min-w-[100vw] 
-                            h-[400px] text-white
+                            h-[550px] text-white
                             bg-cover bg-center bg-no-repeat
                         "
                         style={{ backgroundImage: `url(${s.img})` }}>
                         <div
-                            className="w-full h-full bg-gradient-to-br from-black via-transparent to-black justify-center items-center flex px-10"
+                            className="w-full h-full bg-gradient-to-br from-primary-500 via-transparent to-primary-500 justify-center items-center flex px-10"
                             style={{ backgroundColor: "radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 90%)" }}
                         >
                             {(current === index) && <div className="max-w-4xl text-center transition ease-out duration-40 fadeInDown animated delay-[3000ms]">
                                 <div className="text-[#FFCB05] text-base font-semibold sm:text-xl sm:font-medium uppercase bg-black/10">
-                                    Ж.САМБУУГИЙН НЭРЭМЖИТ МАЛ АЖ АХУЙН ЭРДЭМ ШИНЖИЛГЭЭНИЙ ХҮРЭЭЛЭН
+                                    {/* Энд ямар нэгэн текст бичигдэнэ */}
                                 </div>
                                 <div className="font-semibold text-xl sm:text-2xl md:text-3xl">
                                     {s.title}

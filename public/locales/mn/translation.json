@@ -3,5 +3,10 @@
   "destinations": "Чиглэл",
   "contact": "Холбоо барих",
   "cargo": "Хүргэлт",
-  "schedule": "Цагийн хуваарь"
+  "schedule": "Цагийн хуваарь",
+  "aircraft": "Нисэх онгоц",
+  "program": "Хөтөлбөр",
+  "videos": "Бичлэгүүд",
+  "experience": "Туршлага",
+  "vrtour": "VR tour"
 }

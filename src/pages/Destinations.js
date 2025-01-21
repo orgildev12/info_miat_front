@@ -204,7 +204,6 @@ const Destinations = () => {
 
             // Update the rotation based on position
             planeDataItem.on("positionOnLine", (value) => {
-                console.log(value);
                 if (planeDataItem.dataContext.prevPosition < value) {
                     plane.set("rotation", 0);
                 }

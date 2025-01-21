@@ -80,7 +80,7 @@ export default function Footer() {
                             alt="MIAT"
                         />
                         <p className="text-sm leading-6 text-white">
-                            Хантайшир-Эрдэм цогцолборийн суутнууд Хантайшир-Эрдэм цогцолбор сургуулиас
+                            Найдвартай, чанартай, үр өгөөжтэй, найрсаг үйлчилгээгээр Монголыг дэлхийтэй холбоно
                         </p>
                         <div className="flex space-x-6">
                             {navigation.social.map((item) => (
