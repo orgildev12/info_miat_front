@@ -29,6 +29,8 @@ export const ChangeLanguage = () => {
             const language = languages[index];
             if (i18n.language === language.id) {
                 setSelected(language)
+                isfound = true;
+                break;
             }
         }
         if (!isfound) {

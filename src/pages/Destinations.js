@@ -16,10 +16,20 @@ const Destinations = () => {
         var chart = root.container.children.push(
             am5map.MapChart.new(root, {
                 panX: "rotateX",
-                projection: am5map.geoMercator(),
-                homeGeoPoint: { latitude: 2, longitude: 2 }
+                // projection: am5map.geoMercator(),
+                projection: am5map.geoNaturalEarth1(),
+                // homeGeoPoint: { latitude: 46.8625, longitude: 103.8467 },
+                wheelY: "none",
+                panY: "none",
+                rotationX: -103.8467,
             })
         );
+
+        let zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+        zoomControl.homeButton.set("visible", true);
+        chart.chartContainer.get("background").events.on("click", function () {
+            chart.goHome();
+        })
 
         // Create polygon series
         var polygonSeries = chart.series.push(
@@ -47,15 +57,18 @@ const Destinations = () => {
         // this will be invisible line (note strokeOpacity = 0) along which invisible points will animate
         let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
         lineSeries.mapLines.template.setAll({
-            stroke: root.interfaceColors.get("alternativeBackground"),
-            strokeOpacity: 0.3
+            strokeOpacity: 0.5,
+            stroke: am5.color(0xffba00),
+            strokeWidth: 2,
+            strokeDasharray: 3
         });
 
         // this will be visible line. Lines will connectg animating points so they will look like animated
         let animatedLineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
         animatedLineSeries.mapLines.template.setAll({
-            stroke: root.interfaceColors.get("alternativeBackground"),
-            strokeOpacity: 0.6
+            stroke: am5.color(0xffba00),
+            strokeOpacity: 0.6,
+            strokeWidth: 2,
         });
 
         // invisible series which will animate along invisible lines
@@ -111,10 +124,10 @@ const Destinations = () => {
         let plane = am5.Graphics.new(root, {
             svgPath:
                 "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
-            scale: 0.06,
+            scale: 0.09,
             centerY: am5.p50,
             centerX: am5.p50,
-            fill: am5.color('#012853')
+            fill: am5.color('#e8f1f9')
         });
 
         planeSeries.bullets.push(function () {
@@ -123,16 +136,39 @@ const Destinations = () => {
             return am5.Bullet.new(root, { sprite: container });
         });
 
+        let circleTemplate = am5.Template.new({});
         // visible city circles
-        citySeries.bullets.push(function () {
-            let circle = am5.Circle.new(root, {
-                radius: 5,
-                tooltipText: "{title}",
-                tooltipY: 0,
-                fill: am5.color(0xffba00),
-                stroke: root.interfaceColors.get("background"),
-                strokeWidth: 2
-            });
+        citySeries.bullets.push(function (root, series, dataItem) {
+            // var dataItem = event.target.dataItem;
+            console.log(dataItem)
+            let container = am5.Container.new(root, {});
+
+            let circle = container.children.push(
+                am5.Circle.new(root, {
+                    radius: 7,
+                    tooltipText: "{title}",
+                    tooltipY: 0,
+                    fill: am5.color(0xffba00),
+                    stroke: root.interfaceColors.get("background"),
+                    strokeWidth: 2
+                }, circleTemplate)
+            );
+
+            let countryLabel = container.children.push(
+                am5.Label.new(root, {
+                    text: "{title}",
+                    paddingLeft: 5,
+                    populateText: true,
+                    fontWeight: "bold",
+                    fontSize: 13,
+                    centerY: am5.p50,
+                    x: circle.get("radius")
+                })
+            );
+
+            circle.on("radius", function (radius) {
+                countryLabel.set("x", radius);
+            })
 
             circle.events.on("click", function (event) {
                 planeDataItem.set("positionOnLine", 0);
@@ -147,7 +183,7 @@ const Destinations = () => {
             });
 
             return am5.Bullet.new(root, {
-                sprite: circle
+                sprite: container
             });
         });
 
