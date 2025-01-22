@@ -30,7 +30,7 @@ const Header = () => {
 
 
     return (
-        <div className="bg-primary-500 sticky top-0 z-10">
+        <div className="bg-primary-500 sticky top-0 z-20">
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                 <div className="relative flex min-h-[4rem] items-center justify-between">
                     <div className="flex flex-1 items-center justify-between sm:items-stretch">

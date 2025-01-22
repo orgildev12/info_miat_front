@@ -17,9 +17,7 @@ const navigation = {
         { name: 'Түүхэн замнал', href: '#' },
         { name: 'Хамт олон', href: '#' },
     ],
-    contact: [
-        { name: '976-11-333999', href: '#' },
-    ],
+
     legal: [
         { name: 'Claim', href: '#' },
         { name: 'Privacy', href: '#' },
@@ -64,25 +62,25 @@ const navigation = {
                     />
                 </svg>
             ),
-        },
+        }
     ],
 }
 
 export default function Footer() {
     return (
         <footer className="bg-primary-500 mt-20" aria-labelledby="footer-heading">
-            <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+            <div className="mx-auto max-w-7xl px-6 pb-4 pt-16 sm:pt-24 lg:px-8 lg:pt-16">
                 <div className="xl:grid xl:grid-cols-3 xl:gap-4">
-                    <div className="space-y-8">
+                    <div className="space-y-4 text-center">
                         <img
-                            className="h-16"
+                            className="h-16 mx-auto"
                             src="/logos/main-logo/logo_w.png"
                             alt="MIAT"
                         />
-                        <p className="text-sm leading-6 text-white">
+                        <p className="text-sm leading-6 text-white text-center">
                             Найдвартай, чанартай, үр өгөөжтэй, найрсаг үйлчилгээгээр Монголыг дэлхийтэй холбоно
                         </p>
-                        <div className="flex space-x-6">
+                        <div className="flex space-x-6 justify-center">
                             {navigation.social.map((item) => (
                                 <Link key={item.name} to={item.href} className="text-white hover:text-gray-300">
                                     <span className="sr-only">{item.name}</span>
@@ -90,12 +88,19 @@ export default function Footer() {
                                 </Link>
                             ))}
                         </div>
+                        <div>
+                            <a href="tel:+976-11-333999" className="text-white hover:text-gray-300 mt-4">
+                                {/* <PhoneIcon className="h-6 w-6"/> */}
+                                976-11-333999
+                            </a>
+                        </div>
+
                     </div>
-                    <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
-                            <div>
-                                <h3 className="text-sm font-semibold leading-6 text-white">Аяллын мэдээ</h3>
-                                <ul className="mt-6 space-y-4">
+                    <div className="mt-16 xl:mt-0 col-span-2">
+                        <div className="flex flex-wrap justify-center items-start text-center sm:text-left">
+                            <div className="mr-8">
+                                <h3 className="text-base font-bold leading-6 text-white">Аяллын мэдээ</h3>
+                                <ul className="mt-6 space-y-2">
                                     {navigation.links.map((item) => (
                                         <li key={item.name}>
                                             <Link to={item.href} className="text-sm leading-3 hover:text-gray-300 text-white">
@@ -105,9 +110,9 @@ export default function Footer() {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="mt-10 md:mt-0">
-                                <h3 className="text-sm font-semibold leading-6 text-white">Бидний тухай</h3>
-                                <ul className="mt-6 space-y-4">
+                            <div className="mt-5 sm:mt-0 mr-8">
+                                <h3 className="text-base font-bold leading-6 text-white">Бидний тухай</h3>
+                                <ul className="mt-6 space-y-2">
                                     {navigation.support.map((item) => (
                                         <li key={item.name}>
                                             <Link to={item.href} className="text-sm leading-3 hover:text-gray-300 text-white">
@@ -117,23 +122,9 @@ export default function Footer() {
                                     ))}
                                 </ul>
                             </div>
-                        </div>
-                        <div className="md:grid md:grid-cols-2 md:gap-8">
-                            <div>
-                                <h3 className="text-sm font-semibold leading-6 text-white">Холбоо барих</h3>
-                                <ul className="mt-6 space-y-4">
-                                    {navigation.contact.map((item) => (
-                                        <li key={item.name}>
-                                            <Link to={item.href} className="text-sm leading-3 hover:text-gray-300 text-white">
-                                                {item.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="mt-10 md:mt-0">
-                                <h3 className="text-sm font-semibold leading-6 text-white">Санал хүсэлт илгээх</h3>
-                                <ul className="mt-6 space-y-4">
+                            <div className="mt-5 sm:mt-0">
+                                <h3 className="text-base font-bold leading-6 text-white">Санал хүсэлт илгээх</h3>
+                                <ul className="mt-6 space-y-2">
                                     {navigation.legal.map((item) => (
                                         <li key={item.name}>
                                             <Link to={item.href} className="text-sm leading-3 hover:text-gray-300 text-white">
@@ -146,8 +137,8 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-                    <p className="text-xs leading-5 text-white">&copy; {(new Date()).getFullYear()} MIAT Mongolian Airlines. Зохиогчийн эрх хуулиар хамгаалагдсан.</p>
+                <div className="mt-8 border-t border-white/10 pt-4 sm:mt-20 lg:mt-12 text-center">
+                    <p className="text-xs text-white">Copyright &copy; {(new Date()).getFullYear()}. MIAT Mongolian Airlines</p>
                 </div>
             </div>
         </footer>

@@ -1,10 +1,15 @@
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodataWorldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
+import { useTranslation } from 'react-i18next';
 
 const Destinations = () => {
+
+    const [choosedCountry, setChoosedCountry] = useState({});
+    const { t } = useTranslation();
+
     useLayoutEffect(() => {
         let root = am5.Root.new("chartdiv");
 
@@ -20,8 +25,8 @@ const Destinations = () => {
                 projection: am5map.geoNaturalEarth1(),
                 // homeGeoPoint: { latitude: 46.8625, longitude: 103.8467 },
                 wheelY: "none",
-                panY: "none",
-                rotationX: -103.8467,
+                rotationX: -130.8467,
+                scale: 1.5
             })
         );
 
@@ -89,20 +94,83 @@ const Destinations = () => {
 
         let cities = [
             {
-                id: "mongolia",
-                title: "Ulaanbaatar",
+                id: "ulaanbaatar",
+                title: t('ulaanbaatar'),
+                country: 'mongolia',
                 geometry: { type: "Point", coordinates: [103.8467, 46.8625] },
             },
             {
                 id: "frankfurt",
-                title: "Frankfurt",
+                title: t('frankfurt'),
+                country: 'germany',
                 geometry: { type: "Point", coordinates: [8.6821, 50.1109] }
             },
             {
                 id: "hongkong",
-                title: "Hong Kong",
+                title: t('hongkong'),
+                country: 'china',
                 geometry: { type: "Point", coordinates: [114.2, 22.3] }
             },
+            {
+                id: "tokyo",
+                title: t('tokyo'),
+                country: 'japan',
+                geometry: { type: "Point", coordinates: [139.6917, 35.6895] }
+            },
+            {
+                id: "seoul",
+                title: t('seoul'),
+                country: 'south_korea',
+                geometry: { type: "Point", coordinates: [126.9779, 37.5665] }
+            },
+            {
+                id: "ho_chi_minh",
+                title: t('ho_chi_minh'),
+                country: 'vietnam',
+                geometry: { type: "Point", coordinates: [106.6297, 10.8231] }
+            },
+            {
+                id: "istanbul",
+                title: t('istanbul'),
+                country: 'turkey',
+                geometry: { type: "Point", coordinates: [28.9784, 41.0082] }
+            },
+            {
+                id: "busan",
+                title: t('busan'),
+                country: 'south_korea',
+                geometry: { type: "Point", coordinates: [129.0756, 35.1796] }
+            },
+            {
+                id: "bangkok",
+                title: t('bangkok'),
+                country: 'thailand',
+                geometry: { type: "Point", coordinates: [100.5018, 13.7563] }
+            },
+            {
+                id: "beijing",
+                title: t('beijing'),
+                country: 'china',
+                geometry: { type: "Point", coordinates: [116.4074, 39.9042] }
+            },
+            {
+                id: "osaka",
+                title: t('osaka'),
+                country: 'japan',
+                geometry: { type: "Point", coordinates: [135.5022, 34.6937] }
+            },
+            {
+                id: "phuket",
+                title: t('phuket'),
+                country: 'thailand',
+                geometry: { type: "Point", coordinates: [98.3381, 7.8804] }
+            },
+            {
+                id: "guangzhou",
+                title: t('guangzhou'),
+                country: 'china',
+                geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
+            }
         ];
 
         // destination series
@@ -124,7 +192,7 @@ const Destinations = () => {
         let plane = am5.Graphics.new(root, {
             svgPath:
                 "m2,106h28l24,30h72l-44,-133h35l80,132h98c21,0 21,34 0,34l-98,0 -80,134h-35l43,-133h-71l-24,30h-28l15,-47",
-            scale: 0.09,
+            scale: 0.07,
             centerY: am5.p50,
             centerX: am5.p50,
             fill: am5.color('#e8f1f9')
@@ -139,13 +207,11 @@ const Destinations = () => {
         let circleTemplate = am5.Template.new({});
         // visible city circles
         citySeries.bullets.push(function (root, series, dataItem) {
-            // var dataItem = event.target.dataItem;
-            console.log(dataItem)
             let container = am5.Container.new(root, {});
 
             let circle = container.children.push(
                 am5.Circle.new(root, {
-                    radius: 7,
+                    radius: 4,
                     tooltipText: "{title}",
                     tooltipY: 0,
                     fill: am5.color(0xffba00),
@@ -160,7 +226,7 @@ const Destinations = () => {
                     paddingLeft: 5,
                     populateText: true,
                     fontWeight: "bold",
-                    fontSize: 13,
+                    fontSize: 8,
                     centerY: am5.p50,
                     x: circle.get("radius")
                 })
@@ -176,6 +242,7 @@ const Destinations = () => {
                 resetPlaneAnimation()
                 var dataItem = event.target.dataItem;
                 var data = dataItem.dataContext;
+                setChoosedCountry(data);
                 point2.setAll({
                     longitude: data.geometry.coordinates[0],
                     latitude: data.geometry.coordinates[1]
@@ -190,12 +257,11 @@ const Destinations = () => {
         citySeries.data.setAll(cities);
 
         // Prepare line series data
-        let destinations = ["frankfurt", "hongkong"]
-        let mongoliaDataItem = citySeries.getDataItemById("mongolia");
+        let mongoliaDataItem = citySeries.getDataItemById("ulaanbaatar");
 
         // this will do all the animations
-        am5.array.each(destinations, function (did) {
-            let destinationDataItem = citySeries.getDataItemById(did);
+        am5.array.each(cities, function (did) {
+            let destinationDataItem = citySeries.getDataItemById(did.id);
             let lineDataItem = lineSeries.pushDataItem({});
             lineDataItem.set("pointsToConnect", [mongoliaDataItem, destinationDataItem])
         });
@@ -261,11 +327,25 @@ const Destinations = () => {
         return () => {
             root.dispose();
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <div id="chartdiv" className="h-full min-h-screen">
-
+        <div>
+            {choosedCountry.title && <div
+                className='absolute bg-primary-700 w-80 z-10 h-full text-white px-4 py-8 space-y-4'
+            >
+                <div className='text-center'>
+                    {t('ulaanbaatar')} - {t(choosedCountry.id)}
+                </div>
+                <div>
+                    <img src="/image/main/plane-500.jpg" alt="" />
+                </div>
+                <div className='text-justify'>
+                    {t(choosedCountry.id + 'desc')}
+                </div>
+            </div>}
+            <div id="chartdiv" className="h-[calc(100vh-4rem)]"></div>
         </div>
     )
 }
