@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 
 const navigation = {
@@ -67,10 +68,12 @@ const navigation = {
 }
 
 export default function Footer() {
+    const { t } = useTranslation();
+    
     return (
         <footer className="bg-primary-500 mt-20" aria-labelledby="footer-heading">
             <div className="mx-auto max-w-7xl px-6 pb-4 pt-16 sm:pt-24 lg:px-8 lg:pt-16">
-                <div className="xl:grid xl:grid-cols-3 xl:gap-4">
+                <div className="xl:gap-4">
                     <div className="space-y-4 text-center">
                         <img
                             className="h-16 mx-auto"
@@ -78,7 +81,7 @@ export default function Footer() {
                             alt="MIAT"
                         />
                         <p className="text-sm leading-6 text-white text-center">
-                            Найдвартай, чанартай, үр өгөөжтэй, найрсаг үйлчилгээгээр Монголыг дэлхийтэй холбоно
+                            {t('footerdesc')}
                         </p>
                         <div className="flex space-x-6 justify-center">
                             {navigation.social.map((item) => (
@@ -95,46 +98,6 @@ export default function Footer() {
                             </a>
                         </div>
 
-                    </div>
-                    <div className="mt-16 xl:mt-0 col-span-2">
-                        <div className="flex flex-wrap justify-center items-start text-center sm:text-left">
-                            <div className="mr-8">
-                                <h3 className="text-base font-bold leading-6 text-white">Аяллын мэдээ</h3>
-                                <ul className="mt-6 space-y-2">
-                                    {navigation.links.map((item) => (
-                                        <li key={item.name}>
-                                            <Link to={item.href} className="text-sm leading-3 hover:text-gray-300 text-white">
-                                                {item.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="mt-5 sm:mt-0 mr-8">
-                                <h3 className="text-base font-bold leading-6 text-white">Бидний тухай</h3>
-                                <ul className="mt-6 space-y-2">
-                                    {navigation.support.map((item) => (
-                                        <li key={item.name}>
-                                            <Link to={item.href} className="text-sm leading-3 hover:text-gray-300 text-white">
-                                                {item.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className="mt-5 sm:mt-0">
-                                <h3 className="text-base font-bold leading-6 text-white">Санал хүсэлт илгээх</h3>
-                                <ul className="mt-6 space-y-2">
-                                    {navigation.legal.map((item) => (
-                                        <li key={item.name}>
-                                            <Link to={item.href} className="text-sm leading-3 hover:text-gray-300 text-white">
-                                                {item.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className="mt-8 border-t border-white/10 pt-4 sm:mt-20 lg:mt-12 text-center">
