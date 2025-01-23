@@ -76,7 +76,7 @@ export default function Footer() {
                 <div className="xl:gap-4">
                     <div className="space-y-4 text-center">
                         <img
-                            className="h-16 mx-auto"
+                            className="h-14 mx-auto"
                             src="/logos/main-logo/logo_w.png"
                             alt="MIAT"
                         />

@@ -4,11 +4,22 @@ import * as am5map from "@amcharts/amcharts5/map";
 import am5geodataWorldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { useTranslation } from 'react-i18next';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+}
 
 const Destinations = () => {
 
     const [choosedCountry, setChoosedCountry] = useState({});
+    const [shownavigate, setShowNavigate] = useState(true);
+
     const { t } = useTranslation();
+
+    const clickShowNavigate = () => {
+        setShowNavigate(!shownavigate)
+    }
 
     useLayoutEffect(() => {
         let root = am5.Root.new("chartdiv");
@@ -62,9 +73,9 @@ const Destinations = () => {
         // this will be invisible line (note strokeOpacity = 0) along which invisible points will animate
         let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
         lineSeries.mapLines.template.setAll({
-            strokeOpacity: 0.5,
+            strokeOpacity: 1,
             stroke: am5.color(0xffba00),
-            strokeWidth: 2,
+            strokeWidth: 1,
             strokeDasharray: 3
         });
 
@@ -182,7 +193,15 @@ const Destinations = () => {
         let pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
         let point1 = addCity({ latitude: 46.8625, longitude: 103.8467 }, "Ulaanbaatar");
-        let point2 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
+        let point2 = null;
+        if (choosedCountry.id) {
+            point2 = addCity({
+                latitude: choosedCountry.geometry.coordinates[1],
+                longitude: choosedCountry.geometry.coordinates[0]
+            }, "Frankfurt");
+        } else {
+            point2 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
+        }
 
         let lineDataItem = lineSeries.pushDataItem({
             pointsToConnect: [point1, point2]
@@ -195,7 +214,7 @@ const Destinations = () => {
             scale: 0.07,
             centerY: am5.p50,
             centerX: am5.p50,
-            fill: am5.color('#e8f1f9')
+            fill: am5.color('#024384')
         });
 
         planeSeries.bullets.push(function () {
@@ -243,6 +262,7 @@ const Destinations = () => {
                 var dataItem = event.target.dataItem;
                 var data = dataItem.dataContext;
                 setChoosedCountry(data);
+                setShowNavigate(true)
                 point2.setAll({
                     longitude: data.geometry.coordinates[0],
                     latitude: data.geometry.coordinates[1]
@@ -332,19 +352,51 @@ const Destinations = () => {
 
     return (
         <div>
-            {choosedCountry.title && <div
-                className='absolute bg-primary-700 w-80 z-10 h-full text-white px-4 py-8 space-y-4'
-            >
-                <div className='text-center'>
-                    {t('ulaanbaatar')} - {t(choosedCountry.id)}
+            {choosedCountry.title && <div>
+                <div
+                    className={
+                        classNames(
+                            'transition absolute bg-primary-500 w-80 h-full text-white px-4 py-8 space-y-4 shadow-md z-10 duration-500',
+                            shownavigate ? 'translate-x-0' : '-translate-x-full',
+                            'border-t border-t-white'
+                        )}
+                    style={{
+                        boxShadow: "0 1px 2px rgba(60,64,67,0.3),0 2px 6px 2px rgba(60,64,67,0.15)"
+                    }}
+                >
+                    <div className='text-center'>
+                        {t('ulaanbaatar')} - {t(choosedCountry.id)}
+                    </div>
+                    <div>
+                        <img src="/image/main/plane-500.jpg" alt=""
+                        className="rounded-md"
+                        />
+                    </div>
+                    <div className='text-justify'>
+                        {t(choosedCountry.id + 'desc')}
+                    </div>
                 </div>
-                <div>
-                    <img src="/image/main/plane-500.jpg" alt="" />
+                <div className={
+                    classNames(
+                        'transition absolute left-80 top-[calc(50%-24px)] block z-10 duration-500',
+                        shownavigate ? 'translate-x-0' : '-translate-x-80'
+                    )
+                }>
+                    <button
+                        className={classNames(
+                            'h-[48px] w-[23px] bg-primary-500 cursor-pointer hover:bg-primary-700',
+                            'rounded-r-full border-l border-l-primary-600'
+                        )}
+                        style={{
+                            boxShadow: '0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15)'
+                        }}
+                        onClick={clickShowNavigate}
+                    >
+                        {shownavigate ? <ChevronLeftIcon className='h-4 w-4 text-white' /> : <ChevronRightIcon className='h-4 w-4 text-white' />}
+                    </button>
                 </div>
-                <div className='text-justify'>
-                    {t(choosedCountry.id + 'desc')}
-                </div>
-            </div>}
+            </div>
+            }
             <div id="chartdiv" className="h-[calc(100vh-4rem)]"></div>
         </div>
     )

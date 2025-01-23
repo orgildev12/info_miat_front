@@ -50,7 +50,7 @@ const Header = () => {
                                         to={item.href}
                                         aria-current={(item.href === location.pathname) ? 'page' : undefined}
                                         className={classNames(
-                                            (item.href === location.pathname) ? 'bg-primary-700 text-white' : 'hover:text-gray-300 hover:bg-primary-700 text-white',
+                                            (item.href === location.pathname) ? 'bg-primary-700 text-white' : 'hover:bg-primary-700 text-white',
                                             'rounded-md px-2 py-2 text-sm font-medium',
                                         )}
                                     >
