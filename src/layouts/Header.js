@@ -11,7 +11,7 @@ const navigation = [
     { name: 'destinations', href: '/destinations' },
     { name: 'airplanes', href: '/airplanes' },
     { name: 'schedule', href: '/schedule' },
-    { name: 'program', href: '/program' },
+    { name: 'bonus', href: '/bonus' },
     { name: 'cargo', href: '/cargo' },
     { name: 'videos', href: '/videos' },
     { name: 'experience', href: '/experience' },
@@ -67,7 +67,7 @@ const Header = () => {
                     <div className="sm:hidden">
                         <button
                             type="button"
-                            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+                            className="inline-flex items-center justify-center rounded-md p-2.5 text-white"
                             onClick={() => setMobileMenuOpen(true)}
                         >
                             <span className="sr-only">Open main menu</span>
