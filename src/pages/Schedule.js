@@ -33,6 +33,7 @@ const Schedule = () => {
     }, [countries, selectedtab])
 
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
         const tmpcountry = [];
         for (const key in countryschedules) {
             if (Object.prototype.hasOwnProperty.call(countryschedules, key)) {

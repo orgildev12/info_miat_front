@@ -9,7 +9,7 @@ import { ChangeLanguage } from "../components/language/ChangeLanguage/ChangeLang
 const navigation = [
     { name: 'our', href: '/' },
     { name: 'destinations', href: '/destinations' },
-    { name: 'aircraft', href: '/aircraft' },
+    { name: 'airplanes', href: '/airplanes' },
     { name: 'schedule', href: '/schedule' },
     { name: 'program', href: '/program' },
     { name: 'cargo', href: '/cargo' },
