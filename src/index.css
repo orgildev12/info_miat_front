@@ -56,3 +56,26 @@ code {
 .editor ul {
 	list-style: disc;
 }
+
+@keyframes scroll {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(calc(-100% - 1rem));
+	}
+}
+
+.scroll {
+	animation: scroll 30s linear infinite;
+}
+
+.reverse {
+	animation-direction: reverse;
+}
+
+.mask-gradient {
+	-webkit-mask-image: linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0%, black 20%, black 80%, transparent 100%);
+}

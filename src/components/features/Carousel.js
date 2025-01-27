@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 const carouselTimer = 'carouselSessionTimer';
 export const Carousel = ({ slides, delay = 7 }) => {
     const [current, setCurrent] = useState(0);
-
+    const { t } = useTranslation()
     const previousSlide = () => {
         localStorage.setItem(carouselTimer, new Date());
         const tmpcurrent = localStorage.getItem('Carousel-Current');
@@ -57,7 +58,7 @@ export const Carousel = ({ slides, delay = 7 }) => {
                         key={index}
                         className="
                             max-w-[100vw] min-w-[100vw] 
-                            h-[550px] text-white
+                            h-[100vh] text-white
                             bg-cover bg-center bg-no-repeat
                         "
                         style={{ backgroundImage: `url(${s.img})` }}>
@@ -77,17 +78,25 @@ export const Carousel = ({ slides, delay = 7 }) => {
                     </div>;
                 })}
             </div>
+            <div className="absolute py-4 bottom-20 left-20 text-white">
+                <h2 className="font-medium text-4xl">
+                    MIAT MONGOLIAN <br /> AIRLINES
+                </h2>
+                <div className="w-64 mt-4">
+                    {t('footerdesc')}
+                </div>
+            </div>
+            <div className="absolute bottom-20 right-20 h-full w-full justify-end items-end flex text-white px-5 text-3xl">
 
-            <div className="absolute top-0 h-full w-full justify-between items-center flex text-white px-5 text-3xl">
-                <button onClick={previousSlide}>
-                    <svg className="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
+                <button onClick={previousSlide} className="rounded-full border border-white p-2 mr-2 hover:bg-white group">
+                    <svg className="w-4 h-4 text-white rtl:rotate-180 group-hover:text-primary-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M5 1 1 5l4 4" />
                     </svg>
                     <span className="sr-only">Previous</span>
                 </button>
-                <button onClick={nextSlide}>
-                    <svg className="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" />
+                <button onClick={nextSlide} className="rounded-full border border-white p-2 hover:bg-white group">
+                    <svg className="w-4 h-4 text-white rtl:rotate-180 group-hover:text-primary-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="m1 9 4-4-4-4" />
                     </svg>
                     <span className="sr-only">Next</span>
                 </button>

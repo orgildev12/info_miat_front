@@ -11,6 +11,10 @@ const languages = [
     {
         id: 'en',
         name: 'English',
+    },
+    {
+        id: 'tr',
+        name: 'Turkey',
     }
 ];
 
@@ -49,25 +53,30 @@ export const ChangeLanguage = () => {
     return (
         <Listbox value={selected} onChange={setSelected}>
             <div className="relative mt-3">
-                <Listbox.Button className="cursor-default rounded-md flex items-center">
-                    <img alt="" src={`/logos/flags/${selected.id}.svg`} className="w-5 shrink-0" />
+                <Listbox.Button className="rounded-md flex items-center w-14 cursor-pointer">
+                    <img alt="" src={`/logos/flags/${selected.id}.webp`} className="w-5 shrink-0" />
                     <ChevronDownIcon
                         aria-hidden="true"
                         className="col-start-1 row-start-1 h-5 w-5 self-center justify-self-end text-white sm:h-4 sm:w-4"
                     />
                 </Listbox.Button>
                 <Listbox.Options
-                    className="absolute z-10 mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 w-14"
+                    className="absolute z-10 mt-1 max-h-56 overflow-auto rounded-md bg-white py-1 w-24 -ml-4 px-1"
                 >
                     {languages.map((lang) => (
                         lang.id !== selected.id ? <Listbox.Option
                             key={lang.id}
                             value={lang}
-                            className="group relative cursor-default select-none"
+                            className="group relative select-none hover:bg-primary-100 cursor-pointer rounded"
                             title={lang.name}
                         >
-                            <div className="flex items-center justify-center">
-                                <img alt="" src={`/logos/flags/${lang.id}.svg`} className="h-5 shrink-0" />
+                            <div className="grid items-center grid-cols-3 pl-1">
+                                <div className='col-span-1 py-1'>
+                                    <img alt="" src={`/logos/flags/${lang.id}.webp`} className='w-5' />
+                                </div>
+                                <div className='text-left col-span-2 text-sm pl-1'>
+                                    {lang.name}
+                                </div>
                             </div>
                         </Listbox.Option> : <React.Fragment key={lang.id}></React.Fragment>
                     ))}

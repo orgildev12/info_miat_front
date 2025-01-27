@@ -13,7 +13,7 @@ const navigation = [
     { name: 'schedule', href: '/schedule' },
     { name: 'bonus', href: '/bonus' },
     { name: 'cargo', href: '/cargo' },
-    { name: 'videos', href: '/videos' },
+    // { name: 'videos', href: '/videos' },
     { name: 'experience', href: '/experience' },
     { name: 'vrtour', href: '/vrtour' },
     // { name: 'contact', href: '/contact' },
@@ -30,8 +30,8 @@ const Header = () => {
 
 
     return (
-        <div className="bg-primary-500 sticky top-0 z-20">
-            <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="fixed top-2 z-20 left-1/2 transform -translate-x-1/2 translate-y-0 w-full">
+            <div className="relative mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-black/50 backdrop-blur-md rounded-full">
                 <div className="relative flex min-h-[4rem] items-center justify-between">
                     <div className="flex flex-1 items-center justify-between sm:items-stretch">
                         <div className="flex shrink-0 items-center">
@@ -50,7 +50,7 @@ const Header = () => {
                                         to={item.href}
                                         aria-current={(item.href === location.pathname) ? 'page' : undefined}
                                         className={classNames(
-                                            (item.href === location.pathname) ? 'bg-primary-700 text-white' : 'hover:bg-primary-700 text-white',
+                                            (item.href === location.pathname) ? 'bg-primary-500 text-white' : 'hover:bg-primary-500 text-white',
                                             'rounded-md px-2 py-2 text-sm font-medium',
                                         )}
                                     >

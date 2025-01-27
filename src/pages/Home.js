@@ -3,6 +3,11 @@ import React from "react";
 import { Carousel } from "../components/features/Carousel";
 import { useTranslation } from "react-i18next";
 
+
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+}
+
 let slides = [
     // {
     //     img: "/background-image/riah/Picture1.jpg",
@@ -26,6 +31,29 @@ let slides = [
     }
 ];
 
+const planes = [
+    {
+        image: "/logos/airlines/Cathay_Pacific-Logo.wine.png",
+        name: "Cathay_Pacific",
+    },
+    {
+        image: "/logos/airlines/Japan-Airlines-Logo.png",
+        name: "Japan-Airlines",
+    },
+    {
+        image: "/logos/main-logo/logo_w.png",
+        name: "miat",
+    },
+    {
+        image: "/logos/airlines/korean-air.png",
+        name: "korean-air",
+    },
+    {
+        image: "/logos/airlines/Turkish_Airlines_logo.png",
+        name: "Turkish_Airlines_logo",
+    },
+]
+
 const Home = () => {
     // const navigate = useNavigate();
     const { t } = useTranslation()
@@ -34,15 +62,15 @@ const Home = () => {
         <div className="h-full min-h-screen">
             <Carousel slides={slides} />
             {/* Hero section */}
-            <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-14">
+            <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-4">
                 <div
                     aria-hidden="true"
                     className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96"
                 />
-                <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+                <div className="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8">
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
                         {/* <h1 class="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">We’re changing the way people connect</h1> */}
-                        <h1 className="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
+                        <h1 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:col-span-2 xl:col-auto">
                             {t('bluesky')}
                         </h1>
                         <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
@@ -53,7 +81,7 @@ const Home = () => {
                         <img
                             alt=""
                             src="/image/main/miat-7.jpg"
-                            className="mt-10 aspect-[6/5] w-full max-w-lg rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-36"
+                            className="mt-10 aspect-[6/5] w-full max-w-lg rounded-2xl object-cover sm:mt-8 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-12"
                         />
                     </div>
                 </div>
@@ -61,7 +89,7 @@ const Home = () => {
             </div>
 
             {/* Logo cloud */}
-            <div className="mx-auto mt-32 max-w-7xl sm:mt-40 sm:px-6 lg:px-8">
+            <div className="mx-auto mt-4 max-w-7xl sm:mt-8 sm:px-6 lg:px-8">
                 <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
                     <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
                         {t('priority')}
@@ -69,43 +97,48 @@ const Home = () => {
                     <p className="mx-auto mt-6 max-w-3xl text-lg/8 text-gray-300">
                         {t('routemap')}
                     </p>
-                    <div className="mx-auto mt-20 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:max-w-4xl lg:grid-cols-5">
-                        <img
-                            alt="Cathay_Pacific"
-                            src="/logos/airlines/Cathay_Pacific-Logo.wine.png"
-                            width={158}
-                            height={48}
-                            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        />
-                        <img
-                            alt="Japan-Airlines"
-                            src="/logos/airlines/Japan-Airlines-Logo.png"
-                            width={158}
-                            height={48}
-                            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        />
-                        <img
-                            alt="miat"
-                            src="/logos/main-logo/logo_w.png"
-                            width={158}
-                            height={48}
-                            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        />
-                        <img
-                            alt="korean-air"
-                            src="/logos/airlines/korean-air.png"
-                            width={158}
-                            height={48}
-                            className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-                        />
-                        <img
-                            alt="Turkish_Airlines_logo"
-                            src="/logos/airlines/Turkish_Airlines_logo.png"
-                            width={158}
-                            height={48}
-                            className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-                        />
+                    <div className="flex mask-gradient">
+                        <div className={classNames(
+                            "mx-auto mt-20 items-center gap-x-20",
+                            "scroll reverse w-full flex"
+                        )}>
+                            {
+                                planes.map((item, index) => {
+                                    return <img
+                                        alt={item.name}
+                                        src={item.image}
+                                        width={158}
+                                        height={48}
+                                        key={index}
+                                        className={
+                                            classNames(item.className,
+                                                'opacity-30 hover:opacity-100 cursor-pointer w-[158px] transition-opacity duration-300',
+                                                'object-contain h-[48px]'
+                                            )
+                                        }
+                                    />
+                                })
+                            }
+                            {
+                                planes.map((item, index) => {
+                                    return <img
+                                        alt={item.name}
+                                        src={item.image}
+                                        width={158}
+                                        height={48}
+                                        key={index}
+                                        className={
+                                            classNames(item.className,
+                                                'opacity-30 hover:opacity-100 cursor-pointer w-[158px] transition-opacity duration-300',
+                                                'object-contain h-[48px]'
+                                            )
+                                        }
+                                    />
+                                })
+                            }
+                        </div>
                     </div>
+
                     <div aria-hidden="true" className="absolute -top-24 right-0 -z-10 transform-gpu blur-3xl">
                         <div
                             style={{
@@ -119,7 +152,7 @@ const Home = () => {
             </div>
 
             {/* Content section */}
-            <div className="mt-32 overflow-hidden sm:mt-40">
+            <div className="mt-8 overflow-hidden sm:mt-16">
                 <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
                         <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
