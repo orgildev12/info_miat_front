@@ -2,7 +2,9 @@ module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx,html}"],
     theme: {
         extend: {
-            backgroundImage: {},
+            backgroundImage: {
+                'background1': "url('/public/background-image/background.webp')",
+            },
             border: ["focus"],
             colors: {
                 primary: {

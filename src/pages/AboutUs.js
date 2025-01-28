@@ -2,6 +2,7 @@ import React from "react";
 // import { useNavigate } from "react-router-dom";
 import { Carousel } from "../components/features/Carousel";
 import { useTranslation } from "react-i18next";
+import Airplanes from "./Airplanes";
 
 
 function classNames(...classes) {
@@ -60,13 +61,14 @@ const Home = () => {
 
     return (
         <div className="h-full min-h-screen">
-            <Carousel slides={slides} />
+            <div className="sticky top-0 left-0 w-full -z-20">
+                <Carousel slides={slides} />
+            </div>
             {/* Hero section */}
-            <div className="relative isolate -z-10 overflow-hidden bg-gradient-to-b from-indigo-100/20 pt-4">
-                <div
-                    aria-hidden="true"
-                    className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:-mr-80 lg:-mr-96"
-                />
+            <div className={classNames(
+                "relative isolate overflow-hidden pt-4",
+                "bg-background1 bg-login_pattern bg-cover rounded-[4rem]"
+            )}>
                 <div className="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8">
                     <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
                         {/* <h1 class="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">We’re changing the way people connect</h1> */}
@@ -74,7 +76,7 @@ const Home = () => {
                             {t('bluesky')}
                         </h1>
                         <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                            <p className="text-pretty text-lg font-medium text-gray-500 sm:text-xl/8 text-justify">
+                            <p className="text-pretty text-lg font-medium text-black sm:text-xl/8 text-justify">
                                 {t('airlinehistory')}
                             </p>
                         </div>
@@ -89,15 +91,15 @@ const Home = () => {
             </div>
 
             {/* Logo cloud */}
-            <div className="mx-auto mt-4 max-w-7xl sm:mt-8 sm:px-6 lg:px-8">
-                <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+            <div className="mx-auto bg-gray-900 -mt-[4rem]">
+                <div className="relative isolate overflow-hidden px-6 py-24 text-center sm:px-16">
                     <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
                         {t('priority')}
                     </h2>
                     <p className="mx-auto mt-6 max-w-3xl text-lg/8 text-gray-300">
                         {t('routemap')}
                     </p>
-                    <div className="flex mask-gradient">
+                    <div className="flex mask-gradient pb-10">
                         <div className={classNames(
                             "mx-auto mt-20 items-center gap-x-20",
                             "scroll reverse w-full flex"
@@ -152,7 +154,7 @@ const Home = () => {
             </div>
 
             {/* Content section */}
-            <div className="mt-8 overflow-hidden sm:mt-16">
+            <div className="-mt-[4rem] pt-8 overflow-hidden sm:pt-16 bg-background1 bg-login_pattern bg-cover rounded-[4rem]">
                 <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
                         <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
@@ -198,6 +200,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Airplanes section */}
+            <Airplanes />
         </div>
     );
 };

@@ -7,15 +7,16 @@ import { Dialog } from '@headlessui/react'
 import { ChangeLanguage } from "../components/language/ChangeLanguage/ChangeLanguage";
 
 const navigation = [
-    { name: 'our', href: '/' },
-    { name: 'destinations', href: '/destinations' },
-    { name: 'airplanes', href: '/airplanes' },
+    { name: 'destinations', href: '/' },
+    // { name: 'destinations', href: '/destinations' },
+    // { name: 'airplanes', href: '/airplanes' },
     { name: 'schedule', href: '/schedule' },
     { name: 'bonus', href: '/bonus' },
     { name: 'cargo', href: '/cargo' },
     // { name: 'videos', href: '/videos' },
     { name: 'experience', href: '/experience' },
     { name: 'vrtour', href: '/vrtour' },
+    { name: 'our', href: '/about-us' },
     // { name: 'contact', href: '/contact' },
 ]
 

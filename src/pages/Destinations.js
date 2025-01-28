@@ -33,11 +33,12 @@ const Destinations = () => {
             am5map.MapChart.new(root, {
                 panX: "rotateX",
                 // projection: am5map.geoMercator(),
-                projection: am5map.geoNaturalEarth1(),
+                // projection: am5map.geoNaturalEarth1(),
+                projection: am5map.geoOrthographic(),
                 // homeGeoPoint: { latitude: 46.8625, longitude: 103.8467 },
                 wheelY: "none",
-                rotationX: -130.8467,
-                scale: 1.5
+                // rotationX: -130.8467,
+                // scale: 1.5
             })
         );
 
@@ -69,6 +70,22 @@ const Destinations = () => {
             var data = dataItem.dataContext;
             console.log(data);
         });
+
+        var backgroundSeries = chart.series.unshift(
+            am5map.MapPolygonSeries.new(root, {})
+        );
+
+        backgroundSeries.mapPolygons.template.setAll({
+            fill: am5.color("#00000080"),
+            stroke: am5.color(0xedf7fa),
+        });
+
+        backgroundSeries.data.push({
+            geometry: am5map.getGeoRectangle(90, 180, -90, -180)
+        });
+
+        chart.animate({ key: "rotationX", to: -103.8467, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+        chart.animate({ key: "rotationY", to: -46.8625, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
 
         // this will be invisible line (note strokeOpacity = 0) along which invisible points will animate
         let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
@@ -214,7 +231,7 @@ const Destinations = () => {
             scale: 0.07,
             centerY: am5.p50,
             centerX: am5.p50,
-            fill: am5.color('#024384')
+            fill: am5.color('#fcffff')
         });
 
         planeSeries.bullets.push(function () {
@@ -230,12 +247,14 @@ const Destinations = () => {
 
             let circle = container.children.push(
                 am5.Circle.new(root, {
-                    radius: 4,
+                    radius: 6,
                     tooltipText: "{title}",
                     tooltipY: 0,
                     fill: am5.color(0xffba00),
                     stroke: root.interfaceColors.get("background"),
-                    strokeWidth: 2
+                    strokeWidth: 2,
+                    interactive: true, // Интерактив байдал нэмэх
+                    cursorOverStyle: "pointer" // Hover үед курсорыг "pointer" болгох
                 }, circleTemplate)
             );
 
@@ -245,14 +264,23 @@ const Destinations = () => {
                     paddingLeft: 5,
                     populateText: true,
                     fontWeight: "bold",
-                    fontSize: 8,
+                    fontSize: 12,
                     centerY: am5.p50,
-                    x: circle.get("radius")
+                    x: circle.get("radius"),
+                    layer: 5,
+                    fill: am5.color(0xffffff)
                 })
             );
 
             circle.on("radius", function (radius) {
                 countryLabel.set("x", radius);
+            })
+
+            circle.events.on("pointerover", function (event) {
+                event.target.set("scale", 1.2); // Hover үед хэмжээг томруулах
+            })
+            circle.events.on("pointerout", function (event) {
+                event.target.set("scale", 1); // Хэвийн хэмжээнд буцаах
             })
 
             circle.events.on("click", function (event) {
@@ -294,25 +322,6 @@ const Destinations = () => {
 
         planeDataItem.dataContext = {};
         resetPlaneAnimation()
-        // planeDataItem.animate({
-        //     key: "positionOnLine",
-        //     to: 1,
-        //     duration: 30000,
-        //     loops: Infinity,
-        //     easing: am5.ease.yoyo(am5.ease.linear)
-        // });
-
-        // planeDataItem.on("positionOnLine", (value) => {
-        //     // console.log(data.id, 'value', value)
-        //     if (planeDataItem.dataContext.prevPosition < value) {
-        //         plane.set("rotation", 0);
-        //     }
-
-        //     if (planeDataItem.dataContext.prevPosition > value) {
-        //         plane.set("rotation", -180);
-        //     }
-        //     planeDataItem.dataContext.prevPosition = value;
-        // });
 
         function resetPlaneAnimation() {
             // Re-animate the plane along the line
@@ -352,7 +361,10 @@ const Destinations = () => {
 
     return (
         <div>
-            {choosedCountry.title && <div>
+            <div className={classNames(
+                choosedCountry.title ? 'opacity-100' : 'opacity-0',
+                'transition-opacity ease-in-out delay-150 duration-300'
+            )}>
                 <div
                     className={
                         classNames(
@@ -369,7 +381,7 @@ const Destinations = () => {
                     </div>
                     <div>
                         <img src="/image/main/plane-500.jpg" alt=""
-                        className="rounded-md"
+                            className="rounded-md"
                         />
                     </div>
                     <div className='text-justify'>
@@ -396,8 +408,13 @@ const Destinations = () => {
                     </button>
                 </div>
             </div>
-            }
-            <div id="chartdiv" className="h-[calc(100vh-4rem)]"></div>
+            <div id="chartdiv" className="h-[100vh]"></div>
+            <div class="bg"></div>
+            <div class="star-field">
+                <div class="layer"></div>
+                <div class="layer"></div>
+                <div class="layer"></div>
+            </div>
         </div>
     )
 }

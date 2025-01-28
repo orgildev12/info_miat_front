@@ -2,12 +2,10 @@ import React, { Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NotFound from '../layouts/error/NotFound'
 import PrivateRoute from './PrivateRoute'
-import Home from '../pages/Home'
+import AboutUs from '../pages/AboutUs'
 import Schedule from '../pages/Schedule'
-import Airplanes from '../pages/Airplanes'
 import Bonus from '../pages/Bonus'
 import Cargo from '../pages/Cargo'
-import Videos from '../pages/Videos'
 import Experience from '../pages/Experience'
 // import Destinations from '../pages/Destinations'
 const Destinations = React.lazy(() => import('../pages/Destinations'));
@@ -26,17 +24,15 @@ export default function CoreRoutes() {
             <Suspense fallback={loadingComp}>
                 <Routes>
                     <Route exact path='/' element={<PrivateRoute />}>
-                        <Route exact path='/' element={<Home />} />
+                        <Route exact path='/' element={<Destinations />} />
                         <Route path='/destinations' element={<Destinations />} />
-                        <Route path='/airplanes' element={<Airplanes />} />
-                        <Route path='/contact' element={<Destinations />} />
                         <Route path='/schedule' element={<Schedule />} />
                         <Route path='/bonus' element={<Bonus />} />
                         <Route path='/cargo' element={<Cargo />} />
-                        <Route path='/videos' element={<Videos />} />
                         <Route path='/experience' element={<Experience />} />
                         <Route path='/vrtour' element={<Vrtour />} />
                         <Route path='/vrtour2' element={<Vrtour2 />} />
+                        <Route path='/about-us' element={<AboutUs />} />
                     </Route>
                     <Route path='*' element={<NotFound />} />
                 </Routes>

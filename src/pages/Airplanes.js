@@ -40,7 +40,7 @@ const Airplanes = () => {
     }, [])
 
     return (
-        <div className="min-h-screen w-full mx-0 bg-white">
+        <div className="min-h-screen w-full mx-0 bg-white -mt-[4rem]">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
                     {products.map((product) => (
@@ -49,7 +49,7 @@ const Airplanes = () => {
                                 <img
                                     alt={product.name}
                                     src={product.imageSrc}
-                                    className="transform aspect-[4/3] w-full rounded-lg bg-gray-100 object-cover group-hover:scale-105"
+                                    className="transition-all aspect-[4/3] w-full rounded-lg bg-gray-100 object-cover group-hover:scale-105"
                                 />
                                 <div
                                     aria-hidden="true"
