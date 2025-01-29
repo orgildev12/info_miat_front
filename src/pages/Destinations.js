@@ -57,14 +57,14 @@ const Destinations = () => {
             })
         );
 
-        polygonSeries.mapPolygons.template.setAll({
-            tooltipText: "{name}",
-            interactive: true
-        });
+        // polygonSeries.mapPolygons.template.setAll({
+        //     tooltipText: "{name}",
+        //     interactive: true
+        // });
 
-        polygonSeries.mapPolygons.template.states.create("hover", {
-            fill: am5.color('#9fbfde')
-        });
+        // polygonSeries.mapPolygons.template.states.create("hover", {
+        //     fill: am5.color('#9fbfde')
+        // });
 
         polygonSeries.mapPolygons.template.events.on("click", (ev) => {
             var dataItem = ev.target.dataItem;
@@ -92,18 +92,18 @@ const Destinations = () => {
         let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
         lineSeries.mapLines.template.setAll({
             strokeOpacity: 1,
-            stroke: am5.color(0xffba00),
+            stroke: am5.color("#2259ff"),
             strokeWidth: 1,
-            strokeDasharray: 3
+            // strokeDasharray: 1
         });
 
         // this will be visible line. Lines will connectg animating points so they will look like animated
-        let animatedLineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
-        animatedLineSeries.mapLines.template.setAll({
-            stroke: am5.color(0xffba00),
-            strokeOpacity: 0.6,
-            strokeWidth: 2,
-        });
+        // let animatedLineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+        // animatedLineSeries.mapLines.template.setAll({
+        //     // stroke: am5.color(0xffba00),
+        //     // strokeOpacity: 0.6,
+        //     strokeWidth: 1,
+        // });
 
         // invisible series which will animate along invisible lines
         let animatedBulletSeries = chart.series.push(
@@ -251,13 +251,23 @@ const Destinations = () => {
                     radius: 6,
                     tooltipText: "{title}",
                     tooltipY: 0,
-                    fill: am5.color(0xffba00),
-                    stroke: root.interfaceColors.get("background"),
-                    strokeWidth: 2,
+                    fill: am5.color("#2652fb"), // 6 тэмдэгттэй HEX
+                    stroke: am5.color("#2652fb"), // 6 тэмдэгттэй HEX
+                    strokeOpacity: 0.3,
+                    // "scale": 0.7,
+                    "strokeWidth": 5,
                     interactive: true, // Интерактив байдал нэмэх
                     cursorOverStyle: "pointer" // Hover үед курсорыг "pointer" болгох
                 }, circleTemplate)
             );
+
+            circle.animate({
+                key: "strokeOpacity",
+                to: 1,
+                duration: 1500, // Animation duration in milliseconds (1s)
+                loops: Infinity, // Infinite loop
+                easing: am5.ease.yoyo(am5.ease.linear) // Smooth effect
+            });
 
             let countryLabel = container.children.push(
                 am5.Label.new(root, {
