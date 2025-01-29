@@ -4,6 +4,7 @@ module.exports = {
         extend: {
             backgroundImage: {
                 'background1': "url('/public/background-image/background.webp')",
+                'background-dark': "url('/public/background-image/background-dark.webp')",
             },
             border: ["focus"],
             colors: {

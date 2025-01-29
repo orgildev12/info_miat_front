@@ -32,6 +32,7 @@ const Destinations = () => {
         var chart = root.container.children.push(
             am5map.MapChart.new(root, {
                 panX: "rotateX",
+                panY: "rotateY",
                 // projection: am5map.geoMercator(),
                 // projection: am5map.geoNaturalEarth1(),
                 projection: am5map.geoOrthographic(),
@@ -77,15 +78,15 @@ const Destinations = () => {
 
         backgroundSeries.mapPolygons.template.setAll({
             fill: am5.color("#00000080"),
-            stroke: am5.color(0xedf7fa),
+            strokeOpacity: 0
         });
 
         backgroundSeries.data.push({
             geometry: am5map.getGeoRectangle(90, 180, -90, -180)
         });
 
-        chart.animate({ key: "rotationX", to: -103.8467, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
-        chart.animate({ key: "rotationY", to: -46.8625, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+        chart.animate({ key: "rotationX", to: -80.8467, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+        chart.animate({ key: "rotationY", to: -20.8625, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
 
         // this will be invisible line (note strokeOpacity = 0) along which invisible points will animate
         let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
