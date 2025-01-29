@@ -44,7 +44,7 @@ const Schedule = () => {
     }, [])
 
     return (
-        <div className="px-4 sm:px-6 lg:px-8 py-16">
+        <div className="px-4 sm:px-6 lg:px-8 py-16 mt-16 min-h-[80vh]">
             <div className='flex border-b border-b-primary-500'>
                 {countries.map((item) => {
                     return <button className={
@@ -67,19 +67,19 @@ const Schedule = () => {
                     <thead>
                         <tr>
                             <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900">
-                                Аяллын дугаар
+                                {t('flightno')}
                             </th>
                             <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
-                                Өдөр
+                                {t('frequency')}
                             </th>
                             <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
-                                Нисэх цаг
+                                {t('departure')}
                             </th>
                             <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
-                                Буух цаг
+                                {t('arrival')}
                             </th>
                             <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
-                                Үйлчлэх хугацаа
+                                {t('effectivedate')}
                             </th>
                         </tr>
                     </thead>

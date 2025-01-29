@@ -71,7 +71,7 @@ export default function Footer() {
     const { t } = useTranslation();
     
     return (
-        <footer className="bg-primary-500" aria-labelledby="footer-heading">
+        <footer className="rounded-t-[4rem] -mt-[4rem] z-20 relative bg-black/50 backdrop-blur-md bg-gradient-to-r from-neutral-300/30 to-stone-400/30" aria-labelledby="footer-heading">
             <div className="mx-auto max-w-7xl px-6 pb-4 pt-16 sm:pt-24 lg:px-8 lg:pt-16">
                 <div className="xl:gap-4">
                     <div className="space-y-4 text-center">

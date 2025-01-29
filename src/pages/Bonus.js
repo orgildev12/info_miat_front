@@ -3,115 +3,146 @@ import { CheckIcon, MinusIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
 
 const tiers = [
-    { name: 'Blue', id: 'tier-starter', href: '#', priceMonthly: '$19', mostPopular: false },
-    { name: 'Silver', id: 'tier-growth', href: '#', priceMonthly: '$49', mostPopular: true },
-    { name: 'Gold', id: 'tier-Gold', href: '#', priceMonthly: '$99', mostPopular: false },
-    { name: 'Platinum', id: 'tier-Platinum', href: '#', priceMonthly: '$99', mostPopular: false },
+    {
+        name: 'Blue', id: 'tier-starter',
+        image: '/image/main/Blue.jpg',
+        href: '#', mostPopular: false
+    },
+    {
+        name: 'Silver', id: 'tier-growth',
+        image: '/image/main/silver.jpg',
+        href: '#', mostPopular: false
+    },
+    {
+        name: 'Gold', id: 'tier-Gold',
+        image: '/image/main/golden.jpg',
+        href: '#', mostPopular: true
+    },
+    {
+        name: 'Platinum', id: 'tier-Platinum',
+        image: '/image/main/Platinium.jpg',
+        href: '#', mostPopular: false
+    },
 ]
 const sections = [
     {
-        name: 'Features',
+        name: 'reservation',
         features: [
             {
-                name: 'Edge content delivery', tiers: {
-                    Blue: true,
-                    Silver: true,
-                    Gold: true,
-                    Platinum: true,
+                name: 'prioritylist',
+                tiers: {
+                    Blue: '-',
+                    Silver: 'high',
+                    Gold: 'higher',
+                    Platinum: 'highest',
                 }
             },
             {
-                name: 'Custom domains', tiers: {
-
-                    Blue: '1', Silver: '3',
-                    Gold: 'Unlimited',
-                    Platinum: 'Unlimited',
+                name: 'fee_waivers',
+                tiers: {
+                    Blue: '-',
+                    Silver: '-',
+                    Gold: '-',
+                    Platinum: '√',
                 }
-            },
-            {
-                name: 'Team members', tiers: {
-
-                    Blue: '3', Silver: '20',
-                    Gold: 'Unlimited',
-                    Platinum: 'Unlimited',
-                }
-            },
-            {
-                name: 'Single sign-on (SSO)', tiers: {
-
-                    Blue: false, Silver: false,
-                    Gold: true,
-                    Platinum: true,
-                }
-            },
+            }
         ],
     },
     {
-        name: 'Reporting',
+        name: 'airport',
         features: [
             {
-                name: 'Advanced analytics', tiers: {
-
-                    Blue: true, Silver: true,
-                    Gold: true
+                name: 'lounge_access',
+                tiers: {
+                    Blue: '2500 mile',
+                    Silver: '2500 mile',
+                    Gold: 'free',
+                    Platinum: 'free',
                 }
             },
             {
-                name: 'Basic reports', tiers: {
-
-                    Blue: false, Silver: true,
-                    Gold: true
+                name: 'counter',
+                tiers: {
+                    Blue: '-',
+                    Silver: '√',
+                    Gold: '√',
+                    Platinum: '√',
                 }
             },
             {
-                name: 'Professional reports', tiers: {
-
-                    Blue: false, Silver: false,
-                    Gold: true
+                name: 'preferred',
+                tiers: {
+                    Blue: '-',
+                    Silver: '√',
+                    Gold: '√',
+                    Platinum: '√',
                 }
             },
             {
-                name: 'Custom report builder', tiers: {
-
-                    Blue: false, Silver: false,
-                    Gold: true
+                name: 'convenience',
+                tiers: {
+                    Blue: '-',
+                    Silver: '√',
+                    Gold: '√',
+                    Platinum: '√',
+                }
+            },
+            {
+                name: 'baggagetag',
+                tiers: {
+                    Blue: '-',
+                    Silver: '√',
+                    Gold: '√',
+                    Platinum: '√',
+                }
+            },
+            {
+                name: 'free_upgrade',
+                tiers: {
+                    Blue: '-',
+                    Silver: 'high',
+                    Gold: 'higher',
+                    Platinum: 'highest',
+                }
+            },
+            {
+                name: 'priority_standby',
+                tiers: {
+                    Blue: '-',
+                    Silver: 'high',
+                    Gold: 'higher',
+                    Platinum: 'highest',
+                }
+            },
+            {
+                name: 'no_bumping',
+                tiers: {
+                    Blue: '-',
+                    Silver: '√',
+                    Gold: '√',
+                    Platinum: '√',
+                }
+            },
+            {
+                name: 'priority_arrangement',
+                tiers: {
+                    Blue: '-',
+                    Silver: '-',
+                    Gold: '√',
+                    Platinum: '√',
+                }
+            },
+            {
+                name: 'additional_bagga',
+                tiers: {
+                    Blue: '-',
+                    Silver: '-',
+                    Gold: '-',
+                    Platinum: '+1 piece',
                 }
             },
         ],
-    },
-    {
-        name: 'Support',
-        features: [
-            {
-                name: '24/7 online support', tiers: {
-
-                    Blue: true, Silver: true,
-                    Gold: true
-                }
-            },
-            {
-                name: 'Quarterly workshops', tiers: {
-
-                    Blue: false, Silver: true,
-                    Gold: true
-                }
-            },
-            {
-                name: 'Priority phone support', tiers: {
-
-                    Blue: false, Silver: false,
-                    Gold: true
-                }
-            },
-            {
-                name: '1:1 onboarding tour', tiers: {
-
-                    Blue: false, Silver: false,
-                    Gold: true
-                }
-            },
-        ],
-    },
+    }
 ]
 
 function classNames(...classes) {
@@ -122,14 +153,17 @@ export default function Bonus() {
     const { t } = useTranslation()
 
     return (
-        <div className="bg-white py-12 sm:py-16">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="pb-12 pt-20 sm:py-20 mb-8">
+            <div className='bg-loyalty fixed bg-cover h-full w-full top-0 left-0 -z-10'>
+
+            </div>
+            <div className="mx-auto max-w-7xl px-6 lg:px-8 bg-white/30 backdrop-blur-md py-7 rounded-[4rem]">
                 <div className="mx-auto max-w-4xl text-center">
-                    <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                    <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-black sm:text-5xl">
                         {t('loyaltyprogram')}
                     </p>
                 </div>
-                <p className="mx-auto mt-6 max-w-3xl text-pretty text-center text-base font-medium text-gray-600 sm:text-lg">
+                <p className="mx-auto mt-6 max-w-3xl text-pretty text-center text-base font-medium text-gray-800 sm:text-lg">
                     {t('loyaltyprogramdesc')}
                 </p>
 
@@ -143,26 +177,13 @@ export default function Bonus() {
                                 'p-8',
                             )}
                         >
-                            <h3 id={tier.id} className="text-sm/6 font-semibold text-gray-900">
-                                {tier.name}
+                            <h3 id={tier.id} className="text-sm/6 font-semibold text-black">
+                                {t(tier.name)}
                             </h3>
-                            <p className="mt-2 flex items-baseline gap-x-1 text-gray-900">
-                                <span className="text-4xl font-semibold">{tier.priceMonthly}</span>
-                                <span className="text-sm font-semibold">/month</span>
+                            <p className="mt-2 flex items-baseline gap-x-1 text-black">
+                                <img src={tier.image} alt={tier.name} />
                             </p>
-                            <a
-                                href={tier.href}
-                                aria-describedby={tier.id}
-                                className={classNames(
-                                    tier.mostPopular
-                                        ? 'bg-indigo-600 text-white hover:bg-indigo-500'
-                                        : 'text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300',
-                                    'mt-8 block rounded-md px-3 py-2 text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
-                                )}
-                            >
-                                Buy plan
-                            </a>
-                            <ul className="mt-10 space-y-4 text-sm/6 text-gray-900">
+                            <ul className="mt-10 space-y-4 text-sm/6 text-black">
                                 {sections.map((section) => (
                                     <li key={section.name}>
                                         <ul className="space-y-4">
@@ -171,9 +192,9 @@ export default function Bonus() {
                                                     <li key={feature.name} className="flex gap-x-3">
                                                         <CheckIcon aria-hidden="true" className="h-6 w-5 flex-none text-indigo-600" />
                                                         <span>
-                                                            {feature.name}{' '}
+                                                            {t(feature.name)}{' '}
                                                             {typeof feature.tiers[tier.name] === 'string' ? (
-                                                                <span className="text-sm/6 text-gray-500">({feature.tiers[tier.name]})</span>
+                                                                <span className="text-sm/6 text-gray-800">({feature.tiers[tier.name]})</span>
                                                             ) : null}
                                                         </span>
                                                     </li>
@@ -190,7 +211,7 @@ export default function Bonus() {
                 {/* lg+ */}
                 <div className="isolate mt-20 hidden lg:block">
                     <div className="relative -mx-8">
-                        {tiers.some((tier) => tier.mostPopular) ? (
+                        {tiers.map((tier) => tier.mostPopular) ? (
                             <div className="absolute inset-x-4 inset-y-0 -z-10 flex">
                                 <div
                                     style={{ marginLeft: `${(tiers.findIndex((tier) => tier.mostPopular) + 1) * 20}%` }}
@@ -215,7 +236,7 @@ export default function Bonus() {
                                     <td />
                                     {tiers.map((tier) => (
                                         <th key={tier.id} scope="col" className="px-6 pt-6 xl:px-8 xl:pt-8">
-                                            <div className="text-sm/7 font-semibold text-gray-900">{tier.name}</div>
+                                             <img src={tier.image} alt={tier.name} className='w-2/3 rounded mx-auto' />
                                         </th>
                                     ))}
                                 </tr>
@@ -226,22 +247,8 @@ export default function Bonus() {
                                         <span className="sr-only">Price</span>
                                     </th>
                                     {tiers.map((tier) => (
-                                        <td key={tier.id} className="px-6 pt-2 xl:px-8">
-                                            <div className="flex items-baseline gap-x-1 text-gray-900">
-                                                <span className="text-4xl font-semibold">{tier.priceMonthly}</span>
-                                                <span className="text-sm/6 font-semibold">/month</span>
-                                            </div>
-                                            <a
-                                                href={tier.href}
-                                                className={classNames(
-                                                    tier.mostPopular
-                                                        ? 'bg-indigo-600 text-white hover:bg-indigo-500'
-                                                        : 'text-indigo-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300',
-                                                    'mt-8 block rounded-md px-3 py-2 text-center text-sm/6 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
-                                                )}
-                                            >
-                                                Buy plan
-                                            </a>
+                                        <td key={tier.id} className="px-6 pt-2 xl:px-8 text-center">
+                                            <div className="text-sm/7 font-semibold text-black">{t(tier.name)}</div>
                                         </td>
                                     ))}
                                 </tr>
@@ -253,23 +260,23 @@ export default function Bonus() {
                                                 colSpan={5}
                                                 className={classNames(
                                                     sectionIdx === 0 ? 'pt-8' : 'pt-16',
-                                                    'pb-4 text-sm/6 font-semibold text-gray-900',
+                                                    'pb-4 text-sm/6 font-semibold text-black',
                                                 )}
                                             >
-                                                {section.name}
+                                                {t(section.name)}
                                                 <div className="absolute inset-x-8 mt-4 h-px bg-gray-900/10" />
                                             </th>
                                         </tr>
                                         {section.features.map((feature) => (
                                             <tr key={feature.name}>
-                                                <th scope="row" className="py-4 text-sm/6 font-normal text-gray-900">
-                                                    {feature.name}
+                                                <th scope="row" className="py-4 text-sm/6 font-normal text-black">
+                                                    {t(feature.name)}
                                                     <div className="absolute inset-x-8 mt-4 h-px bg-gray-900/5" />
                                                 </th>
                                                 {tiers.map((tier) => (
                                                     <td key={tier.id} className="px-6 py-4 xl:px-8">
                                                         {typeof feature.tiers[tier.name] === 'string' ? (
-                                                            <div className="text-center text-sm/6 text-gray-500">{feature.tiers[tier.name]}</div>
+                                                            <div className="text-center text-sm/6 text-gray-800">{feature.tiers[tier.name]}</div>
                                                         ) : (
                                                             <>
                                                                 {feature.tiers[tier.name] === true ? (

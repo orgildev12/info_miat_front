@@ -371,7 +371,7 @@ const Destinations = () => {
     }, []);
 
     return (
-        <div>
+        <div className='mb-[4rem]'>
             <div className={classNames(
                 choosedCountry.title ? 'opacity-100' : 'opacity-0',
                 'transition-opacity ease-in-out delay-150 duration-300'

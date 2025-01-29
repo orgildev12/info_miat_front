@@ -36,11 +36,15 @@ const Header = () => {
                 <div className="relative flex min-h-[4rem] items-center justify-between">
                     <div className="flex flex-1 items-center justify-between sm:items-stretch">
                         <div className="flex shrink-0 items-center">
-                            <img
-                                alt="MIAT"
-                                src="/logos/main-logo/logo_w.png"
-                                className="h-8 w-auto"
-                            />
+                            <Link
+                                to={"/"}
+                            >
+                                <img
+                                    alt="MIAT"
+                                    src="/logos/main-logo/logo_w.png"
+                                    className="h-8 w-auto"
+                                />
+                            </Link>
                         </div>
 
                         <div className="hidden sm:ml-6 sm:block">
@@ -51,7 +55,7 @@ const Header = () => {
                                         to={item.href}
                                         aria-current={(item.href === location.pathname) ? 'page' : undefined}
                                         className={classNames(
-                                            (item.href === location.pathname) ? 'bg-primary-500 text-white' : 'hover:bg-primary-500 text-white',
+                                            (item.href === location.pathname) ? 'bg-black/40 text-white' : 'hover:bg-black/40 text-white',
                                             'rounded-md px-2 py-2 text-sm font-medium',
                                         )}
                                     >

@@ -2,7 +2,9 @@ import React from 'react'
 
 const Experience = () => {
   return (
-    <div>Experience</div>
+    <div className='min-h-[80vh]'>
+
+    </div>
   )
 }
 

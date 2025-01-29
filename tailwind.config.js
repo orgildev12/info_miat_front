@@ -5,6 +5,7 @@ module.exports = {
             backgroundImage: {
                 'background1': "url('/public/background-image/background.webp')",
                 'background-dark': "url('/public/background-image/background-dark.webp')",
+                'loyalty': "url('/public/background-image/loyalty.webp')",
             },
             border: ["focus"],
             colors: {
