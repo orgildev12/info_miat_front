@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react'
-
-import { CheckIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
 
 const features = [
@@ -49,8 +47,9 @@ const Cargo = () => {
     }, [])
 
     return (
-        <div className='py-8 sm:py-16 my-10'>
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className='py-20'>
+            <div className='bg-background1 fixed bg-cover h-full w-full top-0 left-0 -z-10'></div>
+            <div className="mx-auto max-w-7xl px-6 lg:px-8 my-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5">
                     <div className="col-span-2">
                         <p className="my-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
@@ -59,8 +58,8 @@ const Cargo = () => {
                         <img src="/image/airplanes/plane-6/heavy-plane.png" alt="MIAT Cargo" />
 
                         <div className='grid grid-cols-2 space-x-2 mt-8'>
-                            <img src="/image/airplanes/plane-6/heavy-plane1.png" alt="MIAT Cargo" className='transition-all hover:scale-110'/>
-                            <img src="/image/airplanes/plane-6/heavy-plane2.png" alt="MIAT Cargo" className='transition-all hover:scale-110'/>
+                            <img src="/image/airplanes/plane-6/heavy-plane1.png" alt="MIAT Cargo" className='transition-all hover:scale-110' />
+                            <img src="/image/airplanes/plane-6/heavy-plane2.png" alt="MIAT Cargo" className='transition-all hover:scale-110' />
                         </div>
                     </div>
                     <dl className="col-span-3 grid grid-cols-1 gap-x-8 gap-y-4 text-base/7 text-gray-600 sm:grid-cols-2 lg:gap-y-6">
@@ -73,7 +72,7 @@ const Cargo = () => {
                                     <div className="font-semibold text-gray-900">
                                         {t(feature.name)}
                                     </div>
-                                    <dd className="mt-2">{t(feature.description)}</dd>
+                                    <dd className="mt-2 leading-6">{t(feature.description)}</dd>
                                 </div>
                             </div>
                         ))}

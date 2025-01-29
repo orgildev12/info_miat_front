@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
 import am5geodataWorldLow from "@amcharts/amcharts5-geodata/worldLow";
@@ -20,6 +20,10 @@ const Destinations = () => {
     const clickShowNavigate = () => {
         setShowNavigate(!shownavigate)
     }
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [])
 
     useLayoutEffect(() => {
         let root = am5.Root.new("chartdiv");
@@ -132,72 +136,96 @@ const Destinations = () => {
                 id: "frankfurt",
                 title: t('frankfurt'),
                 country: 'germany',
+                distance: '7,010 km',
+                duration: "8 hours, 45 minutes",
                 geometry: { type: "Point", coordinates: [8.6821, 50.1109] }
             },
             {
                 id: "hongkong",
                 title: t('hongkong'),
                 country: 'china',
+                distance: '3,350 km',
+                duration: "4 hours, 10 minutes",
                 geometry: { type: "Point", coordinates: [114.2, 22.3] }
             },
             {
                 id: "tokyo",
                 title: t('tokyo'),
                 country: 'japan',
+                distance: '3,869 km',
+                duration: "4 hours, 22 minutes",
                 geometry: { type: "Point", coordinates: [139.6917, 35.6895] }
             },
             {
                 id: "seoul",
                 title: t('seoul'),
                 country: 'south_korea',
+                distance: '2,304 km',
+                duration: "2 hours, 45 minutes",
                 geometry: { type: "Point", coordinates: [126.9779, 37.5665] }
             },
             {
                 id: "ho_chi_minh",
                 title: t('ho_chi_minh'),
                 country: 'vietnam',
+                distance: '4,563 km',
+                duration: "5 hours, 30 minutes",
                 geometry: { type: "Point", coordinates: [106.6297, 10.8231] }
             },
             {
                 id: "istanbul",
                 title: t('istanbul'),
                 country: 'turkey',
+                distance: '6,702 km',
+                duration: "8 hours, 32 minutes",
                 geometry: { type: "Point", coordinates: [28.9784, 41.0082] }
             },
             {
                 id: "busan",
                 title: t('busan'),
                 country: 'south_korea',
+                distance: '2,593 km',
+                duration: "3 hours, 1 minute",
                 geometry: { type: "Point", coordinates: [129.0756, 35.1796] }
             },
             {
                 id: "bangkok",
                 title: t('bangkok'),
                 country: 'thailand',
+                distance: '4,117 km',
+                duration: "5 hours, 0 minute",
                 geometry: { type: "Point", coordinates: [100.5018, 13.7563] }
             },
             {
                 id: "beijing",
                 title: t('beijing'),
                 country: 'china',
+                distance: '1,383 km',
+                duration: "1 hour, 50 minutes",
                 geometry: { type: "Point", coordinates: [116.4074, 39.9042] }
             },
             {
                 id: "osaka",
                 title: t('osaka'),
                 country: 'japan',
+                distance: '3,221 km',
+                duration: "3 hours, 50 minutes",
                 geometry: { type: "Point", coordinates: [135.5022, 34.6937] }
             },
             {
                 id: "phuket",
                 title: t('phuket'),
                 country: 'thailand',
+                distance: '4,847 km',
+                duration: "6 hours, 2 minutes",
                 geometry: { type: "Point", coordinates: [98.3381, 7.8804] }
             },
             {
                 id: "guangzhou",
                 title: t('guangzhou'),
                 country: 'china',
+                distance: '2,965 km',
+                duration: "3 hours, 45 minutes",
                 geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
             }
         ];
@@ -371,60 +399,91 @@ const Destinations = () => {
     }, []);
 
     return (
-        <div className='mb-[4rem]'>
-            <div className={classNames(
-                choosedCountry.title ? 'opacity-100' : 'opacity-0',
-                'transition-opacity ease-in-out delay-150 duration-300'
-            )}>
-                <div
-                    className={
-                        classNames(
-                            'transition absolute bg-primary-500 w-80 h-full text-white px-4 py-8 space-y-4 shadow-md z-10 duration-500',
-                            shownavigate ? 'translate-x-0' : '-translate-x-full',
-                            'border-t border-t-white'
-                        )}
-                    style={{
-                        boxShadow: "0 1px 2px rgba(60,64,67,0.3),0 2px 6px 2px rgba(60,64,67,0.15)"
-                    }}
-                >
-                    <div className='text-center'>
-                        {t('ulaanbaatar')} - {t(choosedCountry.id)}
-                    </div>
-                    <div>
-                        <img src="/image/main/plane-500.jpg" alt=""
-                            className="rounded-md"
-                        />
-                    </div>
-                    <div className='text-justify'>
-                        {t(choosedCountry.id + 'desc')}
-                    </div>
-                </div>
-                <div className={
-                    classNames(
-                        'transition absolute left-80 top-[calc(50%-24px)] block z-10 duration-500',
-                        shownavigate ? 'translate-x-0' : '-translate-x-80'
-                    )
-                }>
-                    <button
-                        className={classNames(
-                            'h-[48px] w-[23px] bg-primary-500 cursor-pointer hover:bg-primary-700',
-                            'rounded-r-full border-l border-l-primary-600'
-                        )}
+        <div className='mb-[4rem] h-[100vh]'>
+            <div className='w-[100%] h-[100vh] fixed top-0 left-0'>
+
+                <div className={classNames(
+                    choosedCountry.title ? 'opacity-100' : 'opacity-0',
+                    'transition-opacity ease-in-out delay-150 duration-300'
+                )}>
+                    <div
+                        className={
+                            classNames(
+                                'transition absolute bg-black/30 w-80 h-full text-white pt-20',
+                                'backdrop-blur-md px-4 py-8 space-y-4 shadow-md z-10 duration-500',
+                                shownavigate ? 'translate-x-0' : '-translate-x-full'
+                            )}
                         style={{
-                            boxShadow: '0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15)'
+                            boxShadow: "0 1px 2px rgba(60,64,67,0.3),0 2px 6px 2px rgba(60,64,67,0.15)"
                         }}
-                        onClick={clickShowNavigate}
                     >
-                        {shownavigate ? <ChevronLeftIcon className='h-4 w-4 text-white' /> : <ChevronRightIcon className='h-4 w-4 text-white' />}
-                    </button>
+                        {/* <div className='text-center'>
+                            {t('ulaanbaatar')} - {t(choosedCountry.id)}
+                        </div> */}
+                        <div className="flex flex-col justify-between h-full">
+                            <div>
+                                <div>
+                                    <img src="/image/main/plane-500.jpg" alt=""
+                                        className="rounded-md"
+                                    />
+                                </div>
+                                <div className='text-justify text-sm mt-4'>
+                                    {t(choosedCountry.id + 'desc')}
+                                </div>
+                            </div>
+                            <div>
+                                <div className='absolute right-[20%] pt-3 font-bold'>
+                                    {t(choosedCountry.id)}
+                                </div>
+                                <div className='absolute bottom-[12rem] left-[10px]'>
+                                    <div className='flex items-center bg-black/30 p-2 rounded backdrop-blur-md'>
+                                        <div className='text-xs'>Distance: &nbsp;</div>
+                                        <div className='text-sm'>{choosedCountry.distance}</div>
+                                    </div>
+                                    <span class="relative flex h-3 w-3 mx-auto -z-[1]">
+                                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                        <span class="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                    </span>
+                                </div>
+                                <img src="/logos/some/flight2.png" alt="" className='h-64' />
+                                <div className='absolute bottom-[3rem] left-[20%] font-bold'>
+                                    {t('ulaanbaatar')}
+                                </div>
+                                <div className='absolute bottom-[6rem] right-[5px] bg-black/30 p-2 rounded backdrop-blur-md'>
+                                    <div className='text-xs'>Total travel time: </div>
+                                    <div className='text-sm'>{choosedCountry.duration}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={
+                        classNames(
+                            'transition absolute left-80 top-[calc(50%-24px)] block z-10 duration-500',
+                            shownavigate ? 'translate-x-0' : '-translate-x-80'
+                        )
+                    }>
+                        <button
+                            className={classNames(
+                                'h-[48px] w-[23px] bg-black/30 backdrop-blur-md cursor-pointer hover:bg-primary-700',
+                                'rounded-r-full border-l border-l-primary-600'
+                            )}
+                            style={{
+                                boxShadow: '0 1px 2px rgba(60, 64, 67, 0.3), 0 2px 6px 2px rgba(60, 64, 67, 0.15)'
+                            }}
+                            onClick={clickShowNavigate}
+                        >
+                            {shownavigate ? <ChevronLeftIcon className='h-4 w-4 text-white' /> : <ChevronRightIcon className='h-4 w-4 text-white' />}
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div id="chartdiv" className="h-[100vh]"></div>
-            <div class="bg"></div>
-            <div class="star-field">
-                <div class="layer"></div>
-                <div class="layer"></div>
-                <div class="layer"></div>
+                <div id="chartdiv" className="h-[100vh]"></div>
+                <div class="bg"></div>
+                <div class="star-field">
+                    <div class="layer"></div>
+                    <div class="layer"></div>
+                    <div class="layer"></div>
+                </div>
+
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { CheckIcon, MinusIcon } from '@heroicons/react/20/solid'
 import { useTranslation } from 'react-i18next'
 
@@ -152,6 +152,10 @@ function classNames(...classes) {
 export default function Bonus() {
     const { t } = useTranslation()
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [])
+
     return (
         <div className="pb-12 pt-20 sm:py-20 mb-8">
             <div className='bg-loyalty fixed bg-cover h-full w-full top-0 left-0 -z-10'>
@@ -236,7 +240,7 @@ export default function Bonus() {
                                     <td />
                                     {tiers.map((tier) => (
                                         <th key={tier.id} scope="col" className="px-6 pt-6 xl:px-8 xl:pt-8">
-                                             <img src={tier.image} alt={tier.name} className='w-2/3 rounded mx-auto' />
+                                            <img src={tier.image} alt={tier.name} className='w-2/3 rounded mx-auto' />
                                         </th>
                                     ))}
                                 </tr>

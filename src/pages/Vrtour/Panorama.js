@@ -39,13 +39,14 @@ const Panorama = ({ panoramaDatas }) => {
 
 
     return (
-        <div>
+        <div className='h-[100vh] mb-20'>
+            {/* <div className='bg-background-dark fixed bg-cover h-full w-full top-0 left-0 -z-10 re'></div> */}
             {/* <div id="container" className='w-[700px] h-[400px] mx-auto'></div> */}
             <div
                 ref={containerRef}
                 id='panoCont'
                 // style={{ width: '95vw', height: '400px', }} 
-                className='mx-auto w-[100%] h-[100vh]'
+                className='mx-auto w-[100%] h-[100vh] fixed top-0 left-0'
             >
 
             </div>

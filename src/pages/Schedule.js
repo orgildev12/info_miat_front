@@ -45,6 +45,7 @@ const Schedule = () => {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8 py-16 mt-16 min-h-[80vh]">
+            <div className='bg-background1 fixed bg-cover h-full w-full top-0 left-0 -z-10'></div>
             <div className='flex border-b border-b-primary-500'>
                 {countries.map((item) => {
                     return <button className={
