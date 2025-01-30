@@ -65,7 +65,7 @@
   "reservation": "Reservation",
   "prioritylist": "Priority wait listing",
   "fee_waivers": "Fee waivers (service charges, date change fee, etc.)",
-  "airport":"At the airport",
+  "airport": "At the airport",
   "lounge_access": "MIAT’s business lounge access",
   "counter": "Dedicated check-in counter",
   "preferred": "Preferred seating",
@@ -82,5 +82,15 @@
   "free": "Free",
   "mile": "{mile} mile",
   "piece": "{piece} piece",
-  "registering_blue":"You can enroll in the BLUE SKY Mongolia program by registering through our website at www.miat.com, any MIAT Mongolian Airlines official ticketing offices, branch offices, and local general sales agents."
+  "registering_blue": "You can enroll in the BLUE SKY Mongolia program by registering through our website at www.miat.com, any MIAT Mongolian Airlines official ticketing offices, branch offices, and local general sales agents.",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+  "local_time": "Local time",
+  "next_day": "Next day",
+  "schedule_change_notice": "The schedule is subject to change without prior notice"
 }

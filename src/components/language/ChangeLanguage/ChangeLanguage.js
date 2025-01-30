@@ -12,10 +12,10 @@ const languages = [
         id: 'en',
         name: 'English',
     },
-    {
-        id: 'tr',
-        name: 'Turkey',
-    }
+    // {
+    //     id: 'tr',
+    //     name: 'Turkey',
+    // }
 ];
 
 export const ChangeLanguage = () => {

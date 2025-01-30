@@ -152,23 +152,23 @@ function classNames(...classes) {
 const incentives = [
     {
         name: 'Award ticket',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-delivery-light.svg',
+        imageSrc: '/logos/some/ticket-flight.png',
     },
     {
         name: 'Excess baggage',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-chat-light.svg',
+        imageSrc: '/logos/some/travel-luggage.png',
     },
     {
         name: 'Upgrade ticket',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-fast-checkout-light.svg',
+        imageSrc: '/logos/some/boarding-pass.png',
     },
     {
         name: 'Blue Sky lounge',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-fast-checkout-light.svg',
+        imageSrc: '/logos/some/lounge.png',
     },
     {
         name: 'Preferred seatings',
-        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-fast-checkout-light.svg',
+        imageSrc: '/logos/some/first-class.png',
     },
 ]
 
@@ -195,17 +195,16 @@ export default function Bonus() {
                 </p>
 
                 <div className="mx-auto max-w-7xl sm:px-2 lg:px-4 mt-10">
-                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 px-4 lg:max-w-none lg:grid-cols-5">
+                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 px-4 lg:max-w-none lg:grid-cols-5 md:grid-cols-3">
                         {incentives.map((incentive) => (
-                            <div key={incentive.name} className="text-center sm:flex sm:text-left lg:block lg:text-center">
+                            <div key={incentive.name} className="rounded-lg text-center sm:flex sm:text-left lg:block lg:text-center bg-white/30 backdrop-blur-md py-4">
                                 <div className="sm:shrink-0">
                                     <div className="flow-root">
-                                        <img alt="" src={incentive.imageSrc} className="mx-auto h-24 w-28" />
+                                        <img alt="" src={incentive.imageSrc} className="mx-auto w-10" />
                                     </div>
                                 </div>
                                 <div className="mt-3 sm:ml-3 sm:mt-0 lg:ml-0 lg:mt-3">
-                                    <h3 className="text-sm font-medium text-gray-900">{incentive.name}</h3>
-                                    <p className="mt-2 text-sm text-gray-500">{incentive.description}</p>
+                                    <h3 className="text-sm font-medium text-gray-700">{incentive.name}</h3>
                                 </div>
                             </div>
                         ))}
