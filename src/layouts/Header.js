@@ -14,7 +14,7 @@ const navigation = [
     { name: 'bonus', href: '/bonus' },
     { name: 'cargo', href: '/cargo' },
     // { name: 'videos', href: '/videos' },
-    { name: 'experience', href: '/experience' },
+    // { name: 'experience', href: '/experience' },
     { name: 'vrtour', href: '/vrtour' },
     { name: 'our', href: '/about-us' },
     // { name: 'contact', href: '/contact' },

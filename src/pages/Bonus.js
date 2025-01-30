@@ -149,6 +149,29 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+const incentives = [
+    {
+        name: 'Award ticket',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-delivery-light.svg',
+    },
+    {
+        name: 'Excess baggage',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-chat-light.svg',
+    },
+    {
+        name: 'Upgrade ticket',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-fast-checkout-light.svg',
+    },
+    {
+        name: 'Blue Sky lounge',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-fast-checkout-light.svg',
+    },
+    {
+        name: 'Preferred seatings',
+        imageSrc: 'https://tailwindui.com/plus/img/ecommerce/icons/icon-fast-checkout-light.svg',
+    },
+]
+
 export default function Bonus() {
     const { t } = useTranslation()
 
@@ -171,8 +194,30 @@ export default function Bonus() {
                     {t('loyaltyprogramdesc')}
                 </p>
 
+                <div className="mx-auto max-w-7xl sm:px-2 lg:px-4 mt-10">
+                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 px-4 lg:max-w-none lg:grid-cols-5">
+                        {incentives.map((incentive) => (
+                            <div key={incentive.name} className="text-center sm:flex sm:text-left lg:block lg:text-center">
+                                <div className="sm:shrink-0">
+                                    <div className="flow-root">
+                                        <img alt="" src={incentive.imageSrc} className="mx-auto h-24 w-28" />
+                                    </div>
+                                </div>
+                                <div className="mt-3 sm:ml-3 sm:mt-0 lg:ml-0 lg:mt-3">
+                                    <h3 className="text-sm font-medium text-gray-900">{incentive.name}</h3>
+                                    <p className="mt-2 text-sm text-gray-500">{incentive.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <p className="mx-auto mt-6 max-w-4xl text-pretty text-center text-sm font-medium text-gray-700">
+                    {t('registering_blue')}
+                </p>
+
                 {/* xs to lg */}
-                <div className="mx-auto mt-8 max-w-md space-y-8 sm:mt-12 lg:hidden">
+                <div className="mx-auto mt-4 max-w-md space-y-8 sm:mt-12 lg:hidden">
                     {tiers.map((tier) => (
                         <section
                             key={tier.id}
@@ -213,7 +258,7 @@ export default function Bonus() {
                 </div>
 
                 {/* lg+ */}
-                <div className="isolate mt-20 hidden lg:block">
+                <div className="isolate mt-10 hidden lg:block">
                     <div className="relative -mx-8">
                         {tiers.map((tier) => tier.mostPopular) ? (
                             <div className="absolute inset-x-4 inset-y-0 -z-10 flex">
