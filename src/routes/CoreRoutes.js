@@ -7,6 +7,8 @@ import Schedule from '../pages/Schedule'
 import Bonus from '../pages/Bonus'
 import Cargo from '../pages/Cargo'
 import Experience from '../pages/Experience'
+import Domestic from '../pages/Domestic'
+import FlightRoutes from '../pages/FlightRoutes'
 // import Destinations from '../pages/Destinations'
 const Destinations = React.lazy(() => import('../pages/Destinations'));
 const Vrtour = React.lazy(() => import('../pages/Vrtour/Vrtour'));
@@ -33,6 +35,8 @@ export default function CoreRoutes() {
                         <Route path='/vrtour' element={<Vrtour />} />
                         <Route path='/vrtour2' element={<Vrtour2 />} />
                         <Route path='/about-us' element={<AboutUs />} />
+                        <Route path='/domestic' element={<Domestic />} />
+                        <Route path='/routes' element={<FlightRoutes />} />
                     </Route>
                     <Route path='*' element={<NotFound />} />
                 </Routes>

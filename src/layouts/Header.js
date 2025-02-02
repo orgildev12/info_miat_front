@@ -3,11 +3,26 @@ import { Link, useLocation } from "react-router-dom";
 
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useTranslation } from "react-i18next";
-import { Dialog } from '@headlessui/react'
+import { Dialog, Menu } from '@headlessui/react'
 import { ChangeLanguage } from "../components/language/ChangeLanguage/ChangeLanguage";
 
 const navigation = [
-    { name: 'destinations', href: '/' },
+    {
+        name: 'destinations', href: '/', subdropdown: [
+            {
+                name: 'routes',
+                href: '/routes'
+            },
+            {
+                name: 'connected',
+                href: '/'
+            },
+            {
+                name: 'domestic',
+                href: '/domestic'
+            },
+        ]
+    },
     // { name: 'destinations', href: '/destinations' },
     // { name: 'airplanes', href: '/airplanes' },
     { name: 'schedule', href: '/schedule' },
@@ -50,17 +65,44 @@ const Header = () => {
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-2 flex-wrap text-center">
                                 {navigation.map((item) => (
-                                    <Link
-                                        key={item.name}
-                                        to={item.href}
-                                        aria-current={(item.href === location.pathname) ? 'page' : undefined}
-                                        className={classNames(
-                                            (item.href === location.pathname) ? 'bg-black/40 text-white' : 'hover:bg-black/40 text-white',
-                                            'rounded-md px-2 py-2 text-sm font-medium',
-                                        )}
-                                    >
-                                        {t(item.name)}
-                                    </Link>
+                                    item.subdropdown ?
+                                        <Menu as="div" className="relative ml-3" key={item.name}>
+                                            <div>
+                                                <Menu.Button className={classNames(
+                                                    (item.href === location.pathname) ? 'bg-black/40 text-white' : 'hover:bg-black/40 text-white',
+                                                    'rounded-md px-2 py-2 text-sm font-medium',
+                                                )}>
+                                                    <span className="absolute -inset-1.5" />
+                                                    {t(item.name)}
+                                                </Menu.Button>
+                                            </div>
+                                            <Menu.Items
+                                                transition={"true"}
+                                                className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                                            >
+                                                {item.subdropdown.map((item) => (
+                                                    <Menu.Item key={item.name}>
+                                                        <Link
+                                                            to={item.href}
+                                                            className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                                        >
+                                                            {t(item.name)}
+                                                        </Link>
+                                                    </Menu.Item>
+                                                ))}
+                                            </Menu.Items>
+                                        </Menu>
+                                        : <Link
+                                            key={item.name}
+                                            to={item.href}
+                                            aria-current={(item.href === location.pathname) ? 'page' : undefined}
+                                            className={classNames(
+                                                (item.href === location.pathname) ? 'bg-black/40 text-white' : 'hover:bg-black/40 text-white',
+                                                'rounded-md px-2 py-2 text-sm font-medium',
+                                            )}
+                                        >
+                                            {t(item.name)}
+                                        </Link>
                                 ))}
                             </div>
                         </div>

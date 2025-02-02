@@ -92,5 +92,8 @@
   "sunday": "Sunday",
   "local_time": "Local time",
   "next_day": "Next day",
-  "schedule_change_notice": "The schedule is subject to change without prior notice"
+  "schedule_change_notice": "The schedule is subject to change without prior notice",
+  "routes": "Flight routes",
+  "connected": "Connected flights",
+  "domestic": "Domestic flights"
 }
