@@ -130,6 +130,7 @@ const Destinations = () => {
                 id: "ulaanbaatar",
                 title: t('ulaanbaatar'),
                 country: 'mongolia',
+                image: "/image/main/AdobeStock_227948748.jpg",
                 geometry: { type: "Point", coordinates: [103.8467, 46.8625] },
             },
             {
@@ -138,6 +139,7 @@ const Destinations = () => {
                 country: 'germany',
                 distance: '7,010 km',
                 duration: "8 hours, 45 minutes",
+                image: "/image/main/vertical-view-roemerberg-frankfurt-germany.jpg",
                 geometry: { type: "Point", coordinates: [8.6821, 50.1109] }
             },
             {
@@ -146,6 +148,7 @@ const Destinations = () => {
                 country: 'china',
                 distance: '3,350 km',
                 duration: "4 hours, 10 minutes",
+                image: "/image/main/hong-kong-skyline-with-boats.jpg",
                 geometry: { type: "Point", coordinates: [114.2, 22.3] }
             },
             {
@@ -154,6 +157,7 @@ const Destinations = () => {
                 country: 'japan',
                 distance: '3,869 km',
                 duration: "4 hours, 22 minutes",
+                image: "/image/main/AdobeStock_268173642.jpg",
                 geometry: { type: "Point", coordinates: [139.6917, 35.6895] }
             },
             {
@@ -162,6 +166,7 @@ const Destinations = () => {
                 country: 'south_korea',
                 distance: '2,304 km',
                 duration: "2 hours, 45 minutes",
+                image: "/image/main/seoul-tower-with-gyeongbokgung-roof-red-autumn-maple-leaves-namsan-mountain-south-korea.jpg",
                 geometry: { type: "Point", coordinates: [126.9779, 37.5665] }
             },
             {
@@ -170,6 +175,7 @@ const Destinations = () => {
                 country: 'vietnam',
                 distance: '4,563 km',
                 duration: "5 hours, 30 minutes",
+                image: "/image/main/54455949-city-18144-167c85df43f.jpg",
                 geometry: { type: "Point", coordinates: [106.6297, 10.8231] }
             },
             {
@@ -178,6 +184,7 @@ const Destinations = () => {
                 country: 'turkey',
                 distance: '6,702 km',
                 duration: "8 hours, 32 minutes",
+                image: "/image/main/AdobeStock_304983855.jpg",
                 geometry: { type: "Point", coordinates: [28.9784, 41.0082] }
             },
             {
@@ -186,6 +193,7 @@ const Destinations = () => {
                 country: 'south_korea',
                 distance: '2,593 km',
                 duration: "3 hours, 1 minute",
+                image: "/image/main/AdobeStock_306120806.jpg",
                 geometry: { type: "Point", coordinates: [129.0756, 35.1796] }
             },
             {
@@ -194,6 +202,7 @@ const Destinations = () => {
                 country: 'thailand',
                 distance: '4,117 km',
                 duration: "5 hours, 0 minute",
+                image: "/image/main/AdobeStock_105446989.jpg",
                 geometry: { type: "Point", coordinates: [100.5018, 13.7563] }
             },
             {
@@ -202,6 +211,7 @@ const Destinations = () => {
                 country: 'china',
                 distance: '1,383 km',
                 duration: "1 hour, 50 minutes",
+                image: "/image/main/AdobeStock_38307012.jpg",
                 geometry: { type: "Point", coordinates: [116.4074, 39.9042] }
             },
             {
@@ -210,6 +220,7 @@ const Destinations = () => {
                 country: 'japan',
                 distance: '3,221 km',
                 duration: "3 hours, 50 minutes",
+                image: "/image/main/osaka-castle-cherry-blossom-spring-sakura-seasons-osaka-japan.jpg",
                 geometry: { type: "Point", coordinates: [135.5022, 34.6937] }
             },
             {
@@ -218,6 +229,7 @@ const Destinations = () => {
                 country: 'thailand',
                 distance: '4,847 km',
                 duration: "6 hours, 2 minutes",
+                image: "/image/main/beautiful-girl-sitting-rock-james-bond-island-phang-nga-thailand.jpg",
                 geometry: { type: "Point", coordinates: [98.3381, 7.8804] }
             },
             {
@@ -226,6 +238,7 @@ const Destinations = () => {
                 country: 'china',
                 distance: '2,965 km',
                 duration: "3 hours, 45 minutes",
+                image: "/image/main/AdobeStock_67203423.jpg",
                 geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
             }
         ];
@@ -422,10 +435,13 @@ const Destinations = () => {
                         </div> */}
                         <div className="flex flex-col justify-between h-full">
                             <div>
-                                <div>
-                                    <img src="/image/main/plane-500.jpg" alt=""
-                                        className="rounded-md"
-                                    />
+                                <div
+                                    style={{ backgroundImage: `url(${choosedCountry.image})` }}
+                                    className='rounded-md bg-cover bg-center bg-no-repeat h-44 w-full'
+                                >
+                                    {/* <img src={choosedCountry.image ?? "/image/main/plane-500.jpg"} alt=""
+                                        className="rounded-md h-60"
+                                    /> */}
                                 </div>
                                 <div className='text-justify text-sm mt-4'>
                                     {t(choosedCountry.id + 'desc')}
@@ -483,7 +499,9 @@ const Destinations = () => {
                     <div class="layer"></div>
                     <div class="layer"></div>
                 </div>
-
+                <div className='h-[100px] fixed bottom-2 right-12'>
+                    <img src="/image/main/partners.png" alt="" className='w-full h-full' />
+                </div>
             </div>
         </div>
     )
