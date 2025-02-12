@@ -11,6 +11,26 @@ const days = {
     7: 'sunday',
 };
 
+const flightstype = [
+    'international',
+    'domestic'
+]
+
+const mongoliaschedules = {
+    khovd: {
+        to: [
+            {
+                flightno: 'OM031',
+                frequency: [1, 3, 6],
+                departure: '10:10',
+                arrival: '12:50',
+                effectivedate: '2025.03.31 - 2025.10.25',
+            },
+        ],
+        from: []
+    }
+}
+
 const countryschedules = {
     frankfurt: {
         to: [
@@ -233,25 +253,62 @@ const Schedule = () => {
     })
     const [countries, setCountries] = useState([])
     const [selectedtab, setSelectedTab] = useState()
+    const [selectedtabmain, setSelectedTabmain] = useState('international')
     const { t } = useTranslation();
+
+    useEffect(() => {
+        if (countries.length > 0 && !selectedtab) {
+            setSelectedTab(countries[0])
+        }
+        if (selectedtab) {
+            if (selectedtabmain === 'international') {
+                setSchedules(countryschedules[selectedtab])
+            } else {
+                setSchedules(mongoliaschedules[selectedtab])
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [countries, selectedtab])
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        const tmpcountry = [];
+        setSelectedTab(null)
+        if (selectedtabmain === 'international') {
+            for (const key in countryschedules) {
+                if (Object.prototype.hasOwnProperty.call(countryschedules, key)) {
+                    tmpcountry.push(key);
+                }
+            }
+        } else {
+            for (const key in mongoliaschedules) {
+                if (Object.prototype.hasOwnProperty.call(mongoliaschedules, key)) {
+                    tmpcountry.push(key);
+                }
+            }
+        }
+        console.log(tmpcountry);
+        setCountries(tmpcountry)
+
+    }, [selectedtabmain])
 
     const ScheduleTable = ({ data }) => {
         return <table className="min-w-full divide-y divide-gray-300">
             <thead>
                 <tr className='bg-white/50'>
-                    <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900">
+                    <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900 w-20">
                         {t('flightno')}
                     </th>
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
                         {t('frequency')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
                         {t('departure')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
                         {t('arrival')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-80">
                         {t('effectivedate')}
                     </th>
                 </tr>
@@ -286,40 +343,20 @@ const Schedule = () => {
         </table>
     }
 
-
-    useEffect(() => {
-        if (countries.length > 0 && !selectedtab) {
-            setSelectedTab(countries[0])
-        }
-        if (selectedtab) {
-            setSchedules(countryschedules[selectedtab])
-        }
-    }, [countries, selectedtab])
-
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        const tmpcountry = [];
-        for (const key in countryschedules) {
-            if (Object.prototype.hasOwnProperty.call(countryschedules, key)) {
-                tmpcountry.push(key);
-            }
-        }
-        setCountries(tmpcountry)
-    }, [])
-
     return (
         <div className="px-4 sm:px-6 lg:px-8 py-16 my-16 min-h-[80vh]">
             <div className='bg-background1 fixed bg-cover h-full w-full top-0 left-0 -z-10'></div>
+
             <div className='flex border-b border-b-primary-500'>
-                {countries.map((item) => {
+                {flightstype.map((item) => {
                     return <button className={
                         classNames(
                             'transition duration-500 border border-primary-500 px-4 py-2 -mb-px rounded-t-md',
-                            selectedtab === item ? 'border-b-white hover:text-primary-500'
+                            selectedtabmain === item ? 'border-b-white hover:text-primary-500'
                                 : 'bg-primary-500 text-white hover:bg-primary-700 hover:border-white'
                         )}
                         onClick={() => {
-                            setSelectedTab(item)
+                            setSelectedTabmain(item)
                         }}
                         key={item}
                     >
@@ -327,20 +364,41 @@ const Schedule = () => {
                     </button>
                 })}
             </div>
-            <div className='mt-6 text-xl font-bold'>
-                {t('ulaanbaatar')} - {t(selectedtab)}
-            </div>
-            <div className='overflow-x-auto mt-6'>
-                <ScheduleTable data={schedules.to} />
-            </div>
-            <div className='mt-6 text-xl font-bold'>
-                {t(selectedtab)} - {t('ulaanbaatar')}
-            </div>
-            <div className='overflow-x-auto mt-6'>
-                <ScheduleTable data={schedules.from} />
-                <div class="p-0 mt-3 text-sm font-bold text-gray-700">{t('local_time')} <br />
-                    (+1) : {t('next_day')} <br />
-                    {t('schedule_change_notice')}
+
+            <div className='p-3'>
+                <div className='flex border-b border-b-primary-500'>
+                    {countries.map((item) => {
+                        return <button className={
+                            classNames(
+                                'transition duration-500 border border-primary-500 px-4 py-2 -mb-px rounded-t-md',
+                                selectedtab === item ? 'border-b-white hover:text-primary-500'
+                                    : 'bg-primary-500 text-white hover:bg-primary-700 hover:border-white'
+                            )}
+                            onClick={() => {
+                                setSelectedTab(item)
+                            }}
+                            key={item}
+                        >
+                            {t(item)}
+                        </button>
+                    })}
+                </div>
+
+                <div className='mt-6 text-xl font-bold'>
+                    {t('ulaanbaatar')} - {t(selectedtab)}
+                </div>
+                <div className='overflow-x-auto mt-6'>
+                    <ScheduleTable data={schedules.to} />
+                </div>
+                <div className='mt-6 text-xl font-bold'>
+                    {t(selectedtab)} - {t('ulaanbaatar')}
+                </div>
+                <div className='overflow-x-auto mt-6'>
+                    <ScheduleTable data={schedules.from} />
+                    <div className="p-0 mt-3 text-sm font-bold text-gray-700">{t('local_time')} <br />
+                        (+1) : {t('next_day')} <br />
+                        {t('schedule_change_notice')}
+                    </div>
                 </div>
             </div>
         </div>

@@ -8,24 +8,25 @@ import { ChangeLanguage } from "../components/language/ChangeLanguage/ChangeLang
 
 const navigation = [
     {
-        name: 'destinations', href: '/', subdropdown: [
-            {
-                name: 'routes',
-                href: '/routes'
-            },
-            {
-                name: 'connected',
-                href: '/'
-            },
-            {
-                name: 'domestic',
-                href: '/domestic'
-            },
-        ]
+        name: 'destinations', href: '/', 
+        // subdropdown: [
+        //     {
+        //         name: 'routes',
+        //         href: '/routes'
+        //     },
+        //     {
+        //         name: 'connected',
+        //         href: '/'
+        //     },
+        //     {
+        //         name: 'domestic',
+        //         href: '/domestic'
+        //     },
+        // ]
     },
     // { name: 'destinations', href: '/destinations' },
     // { name: 'airplanes', href: '/airplanes' },
-    { name: 'schedule', href: '/schedule' },
+    { name: 'timetable', href: '/timetable' },
     { name: 'bonus', href: '/bonus' },
     { name: 'cargo', href: '/cargo' },
     // { name: 'videos', href: '/videos' },

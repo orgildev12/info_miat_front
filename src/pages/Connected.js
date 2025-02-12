@@ -1,17 +1,17 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-import mongoliaGeoJSON from './mn.json';
 import am5geodataWorldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const Domestic = () => {
+const Connected = () => {
+
     const [choosedCountry, setChoosedCountry] = useState({});
     const [shownavigate, setShowNavigate] = useState(true);
 
@@ -26,25 +26,33 @@ const Domestic = () => {
     }, [])
 
     useLayoutEffect(() => {
-        // Chart root
-        const root = am5.Root.new("chartdiv");
+        let root = am5.Root.new("chartdiv");
 
-        // Apply theme
-        root.setThemes([am5themes_Animated.new(root)]);
+        // Set themes
+        root.setThemes([
+            am5themes_Animated.new(root)
+        ]);
 
-        // Create the map chart
-        const chart = root.container.children.push(
+        var chart = root.container.children.push(
             am5map.MapChart.new(root, {
                 panX: "rotateX",
                 panY: "rotateY",
+                // projection: am5map.geoMercator(),
+                // projection: am5map.geoNaturalEarth1(),
                 projection: am5map.geoOrthographic(),
-                homeGeoPoint: { longitude: 103.13887713161994, latitude: 46.9599710670946 },
-                // scale: 2,
-                rotationX: -100.8467,
+                // homeGeoPoint: { latitude: 46.8625, longitude: 103.8467 },
+                // wheelY: "none",
+                // rotationX: -130.8467,
+                // scale: 1.5
             })
         );
 
-        // chart.zoomToGeoPoint({longitude: 103.13887713161994, latitude: 46.9599710670946}, 2, true);
+        let zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+        zoomControl.homeButton.set("visible", true);
+        chart.chartContainer.get("background").events.on("click", function () {
+            chart.goHome();
+        })
+
         // Create polygon series
         var polygonSeries = chart.series.push(
             am5map.MapPolygonSeries.new(root, {
@@ -53,9 +61,23 @@ const Domestic = () => {
             })
         );
 
-        polygonSeries.events.on("datavalidated", function () {
-            chart.zoomToGeoPoint({longitude: 103.13887713161994, latitude: 46.9599710670946}, 9, true);
-        })
+        // polygonSeries.mapPolygons.template.setAll({
+        //     tooltipText: "{name}",
+        //     interactive: true
+        // });
+
+        // polygonSeries.mapPolygons.template.states.create("hover", {
+        //     fill: am5.color('#9fbfde')
+        // });
+
+        polygonSeries.mapPolygons.template.events.on("click", (ev) => {
+            var dataItem = ev.target.dataItem;
+            var data = dataItem.dataContext;
+            console.log(data);
+            if (data.id === 'MN') {
+                zoomMongolia()
+            }
+        });
 
         var backgroundSeries = chart.series.unshift(
             am5map.MapPolygonSeries.new(root, {})
@@ -70,64 +92,11 @@ const Domestic = () => {
             geometry: am5map.getGeoRectangle(90, 180, -90, -180)
         });
 
-        // chart.animate({ key: "rotationX", to: -80.8467, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
-        // chart.animate({ key: "rotationY", to: -20.8625, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+        chart.animate({ key: "rotationX", to: -80.8467, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
+        chart.animate({ key: "rotationY", to: -20.8625, duration: 1500, easing: am5.ease.inOut(am5.ease.cubic) });
 
-
-        // Add Mongolia series
-        const mongoliaSeries = chart.series.push(
-            am5map.MapPolygonSeries.new(root, {
-                geoJSON: mongoliaGeoJSON,
-            })
-        );
-
-        mongoliaSeries.mapPolygons.template.setAll({
-            tooltipText: "{name}",
-            interactive: true,
-            fill: am5.color(0x673ab7),
-        });
-
-        const citiesMn = [
-            {
-                id: "UB",
-                title: "Ulaanbaatar",
-                country: "Mongolia",
-                distance: "N/A",
-                duration: "N/A",
-                geometry: { type: "Point", coordinates: [106.917, 47.9186] }
-            },
-            {
-                id: "KH",
-                title: "Kharkhorin",
-                country: "Mongolia",
-                distance: "N/A",
-                duration: "N/A",
-                geometry: { type: "Point", coordinates: [102.8174, 48.0056] }
-            },
-            {
-                id: "OL",
-                title: "Dalanzadgad",
-                country: "Mongolia",
-                distance: "N/A",
-                duration: "N/A",
-                geometry: { type: "Point", coordinates: [113.332, 46.888] }
-            },
-            {
-                id: "UL",
-                title: "Uliastai",
-                country: "Mongolia",
-                distance: "N/A",
-                duration: "N/A",
-                geometry: { type: "Point", coordinates: [100.159, 49.9935] }
-            }
-        ];
-
-
-        // Add lines for routes
-        let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
-            lineType: "curved"
-        }));
-        
+        // this will be invisible line (note strokeOpacity = 0) along which invisible points will animate
+        let lineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
         lineSeries.mapLines.template.setAll({
             strokeOpacity: 1,
             stroke: am5.color("#2259ff"),
@@ -135,6 +104,15 @@ const Domestic = () => {
             // strokeDasharray: 1
         });
 
+        // this will be visible line. Lines will connectg animating points so they will look like animated
+        // let animatedLineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
+        // animatedLineSeries.mapLines.template.setAll({
+        //     // stroke: am5.color(0xffba00),
+        //     // strokeOpacity: 0.6,
+        //     strokeWidth: 1,
+        // });
+
+        // invisible series which will animate along invisible lines
         let animatedBulletSeries = chart.series.push(
             am5map.MapPointSeries.new(root, {})
         );
@@ -149,20 +127,134 @@ const Domestic = () => {
             });
         });
 
+
+        let cities = [
+            {
+                id: "ulaanbaatar",
+                title: t('ulaanbaatar'),
+                country: 'mongolia',
+                image: "/image/main/AdobeStock_227948748.jpg",
+                geometry: { type: "Point", coordinates: [103.8467, 46.8625] },
+            },
+            {
+                id: "frankfurt",
+                title: t('frankfurt'),
+                country: 'germany',
+                distance: '7,010 km',
+                duration: "8 hours, 45 minutes",
+                image: "/image/main/vertical-view-roemerberg-frankfurt-germany.jpg",
+                geometry: { type: "Point", coordinates: [8.6821, 50.1109] }
+            },
+            {
+                id: "hongkong",
+                title: t('hongkong'),
+                country: 'china',
+                distance: '3,350 km',
+                duration: "4 hours, 10 minutes",
+                image: "/image/main/hong-kong-skyline-with-boats.jpg",
+                geometry: { type: "Point", coordinates: [114.2, 22.3] }
+            },
+            {
+                id: "tokyo",
+                title: t('tokyo'),
+                country: 'japan',
+                distance: '3,869 km',
+                duration: "4 hours, 22 minutes",
+                image: "/image/main/AdobeStock_268173642.jpg",
+                geometry: { type: "Point", coordinates: [139.6917, 35.6895] }
+            },
+            {
+                id: "seoul",
+                title: t('seoul'),
+                country: 'south_korea',
+                distance: '2,304 km',
+                duration: "2 hours, 45 minutes",
+                image: "/image/main/seoul-tower-with-gyeongbokgung-roof-red-autumn-maple-leaves-namsan-mountain-south-korea.jpg",
+                geometry: { type: "Point", coordinates: [126.9779, 37.5665] }
+            },
+            {
+                id: "ho_chi_minh",
+                title: t('ho_chi_minh'),
+                country: 'vietnam',
+                distance: '4,563 km',
+                duration: "5 hours, 30 minutes",
+                image: "/image/main/54455949-city-18144-167c85df43f.jpg",
+                geometry: { type: "Point", coordinates: [106.6297, 10.8231] }
+            },
+            {
+                id: "istanbul",
+                title: t('istanbul'),
+                country: 'turkey',
+                distance: '6,702 km',
+                duration: "8 hours, 32 minutes",
+                image: "/image/main/AdobeStock_304983855.jpg",
+                geometry: { type: "Point", coordinates: [28.9784, 41.0082] }
+            },
+            {
+                id: "busan",
+                title: t('busan'),
+                country: 'south_korea',
+                distance: '2,593 km',
+                duration: "3 hours, 1 minute",
+                image: "/image/main/AdobeStock_306120806.jpg",
+                geometry: { type: "Point", coordinates: [129.0756, 35.1796] }
+            },
+            {
+                id: "bangkok",
+                title: t('bangkok'),
+                country: 'thailand',
+                distance: '4,117 km',
+                duration: "5 hours, 0 minute",
+                image: "/image/main/AdobeStock_105446989.jpg",
+                geometry: { type: "Point", coordinates: [100.5018, 13.7563] }
+            },
+            {
+                id: "beijing",
+                title: t('beijing'),
+                country: 'china',
+                distance: '1,383 km',
+                duration: "1 hour, 50 minutes",
+                image: "/image/main/AdobeStock_38307012.jpg",
+                geometry: { type: "Point", coordinates: [116.4074, 39.9042] }
+            },
+            {
+                id: "osaka",
+                title: t('osaka'),
+                country: 'japan',
+                distance: '3,221 km',
+                duration: "3 hours, 50 minutes",
+                image: "/image/main/osaka-castle-cherry-blossom-spring-sakura-seasons-osaka-japan.jpg",
+                geometry: { type: "Point", coordinates: [135.5022, 34.6937] }
+            },
+            {
+                id: "phuket",
+                title: t('phuket'),
+                country: 'thailand',
+                distance: '4,847 km',
+                duration: "6 hours, 2 minutes",
+                image: "/image/main/beautiful-girl-sitting-rock-james-bond-island-phang-nga-thailand.jpg",
+                geometry: { type: "Point", coordinates: [98.3381, 7.8804] }
+            },
+            {
+                id: "guangzhou",
+                title: t('guangzhou'),
+                country: 'china',
+                distance: '2,965 km',
+                duration: "3 hours, 45 minutes",
+                image: "/image/main/AdobeStock_67203423.jpg",
+                geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
+            }
+        ];
+
+        // destination series
         let citySeries = chart.series.push(
             am5map.MapPointSeries.new(root, {})
         );
 
         let planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
-        const pointSeries = chart.series.push(
-            am5map.MapPointSeries.new(root, {
-                idField: "id",
-                latitudeField: "latitude",
-                longitudeField: "longitude"
-            })
-        );
+        let pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
-        let point1 = addCity({ latitude: 47.9186, longitude: 106.917 }, "Ulaanbaatar");
+        let point1 = addCity({ latitude: 46.8625, longitude: 103.8467 }, "Ulaanbaatar");
         let point2 = null;
         if (choosedCountry.id) {
             point2 = addCity({
@@ -170,11 +262,10 @@ const Domestic = () => {
                 longitude: choosedCountry.geometry.coordinates[0]
             }, "Frankfurt");
         } else {
-            point2 = addCity({ latitude: 48.0056, longitude: 102.8174 });
+            point2 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
         }
 
         let lineDataItem = lineSeries.pushDataItem({
-            type: "LineString",
             pointsToConnect: [point1, point2]
         });
 
@@ -266,13 +357,13 @@ const Domestic = () => {
             });
         });
 
-        citySeries.data.setAll(citiesMn);
+        citySeries.data.setAll(cities);
 
         // Prepare line series data
-        let mongoliaDataItem = citySeries.getDataItemById("UB");
+        let mongoliaDataItem = citySeries.getDataItemById("ulaanbaatar");
 
         // this will do all the animations
-        am5.array.each(citiesMn, function (did) {
+        am5.array.each(cities, function (did) {
             let destinationDataItem = citySeries.getDataItemById(did.id);
             let lineDataItem = lineSeries.pushDataItem({});
             lineDataItem.set("pointsToConnect", [mongoliaDataItem, destinationDataItem])
@@ -286,6 +377,7 @@ const Domestic = () => {
 
         planeDataItem.dataContext = {};
         resetPlaneAnimation()
+
         function resetPlaneAnimation() {
             // Re-animate the plane along the line
             planeDataItem.animate({
@@ -309,13 +401,24 @@ const Domestic = () => {
             });
         }
 
-        function addCity(coords) {
+        function addCity(coords, title) {
             return pointSeries.pushDataItem({
                 latitude: coords.latitude,
                 longitude: coords.longitude
             });
         }
 
+        function zoomMongolia() {
+            let dataItem = polygonSeries.getDataItemById('MN');
+            let target = dataItem.get("mapPolygon");
+            if (target) {
+                let centroid = target.geoCentroid();
+                if (centroid) {
+                    console.log({longitude: 103.13887713161994, latitude: 46.9599710670946})
+                    chart.zoomToGeoPoint({longitude: 103.13887713161994, latitude: 46.9599710670946}, 9, true);
+                }
+            }
+        }
 
         return () => {
             root.dispose();
@@ -419,4 +522,4 @@ const Domestic = () => {
     )
 }
 
-export default Domestic
+export default Connected

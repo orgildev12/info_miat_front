@@ -28,7 +28,7 @@ export default function CoreRoutes() {
                     <Route exact path='/' element={<PrivateRoute />}>
                         <Route exact path='/' element={<Destinations />} />
                         <Route path='/destinations' element={<Destinations />} />
-                        <Route path='/schedule' element={<Schedule />} />
+                        <Route path='/timetable' element={<Schedule />} />
                         <Route path='/bonus' element={<Bonus />} />
                         <Route path='/cargo' element={<Cargo />} />
                         <Route path='/experience' element={<Experience />} />
