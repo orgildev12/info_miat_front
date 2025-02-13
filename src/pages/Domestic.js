@@ -89,37 +89,77 @@ const Domestic = () => {
 
         const citiesMn = [
             {
-                id: "UB",
+                id: "ulaanbaatar",
                 title: "Ulaanbaatar",
                 country: "Mongolia",
                 distance: "N/A",
                 duration: "N/A",
+                image: "/image/main/AdobeStock_227948748.jpg",
                 geometry: { type: "Point", coordinates: [106.917, 47.9186] }
             },
             {
-                id: "KH",
-                title: "Kharkhorin",
-                country: "Mongolia",
-                distance: "N/A",
-                duration: "N/A",
-                geometry: { type: "Point", coordinates: [102.8174, 48.0056] }
-            },
-            {
-                id: "OL",
+                id: "dalanzadgad",
                 title: "Dalanzadgad",
                 country: "Mongolia",
                 distance: "N/A",
                 duration: "N/A",
-                geometry: { type: "Point", coordinates: [113.332, 46.888] }
+                image: "/image/main/_MG_9388KhermenTsavUmnugovi.jpg",
+                geometry: { type: "Point", coordinates: [104.416, 43.5708] }
             },
             {
-                id: "UL",
+                id: "uliastai",
                 title: "Uliastai",
                 country: "Mongolia",
                 distance: "N/A",
                 duration: "N/A",
-                geometry: { type: "Point", coordinates: [100.159, 49.9935] }
-            }
+                image: "/image/main/OtgontengerZavhan.jpg",
+                geometry: { type: "Point", coordinates: [97.7694, 47.7417] }
+            },
+            {
+                id: "khovd",
+                title: "Khovd",
+                country: "Mongolia",
+                distance: "N/A",
+                duration: "N/A",
+                image: "/image/main/AltanHuhiiHovd.jpg",
+                geometry: { type: "Point", coordinates: [91.6419, 48.0056] }
+            },
+            {
+                id: "altai",
+                title: "Altai",
+                country: "Mongolia",
+                distance: "N/A",
+                duration: "N/A",
+                image: "/image/main/photo_2024-02-14_15-53-24.jpg",
+                geometry: { type: "Point", coordinates: [96.2491, 46.3722] }
+            },
+            {
+                id: "ulaangom",
+                title: "Ulaangom",
+                country: "Mongolia",
+                distance: "N/A",
+                duration: "N/A",
+                image: "/image/main/IMG_4013TurgenMountainsUvs.jpg",
+                geometry: { type: "Point", coordinates: [92.0667, 49.9811] }
+            },
+            {
+                id: "murun",
+                title: "Murun",
+                country: "Mongolia",
+                distance: "N/A",
+                duration: "N/A",
+                image: "/image/main/DJI_0077.jpg",
+                geometry: { type: "Point", coordinates: [100.155, 49.6342] }
+            },
+            {
+                id: "ulgii",
+                title: "Ulgii",
+                country: "Mongolia",
+                distance: "N/A",
+                duration: "N/A",
+                image: "/image/main/BagaturgeniiuulsBayanUlgii.jpg",
+                geometry: { type: "Point", coordinates: [89.9674, 48.9683] }
+            },
         ];
 
 
@@ -269,7 +309,7 @@ const Domestic = () => {
         citySeries.data.setAll(citiesMn);
 
         // Prepare line series data
-        let mongoliaDataItem = citySeries.getDataItemById("UB");
+        let mongoliaDataItem = citySeries.getDataItemById("ulaanbaatar");
 
         // this will do all the animations
         am5.array.each(citiesMn, function (did) {

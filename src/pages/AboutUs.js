@@ -74,12 +74,12 @@ const Home = () => {
     return (
         <div>
             <div className="h-full min-h-screen">
-                <div className="sticky top-0 left-0 w-full -z-50">
+                <div className="sticky top-0 left-0 w-full">
                     <Carousel slides={slides} />
                 </div>
                 {/* Hero section */}
                 <div className={classNames(
-                    "relative isolate overflow-hidden pt-4",
+                    "relative isolate overflow-hidden pt-4 z-20",
                     "bg-background1 bg-login_pattern bg-cover rounded-[4rem]"
                 )}>
                     <div className="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8">
@@ -104,9 +104,9 @@ const Home = () => {
                 </div>
 
                 {/* Logo cloud */}
-                <div className="mx-auto bg-gray-900 -mt-[4rem] pt-4">
-                    <div className="relative isolate overflow-hidden px-6 py-24 text-center sm:px-16">
-                        <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                <div className="mx-auto bg-gray-900 -mt-[4rem] pt-4 relative">
+                    <div className="relative isolate overflow-hidden px-6 py-24 text-justify sm:px-16">
+                        <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">
                             {t('priority')}
                         </h2>
                         <p className="mx-auto mt-6 max-w-3xl text-lg/8 text-gray-300">

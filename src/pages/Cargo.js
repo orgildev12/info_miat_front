@@ -72,7 +72,7 @@ const Cargo = () => {
                                     <div className="font-semibold text-gray-900">
                                         {t(feature.name)}
                                     </div>
-                                    <dd className="mt-2 leading-6">{t(feature.description)}</dd>
+                                    <dd className="mt-2 leading-6 text-justify">{t(feature.description)}</dd>
                                 </div>
                             </div>
                         ))}

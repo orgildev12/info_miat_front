@@ -190,7 +190,7 @@ export default function Bonus() {
                         {t('loyaltyprogram')}
                     </p>
                 </div>
-                <p className="mx-auto mt-6 max-w-3xl text-pretty text-center text-base font-medium text-gray-800 sm:text-lg">
+                <p className="mx-auto mt-6 max-w-3xl text-pretty text-justify text-base font-medium text-gray-800 sm:text-lg">
                     {t('loyaltyprogramdesc')}
                 </p>
 
@@ -211,7 +211,7 @@ export default function Bonus() {
                     </div>
                 </div>
 
-                <p className="mx-auto mt-6 max-w-4xl text-pretty text-center text-sm font-medium text-gray-700">
+                <p className="mx-auto mt-6 max-w-4xl text-pretty text-justify text-sm font-medium text-gray-700">
                     {t('registering_blue')}
                 </p>
 
