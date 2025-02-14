@@ -115,7 +115,7 @@ const mongoliaschedules = {
                 "flightno": "OM051",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
-                "departure": "12:45",
+                "departure": "12:45 ",
                 "arrival": "13:55",
                 "effectivedate": "2025.06.03 - 2025.08.29"
             },
