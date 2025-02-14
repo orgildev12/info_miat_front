@@ -96,6 +96,22 @@ const mongoliaschedules = {
                 "departure": "13:30",
                 "arrival": "15:10",
                 "effectivedate": "2025.06.02 - 2025.08.28"
+            },
+            {
+                "flightno": "OM061",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "15:40",
+                "arrival": "16:20",
+                "effectivedate": "2025.03.31 - 2025.05.29"
+            },
+            {
+                "flightno": "OM061",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "15:40",
+                "arrival": "16:20",
+                "effectivedate": "2025.09.01 - 2025.10.23"
             }
         ],
         "from": [
@@ -106,6 +122,22 @@ const mongoliaschedules = {
                 "departure": "15:50",
                 "arrival": "17:15",
                 "effectivedate": "2025.06.02 - 2025.08.28"
+            },
+            {
+                "flightno": "OM062",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "17:30",
+                "arrival": "18:55",
+                "effectivedate": "2025.03.31 - 2025.05.29"
+            },
+            {
+                "flightno": "OM062",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "17:30",
+                "arrival": "18:55",
+                "effectivedate": "2025.09.01 - 2025.10.23"
             }
         ]
     },
@@ -139,8 +171,27 @@ const mongoliaschedules = {
         "from": [
             {
                 "flightno": "OM052",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
                 "departure": "14:30",
-                "arrival": "17:20"
+                "arrival": "17:20",
+                "effectivedate": "2025.06.03 - 2025.08.29"
+            },
+            {
+                "flightno": "OM051",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "14:35",
+                "arrival": "16:45",
+                "effectivedate": "2025.04.01 - 2025.05.30"
+            },
+            {
+                "flightno": "OM052",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "14:35",
+                "arrival": "16:45",
+                "effectivedate": "2025.09.02 - 2025.10.24"
             }
         ]
     },
@@ -148,6 +199,7 @@ const mongoliaschedules = {
         "to": [
             {
                 "flightno": "OM061",
+                "flight":"CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "18:25",
                 "arrival": "20:00",
@@ -155,6 +207,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM061",
+                "flight":"CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "13:35",
                 "arrival": "15:00",
@@ -162,6 +215,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM061",
+                "flight":"CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "13:35",
                 "arrival": "15:00",
@@ -171,8 +225,27 @@ const mongoliaschedules = {
         "from": [
             {
                 "flightno": "OM062",
+                "flight":"CRJ700 JU-1700",
+                "frequency": [1, 4],
                 "departure": "20:40",
-                "arrival": "22:05"
+                "arrival": "22:05",
+                "effectivedate": "2025.06.02 - 2025.08.28"
+            },
+            {
+                "flightno": "OM061",
+                "flight":"CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "15:40",
+                "arrival": "16:20",
+                "effectivedate": "2025.03.31 - 2025.05.29"
+            },
+            {
+                "flightno": "OM061",
+                "flight":"CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "15:40",
+                "arrival": "16:20",
+                "effectivedate": "2025.09.01 - 2025.10.23"
             }
         ]
     },
@@ -180,6 +253,7 @@ const mongoliaschedules = {
         "to": [
             {
                 "flightno": "OM067",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [3, 6],
                 "departure": "07:25",
                 "arrival": "08:40",
@@ -187,17 +261,29 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM067",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [1],
                 "departure": "07:25",
                 "arrival": "08:40",
                 "effectivedate": "2025.06.02 - 2025.10.20"
-            }
+            } 
         ],
         "from": [
             {
                 "flightno": "OM068",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [3, 6],
                 "departure": "09:20",
-                "arrival": "12:20"
+                "arrival": "12:20",
+                "effectivedate": "2025.04.02 - 2025.10.25"
+            },
+            {
+                "flightno": "OM068",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1],
+                "departure": "09:20",
+                "arrival": "12:20",
+                "effectivedate": "2025.06.02 - 2025.10.20"
             }
         ]
     },
@@ -205,6 +291,7 @@ const mongoliaschedules = {
         "to": [
             {
                 "flightno": "OM081",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [2, 6],
                 "departure": "18:30",
                 "arrival": "19:45",
@@ -212,22 +299,61 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM081",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [4],
                 "departure": "09:25",
                 "arrival": "10:35",
                 "effectivedate": "2025.06.05 - 2025.08.28"
+            },
+            {
+                "flightno": "OM051",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "14:35",
+                "arrival": "16:45",
+                "effectivedate": "2025.04.01 - 2025.05.30"
+            },
+            {
+                "flightno": "OM051",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "14:35",
+                "arrival": "16:45",
+                "effectivedate": "2025.09.02 - 2025.10.24"
             }
         ],
         "from": [
             {
                 "flightno": "OM082",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 6],
                 "departure": "20:25",
-                "arrival": "21:30"
+                "arrival": "21:30",
+                "effectivedate": "2025.06.03 - 2025.08.30"
             },
             {
                 "flightno": "OM082",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [4],
                 "departure": "11:15",
-                "arrival": "12:20"
+                "arrival": "12:20",
+                "effectivedate": "2025.06.05 - 2025.08.28"
+            },
+            {
+                "flightno": "OM052",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "17:30",
+                "arrival": "18:40",
+                "effectivedate": "2025.04.01 - 2025.05.30"
+            },
+            {
+                "flightno": "OM052",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "17:30",
+                "arrival": "18:40",
+                "effectivedate": "2025.09.02 - 2025.10.24"
             }
         ]
     },
@@ -235,6 +361,7 @@ const mongoliaschedules = {
         "to": [
             {
                 "flightno": "OM091",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [3],
                 "departure": "13:35",
                 "arrival": "14:35",
@@ -242,6 +369,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM091",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [7],
                 "departure": "07:50",
                 "arrival": "08:50",
@@ -249,6 +377,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM091",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [7],
                 "departure": "13:35",
                 "arrival": "14:35",
@@ -256,6 +385,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM091",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [7],
                 "departure": "07:50",
                 "arrival": "08:50",
@@ -263,6 +393,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM091",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [5],
                 "departure": "18:30",
                 "arrival": "19:30",
@@ -270,6 +401,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM091",
+                "flight": "CRJ700 JU-1700",
                 "frequency": [6],
                 "departure": "13:35",
                 "arrival": "14:35",
@@ -279,18 +411,52 @@ const mongoliaschedules = {
         "from": [
             {
                 "flightno": "OM092",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [3],
                 "departure": "15:15",
-                "arrival": "16:20"
+                "arrival": "16:20",
+                "effectivedate": "2025.04.02 - 2025.10.22"
+
             },
             {
                 "flightno": "OM092",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
                 "departure": "09:30",
-                "arrival": "10:35"
+                "arrival": "10:35",
+                "effectivedate": "2025.03.30 - 2025.05.25"
             },
             {
                 "flightno": "OM092",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "15:15",
+                "arrival": "16:20",
+                "effectivedate": "2025.06.01 - 2025.08.31"
+            },
+            {
+                "flightno": "OM092",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "09:30",
+                "arrival": "10:35",
+                "effectivedate": "2025.09.07 - 2025.10.19"
+            },
+            {
+                "flightno": "OM092",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [5],
                 "departure": "20:10",
-                "arrival": "21:15"
+                "arrival": "21:15",
+                "effectivedate": "2025.06.06 - 2025.08.29"
+            },
+            {
+                "flightno": "OM092",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [6],
+                "departure": "15:15",
+                "arrival": "16:20",
+                "effectivedate": "2025.06.07 - 2025.08.30"
             }
         ]
     }
