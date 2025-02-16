@@ -18,6 +18,12 @@ const Destinations = () => {
 
     const { t } = useTranslation();
 
+    const colors = {
+        G: am5.color("#2652fb"),
+        O: am5.color(0xFFA500),
+        N: am5.color(0xFF1493)
+    }
+
     const citiesMn = [
         {
             id: "ulaanbaatar",
@@ -99,7 +105,12 @@ const Destinations = () => {
             title: t('ulaanbaatar'),
             country: 'mongolia',
             image: "/image/main/AdobeStock_227948748.jpg",
-            geometry: { type: "Point", coordinates: [106.917, 47.9186] }
+            geometry: { type: "Point", coordinates: [106.917, 47.9186] },
+            perspectives: [
+                "singapore",
+                "australia",
+                "usa",
+            ]
         },
         {
             id: "frankfurt",
@@ -117,7 +128,23 @@ const Destinations = () => {
             distance: '3,350 km',
             duration: "4 hours, 10 minutes",
             image: "/image/main/hong-kong-skyline-with-boats.jpg",
-            geometry: { type: "Point", coordinates: [114.2, 22.3] }
+            geometry: { type: "Point", coordinates: [114.2, 22.3] },
+            destinations: [
+                'delhi',
+                'mumbai',
+                'ho_chi_minh',
+                'singapore',
+                'perth',
+                'melbourne',
+                'sydney',
+                'brisbane',
+                'san_francisco',
+                'los_angeles',
+                'chicago',
+                'washington',
+                'new_york',
+                'boston',
+            ]
         },
         {
             id: "tokyo",
@@ -126,7 +153,10 @@ const Destinations = () => {
             distance: '3,869 km',
             duration: "4 hours, 22 minutes",
             image: "/image/main/AdobeStock_268173642.jpg",
-            geometry: { type: "Point", coordinates: [139.6917, 35.6895] }
+            geometry: { type: "Point", coordinates: [139.6917, 35.6895] },
+            destinations: [
+                'sapporo'
+            ]
         },
         {
             id: "seoul",
@@ -153,7 +183,17 @@ const Destinations = () => {
             distance: '6,702 km',
             duration: "8 hours, 32 minutes",
             image: "/image/main/AdobeStock_304983855.jpg",
-            geometry: { type: "Point", coordinates: [28.9784, 41.0082] }
+            geometry: { type: "Point", coordinates: [28.9784, 41.0082] },
+            destinations: [
+                'amsterdam',
+                'brussels',
+                'vienna',
+                'warsaw',
+                'zurich',
+                'barcelona',
+                'rome',
+                'chicago',
+            ]
         },
         {
             id: "busan",
@@ -208,6 +248,162 @@ const Destinations = () => {
             duration: "3 hours, 45 minutes",
             image: "/image/main/AdobeStock_67203423.jpg",
             geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
+        }
+    ];
+
+    const subcities = [
+        {
+            id: "amsterdam",
+            title: t('amsterdam'),
+            country: 'netherlands',
+            geometry: { type: "Point", coordinates: [4.9041, 52.3676] }
+        },
+        {
+            id: "brussels",
+            title: t('brussels'),
+            country: 'belgium',
+            geometry: { type: "Point", coordinates: [4.3517, 50.8503] }
+        },
+        {
+            id: "vienna",
+            title: t('vienna'),
+            country: 'austria',
+            geometry: { type: "Point", coordinates: [16.3738, 48.2082] }
+        },
+        {
+            id: "warsaw",
+            title: t('warsaw'),
+            country: 'poland',
+            geometry: { type: "Point", coordinates: [21.0122, 52.2298] }
+        },
+        {
+            id: "zurich",
+            title: t('zurich'),
+            country: 'switzerland',
+            geometry: { type: "Point", coordinates: [8.5417, 47.3769] }
+        },
+        {
+            id: "barcelona",
+            title: t('barcelona'),
+            country: 'spain',
+            geometry: { type: "Point", coordinates: [2.1734, 41.3851] }
+        },
+        {
+            id: "rome",
+            title: t('rome'),
+            country: 'italy',
+            geometry: { type: "Point", coordinates: [12.4964, 41.9028] }
+        },
+        {
+            id: "chicago",
+            title: t('chicago'),
+            country: 'usa',
+            geometry: { type: "Point", coordinates: [-87.6298, 41.8781] }
+        },
+        {
+            id: "delhi",
+            title: t('delhi'),
+            country: 'india',
+            geometry: { type: "Point", coordinates: [77.2090, 28.6139] }
+        },
+        {
+            id: "mumbai",
+            title: t('mumbai'),
+            country: 'india',
+            geometry: { type: "Point", coordinates: [72.8777, 19.0760] }
+        },
+        {
+            id: "ho_chi_minh",
+            title: t('ho_chi_minh'),
+            country: 'vietnam',
+            geometry: { type: "Point", coordinates: [106.6602, 10.7629] }
+        },
+        {
+            id: "singapore",
+            title: t('singapore'),
+            country: 'singapore',
+            geometry: { type: "Point", coordinates: [103.8198, 1.3521] }
+        },
+        {
+            id: "perth",
+            title: t('perth'),
+            country: 'australia',
+            geometry: { type: "Point", coordinates: [115.8575, -31.9505] }
+        },
+        {
+            id: "melbourne",
+            title: t('melbourne'),
+            country: 'australia',
+            geometry: { type: "Point", coordinates: [144.9631, -37.8136] }
+        },
+        {
+            id: "sydney",
+            title: t('sydney'),
+            country: 'australia',
+            geometry: { type: "Point", coordinates: [151.2093, -33.8688] }
+        },
+        {
+            id: "brisbane",
+            title: t('brisbane'),
+            country: 'australia',
+            geometry: { type: "Point", coordinates: [153.0251, -27.4698] }
+        },
+        {
+            id: "san_francisco",
+            title: t('san_francisco'),
+            country: 'usa',
+            geometry: { type: "Point", coordinates: [-122.4194, 37.7749] }
+        },
+        {
+            id: "los_angeles",
+            title: t('los_angeles'),
+            country: 'usa',
+            geometry: { type: "Point", coordinates: [-118.2437, 34.0522] }
+        },
+        {
+            id: "washington",
+            title: t('washington'),
+            country: 'usa',
+            geometry: { type: "Point", coordinates: [-77.0369, 38.9072] }
+        },
+        {
+            id: "new_york",
+            title: t('new_york'),
+            country: 'usa',
+            geometry: { type: "Point", coordinates: [-74.0060, 40.7128] }
+        },
+        {
+            id: "boston",
+            title: t('boston'),
+            country: 'usa',
+            geometry: { type: "Point", coordinates: [-71.0589, 42.3601] }
+        },
+        {
+            id: "sapporo",
+            title: t('sapporo'),
+            country: 'japan',
+            geometry: { type: "Point", coordinates: [141.3544, 43.0618] }
+        },
+        {
+            id: "singapore",
+            title: t('singapore'),
+            country: 'singapore',
+            geometry: { type: "Point", coordinates: [103.8198, 1.3521] },
+            perspective: true
+        },
+        {
+            id: "australia",
+            title: t('australia'),
+            country: 'australia',
+            geometry: { type: "Point", coordinates: [133.7751, -25.2744] },
+            perspective: true,
+        },
+        {
+            id: "usa",
+            title: t('usa'),
+            country: 'usa',
+            geometry: { type: "Point", coordinates: [-98.5795, 39.8283] },
+            perspective: true,
         }
     ];
 
@@ -274,12 +470,15 @@ const Destinations = () => {
 
         switchButton.on("active", function () {
             if (!switchButton.get("active")) {
-                
+                goHome()
             } else {
-                
+                sublineSeries.show()
+                perspectiveSeries.show()
+                subcitySeries.show()
+                legend.show()
             }
         });
-        
+
 
         let zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
         zoomControl.homeButton.set("visible", true);
@@ -312,6 +511,10 @@ const Destinations = () => {
                     backContainer.show();
                     lineSeries.hide()
                     planeSeries.hide()
+                    sublineSeries.hide()
+                    perspectiveSeries.hide()
+                    legend.hide()
+
                     lineSeriesMn.set("layer", 100);
                     planeSeriesMn.set("layer", 100);
                     citySeriesMn.set("layer", 100);
@@ -325,6 +528,15 @@ const Destinations = () => {
                 // zoomMongolia()
             }
         });
+
+        // let colors = am5.ColorSet.new(root, {
+        //     step: 2
+        // });
+        // colors.next();
+
+        // polygonSeries.mapPolygons.template.states.create("hover", {
+        //     fill: am5.Color.brighten(colors.next(), -0.3)
+        // });
 
         var backgroundSeries = chart.series.unshift(
             am5map.MapPolygonSeries.new(root, {})
@@ -347,6 +559,26 @@ const Destinations = () => {
         lineSeries.mapLines.template.setAll({
             strokeOpacity: 1,
             stroke: am5.color("#2259ff"),
+            strokeWidth: 1,
+            // strokeDasharray: 1
+        });
+
+        let sublineSeries = chart.series.push(am5map.MapLineSeries.new(root, {
+            visible: false
+        }));
+        sublineSeries.mapLines.template.setAll({
+            strokeOpacity: 1,
+            stroke: colors.O,
+            strokeWidth: 1,
+            // strokeDasharray: 1
+        });
+
+        let perspectiveSeries = chart.series.push(am5map.MapLineSeries.new(root, {
+            visible: false
+        }));
+        perspectiveSeries.mapLines.template.setAll({
+            strokeOpacity: 1,
+            stroke: colors.N,
             strokeWidth: 1,
             // strokeDasharray: 1
         });
@@ -391,6 +623,12 @@ const Destinations = () => {
             am5map.MapPointSeries.new(root, {})
         );
 
+        let subcitySeries = chart.series.push(
+            am5map.MapPointSeries.new(root, {
+                visible: false,
+            })
+        );
+
         let citySeriesMn = chart.series.push(
             am5map.MapPointSeries.new(root, {
                 visible: false,
@@ -408,17 +646,23 @@ const Destinations = () => {
 
         let point1 = addCity({ latitude: 47.9186, longitude: 106.917 }, "Ulaanbaatar");
         let point2 = null;
+        let point3 = null;
         if (choosedCountry.id) {
             point2 = addCity({
                 latitude: choosedCountry.geometry.coordinates[1],
                 longitude: choosedCountry.geometry.coordinates[0]
             }, "Frankfurt");
+            point3 = addCity({
+                latitude: choosedCountry.geometry.coordinates[1],
+                longitude: choosedCountry.geometry.coordinates[0]
+            }, "Frankfurt");
         } else {
             point2 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
+            point3 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
         }
 
         let lineDataItem = lineSeries.pushDataItem({
-            pointsToConnect: [point1, point2]
+            pointsToConnect: [point1, point2, point3]
         });
 
         const point1Mn = addCityMn({ latitude: 47.9186, longitude: 106.917 }, "Ulaanbaatar");
@@ -523,6 +767,103 @@ const Destinations = () => {
                     longitude: data.geometry.coordinates[0],
                     latitude: data.geometry.coordinates[1]
                 })
+                point3.setAll({
+                    longitude: data.geometry.coordinates[0],
+                    latitude: data.geometry.coordinates[1]
+                })
+            });
+
+            return am5.Bullet.new(root, {
+                sprite: container
+            });
+        });
+        citySeries.data.setAll(cities);
+
+        subcitySeries.bullets.push(function (root, series, dataItem) {
+            let container = am5.Container.new(root, {});
+            const data = dataItem.dataContext;
+            let circle = container.children.push(
+                am5.Circle.new(root, {
+                    radius: 4,
+                    tooltipText: "{title}",
+                    tooltipY: 0,
+                    fill: data.perspective ? colors.N : colors.O, // 6 тэмдэгттэй HEX
+                    stroke: data.perspective ? colors.N : colors.O, // 6 тэмдэгттэй HEX
+                    strokeOpacity: 0.3,
+                    // "scale": 0.7,
+                    "strokeWidth": 5,
+                    interactive: true, // Интерактив байдал нэмэх
+                    cursorOverStyle: "pointer" // Hover үед курсорыг "pointer" болгох
+                }, circleTemplate)
+            );
+
+            circle.animate({
+                key: "strokeOpacity",
+                to: 1,
+                duration: 1500, // Animation duration in milliseconds (1s)
+                loops: Infinity, // Infinite loop
+                easing: am5.ease.yoyo(am5.ease.linear) // Smooth effect
+            });
+
+            let countryLabel = container.children.push(
+                am5.Label.new(root, {
+                    text: "{title}",
+                    paddingLeft: 5,
+                    populateText: true,
+                    fontWeight: "bold",
+                    fontSize: 12,
+                    centerY: am5.p50,
+                    x: circle.get("radius"),
+                    layer: 5,
+                    fill: am5.color(0xffffff)
+                })
+            );
+
+            circle.on("radius", function (radius) {
+                countryLabel.set("x", radius);
+            })
+
+            circle.events.on("pointerover", function (event) {
+                event.target.set("scale", 1.2); // Hover үед хэмжээг томруулах
+            })
+            circle.events.on("pointerout", function (event) {
+                event.target.set("scale", 1); // Хэвийн хэмжээнд буцаах
+            })
+
+            circle.events.on("click", function (event) {
+                planeDataItem.set("positionOnLine", 0);
+                // planeDataItem.clear();
+                resetPlaneAnimation()
+                var dataItem = event.target.dataItem;
+                var data = dataItem.dataContext;
+                setShowNavigate(true)
+                let isfound = null;
+                cities.forEach(element => {
+                    if (element.destinations) {
+                        element.destinations.forEach(city => {
+                            if (city === data.id) {
+                                isfound = element;
+                                point2.setAll({
+                                    longitude: element.geometry.coordinates[0],
+                                    latitude: element.geometry.coordinates[1]
+                                })
+                            }
+                        });
+                    }
+                });
+                setChoosedCountry({...data, issub: isfound});
+
+                if (!isfound) {
+                    point2.setAll({
+                        longitude: data.geometry.coordinates[0],
+                        latitude: data.geometry.coordinates[1]
+                    })
+                }
+
+                point3.setAll({
+                    longitude: data.geometry.coordinates[0],
+                    latitude: data.geometry.coordinates[1]
+                })
             });
 
             return am5.Bullet.new(root, {
@@ -530,7 +871,7 @@ const Destinations = () => {
             });
         });
 
-        citySeries.data.setAll(cities);
+        subcitySeries.data.setAll(subcities);
 
         citySeriesMn.bullets.push(function (root, series, dataItem) {
             let container = am5.Container.new(root, {});
@@ -619,6 +960,25 @@ const Destinations = () => {
             lineDataItem.set("pointsToConnect", [mongoliaDataItem, destinationDataItem])
         });
 
+        am5.array.each(cities, function (did) {
+            if (did.destinations) {
+                let mainDataItem = citySeries.getDataItemById(did.id);
+                did.destinations.forEach(element => {
+                    let lineDataItem = sublineSeries.pushDataItem({});
+                    let destinationDataItem = subcitySeries.getDataItemById(element);
+                    lineDataItem.set("pointsToConnect", [mainDataItem, destinationDataItem])
+                });
+            }
+            if (did.perspectives) {
+                let mainDataItem = citySeries.getDataItemById(did.id);
+                did.perspectives.forEach(element => {
+                    let lineDataItem = perspectiveSeries.pushDataItem({});
+                    let destinationDataItem = subcitySeries.getDataItemById(element);
+                    lineDataItem.set("pointsToConnect", [mainDataItem, destinationDataItem])
+                });
+            }
+        });
+
         let planeDataItem = planeSeries.pushDataItem({
             lineDataItem,
             positionOnLine: 0,
@@ -701,6 +1061,10 @@ const Destinations = () => {
             citySeriesMn.hide();
             lineSeries.show()
             planeSeries.show()
+            sublineSeries.hide()
+            perspectiveSeries.hide()
+            subcitySeries.hide()
+            legend.hide()
             cont.show()
         }
 
@@ -745,6 +1109,38 @@ const Destinations = () => {
             goHome();
         });
 
+        let legend = chart.children.push(am5.Legend.new(root, {
+            visible: false,
+            nameField: "name",
+            fillField: "color",
+            strokeField: "color",
+            useDefaultMarker: true,
+            centerX: am5.p50,
+            x: am5.p50,
+            centerY: am5.p100,
+            y: am5.p100,
+            dy: -20,
+            background: am5.RoundedRectangle.new(root, {
+                fill: am5.color(0xffffff),
+                fillOpacity: 0.2
+            })
+        }));
+
+        legend.labels.template.setAll({
+            fill: am5.color(0xffffff) // White text color
+        });
+
+        legend.data.setAll([{
+            name: t("scheduled_routes"),
+            color: colors.G,
+        }, {
+            name: t("codeshare_routes"),
+            color: colors.O
+        }, {
+            name: t("perspective"),
+            color: colors.N
+        }]);
+
         return () => {
             root.dispose();
         };
@@ -776,22 +1172,22 @@ const Destinations = () => {
                         <div className="flex flex-col justify-between h-full">
                             <div>
                                 <div
-                                    style={{ backgroundImage: `url(${choosedCountry.image})` }}
+                                    style={{ backgroundImage: `url(${choosedCountry.image ?? "/image/main/plane-500.jpg"})` }}
                                     className='rounded-md bg-cover bg-center bg-no-repeat h-44 w-full'
                                 >
                                     {/* <img src={choosedCountry.image ?? "/image/main/plane-500.jpg"} alt=""
                                                 className="rounded-md h-60"
                                             /> */}
                                 </div>
-                                <div className='text-justify text-sm mt-4'>
+                                {choosedCountry.image && <div className='text-justify text-sm mt-4'>
                                     {t(choosedCountry.id + 'desc')}
-                                </div>
+                                </div>}
                             </div>
                             <div>
                                 <div className='absolute right-[20%] pt-3 font-bold'>
                                     {t(choosedCountry.id)}
                                 </div>
-                                <div className='absolute bottom-[12rem] left-[10px]'>
+                                {choosedCountry.distance && <div className='absolute bottom-[12rem] left-[10px]'>
                                     <div className='flex items-center bg-black/30 p-2 rounded backdrop-blur-md'>
                                         <div className='text-xs'>Distance: &nbsp;</div>
                                         <div className='text-sm'>{choosedCountry.distance}</div>
@@ -800,15 +1196,18 @@ const Destinations = () => {
                                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
                                         <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
                                     </span>
-                                </div>
+                                </div>}
                                 <img src="/logos/some/flight2.png" alt="" className='h-64' />
+                                {choosedCountry.issub && <div className='absolute bottom-[8rem] left-[50%] font-bold'>
+                                    {t(choosedCountry.issub.id)}
+                                </div>}
                                 <div className='absolute bottom-[3rem] left-[20%] font-bold'>
                                     {t('ulaanbaatar')}
                                 </div>
-                                <div className='absolute bottom-[6rem] right-[5px] bg-black/30 p-2 rounded backdrop-blur-md'>
+                                {choosedCountry.duration && <div className='absolute bottom-[6rem] right-[5px] bg-black/30 p-2 rounded backdrop-blur-md'>
                                     <div className='text-xs'>Total travel time: </div>
                                     <div className='text-sm'>{choosedCountry.duration}</div>
-                                </div>
+                                </div>}
                             </div>
                         </div>
                     </div>

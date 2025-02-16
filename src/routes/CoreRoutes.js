@@ -7,6 +7,7 @@ import Schedule from '../pages/Schedule'
 import Bonus from '../pages/Bonus'
 import Cargo from '../pages/Cargo'
 import Experience from '../pages/Experience'
+import HeaderRoute from './HeaderRoute'
 // import Destinations from '../pages/Destinations'
 const Destinations = React.lazy(() => import('../pages/Destinations'));
 const Vrtour = React.lazy(() => import('../pages/Vrtour/Vrtour'));
@@ -23,9 +24,7 @@ export default function CoreRoutes() {
         <BrowserRouter>
             <Suspense fallback={loadingComp}>
                 <Routes>
-                    <Route exact path='/' element={<PrivateRoute />}>
-                        <Route exact path='/' element={<Destinations />} />
-                        <Route path='/destinations' element={<Destinations />} />
+                    <Route exact element={<PrivateRoute />}>
                         <Route path='/timetable' element={<Schedule />} />
                         <Route path='/bonus' element={<Bonus />} />
                         <Route path='/cargo' element={<Cargo />} />
@@ -33,6 +32,9 @@ export default function CoreRoutes() {
                         <Route path='/vrtour' element={<Vrtour />} />
                         <Route path='/vrtour2' element={<Vrtour2 />} />
                         <Route path='/about-us' element={<AboutUs />} />
+                    </Route>
+                    <Route exact path='/' element={<HeaderRoute />}>
+                        <Route exact path='/' element={<Destinations />} />
                     </Route>
                     <Route path='*' element={<NotFound />} />
                 </Routes>

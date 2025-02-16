@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Dialog } from '@headlessui/react'
+import { useTranslation } from 'react-i18next'
 
 const products = [
     {
@@ -43,6 +44,7 @@ const products = [
 const Airplanes = ({ className }) => {
     const [open, setOpen] = useState(false)
     const [choosed, setChoosed] = useState({})
+    const { t } = useTranslation()
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -50,7 +52,55 @@ const Airplanes = ({ className }) => {
 
     return (
         <div className={`min-h-screen w-full mx-0 ${className}`}>
-            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-2xl px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8">
+                <div className="overflow-hidden">
+                    <div className="mx-auto px-6 lg:px-8">
+                        <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
+                            <div className="relative w-full lg:max-w-sm lg:shrink-0 xl:max-w-md">
+                                <h1 className="text-white text-5xl font-semibold tracking-tight text-justify sm:text-7xl">
+                                    Boeing 787-9
+                                </h1>
+                                <p className="mt-8 text-justify text-lg font-medium text-white sm:max-w-md sm:text-xl/8 lg:max-w-none">
+                                    {t('boeing787desc')}
+                                </p>
+                            </div>
+                            <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+                                <div className="ml-auto w-56 flex-none space-y-8 pt-16 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
+                                    <div className="relative">
+                                        <img
+                                            alt=""
+                                            src="/image/main/F03A0538 copy.jpg"
+                                            className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                                    </div>
+                                </div>
+                                <div className="mr-auto w-56 flex-none space-y-8 sm:mr-0 sm:pt-52 lg:pt-16">
+                                    <div className="relative">
+                                        <img
+                                            alt=""
+                                            src="/image/main/F03A2014 copy.jpg"
+                                            className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                                    </div>
+                                    <div className="relative">
+                                        <img
+                                            alt=""
+                                            src="/image/main/MIAT005.jpg"
+                                            className="aspect-[2/3] w-full rounded-xl bg-gray-900/5 object-cover shadow-lg"
+                                        />
+                                        <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-gray-900/10" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='text-white text-2xl font-semibold'>
+                    {t('airplanes')}
+                </div>
+                <hr />
                 <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
                     {products.map((product) => (
                         <div

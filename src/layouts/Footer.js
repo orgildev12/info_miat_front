@@ -69,38 +69,35 @@ const navigation = {
 
 export default function Footer() {
     const { t } = useTranslation();
-    
+
     return (
         <footer className="rounded-t-[4rem] -mt-[4rem] z-20 relative bg-black/50 backdrop-blur-md bg-gradient-to-r from-neutral-300/30 to-stone-400/30" aria-labelledby="footer-heading">
-            <div className="mx-auto max-w-7xl px-6 pb-4 pt-16 sm:pt-24 lg:px-8 lg:pt-16">
-                <div className="xl:gap-4">
-                    <div className="space-y-4 text-center">
-                        <img
-                            className="h-10 mx-auto"
-                            src="/logos/main-logo/logo_w.png"
-                            alt="MIAT"
-                        />
-                        <p className="text-sm leading-6 text-white text-center">
-                            {t('footerdesc')}
-                        </p>
-                        <div className="flex space-x-6 justify-center">
-                            {navigation.social.map((item) => (
-                                <Link key={item.name} to={item.href} className="text-white hover:text-gray-300">
-                                    <span className="sr-only">{item.name}</span>
-                                    <item.icon className="h-6 w-6" aria-hidden="true" />
-                                </Link>
-                            ))}
-                        </div>
-                        <div>
-                            <a href="tel:+976-11-333999" className="text-white hover:text-gray-300 mt-4">
-                                {/* <PhoneIcon className="h-6 w-6"/> */}
-                                976-11-333999
-                            </a>
-                        </div>
-
+            <div className="mx-auto max-w-7xl px-6 pb-4 pt-8 lg:px-8">
+                <div className="space-y-4 text-center">
+                    <img
+                        className="h-10 mx-auto"
+                        src="/logos/main-logo/logo_w.png"
+                        alt="MIAT"
+                    />
+                    <p className="text-sm leading-6 text-white text-center">
+                        {t('footerdesc')}
+                    </p>
+                    <div className="flex space-x-6 justify-center">
+                        {navigation.social.map((item) => (
+                            <Link key={item.name} to={item.href} className="text-white hover:text-gray-300">
+                                <span className="sr-only">{item.name}</span>
+                                <item.icon className="h-6 w-6" aria-hidden="true" />
+                            </Link>
+                        ))}
+                    </div>
+                    <div>
+                        <a href="tel:+976-11-333999" className="text-white hover:text-gray-300 mt-4">
+                            {/* <PhoneIcon className="h-6 w-6"/> */}
+                            976-11-333999
+                        </a>
                     </div>
                 </div>
-                <div className="mt-8 border-t border-white/10 pt-4 sm:mt-20 lg:mt-12 text-center">
+                <div className="mt-4 border-t border-white/10 pt-4 text-center">
                     <p className="text-xs text-white">Copyright &copy; {(new Date()).getFullYear()}. MIAT Mongolian Airlines</p>
                 </div>
             </div>
