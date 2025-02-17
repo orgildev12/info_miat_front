@@ -1162,7 +1162,12 @@ const Schedule = () => {
     }
 
     return (
-        <div className="px-4 sm:px-6 lg:px-8 py-16 my-16 min-h-[80vh]">
+        <div className="px-4 sm:px-6 lg:px-8 pb-16 pt-8 my-16 min-h-[80vh]">
+            <div className="mx-auto max-w-4xl text-center mb-8">
+                <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-black sm:text-5xl">
+                    {t('summer_flight')}
+                </p>
+            </div>
             <div className='bg-background1 fixed bg-cover h-full w-full top-0 left-0 -z-10'></div>
 
             <div className='flex border-b border-b-primary-500'>

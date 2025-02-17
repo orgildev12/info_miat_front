@@ -193,8 +193,10 @@ export default function Bonus() {
                 <p className="mx-auto mt-6 max-w-3xl text-pretty text-justify text-base font-medium text-gray-800 sm:text-lg">
                     {t('loyaltyprogramdesc')}
                 </p>
-
-                <div className="mx-auto max-w-7xl sm:px-2 lg:px-4 mt-10">
+                <div className='mx-auto max-w-sm'>
+                    <img src="/logos/main-logo/blue_sky.png" alt="" className='w-full'/>
+                </div>
+                <div className="mx-auto max-w-7xl sm:px-2 lg:px-4 mt-2">
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 px-4 lg:max-w-none lg:grid-cols-5 md:grid-cols-3">
                         {incentives.map((incentive) => (
                             <div key={incentive.name} className="rounded-lg text-center sm:flex sm:text-left lg:block lg:text-center bg-white/30 backdrop-blur-md py-4">

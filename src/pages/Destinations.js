@@ -6,17 +6,171 @@ import am5geodataWorldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { useTranslation } from 'react-i18next';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { DropDownList } from '@progress/kendo-react-dropdowns';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 const Destinations = () => {
-
+    const { t } = useTranslation();
+    const cities = [
+        {
+            id: "ulaanbaatar",
+            title: t('ulaanbaatar'),
+            country: 'mongolia',
+            image: "/image/main/AdobeStock_227948748.jpg",
+            geometry: { type: "Point", coordinates: [106.917, 47.9186] },
+            perspectives: [
+                "singapore",
+                "australia",
+                "usa",
+            ]
+        },
+        {
+            id: "frankfurt",
+            title: t('frankfurt'),
+            country: 'germany',
+            distance: '7,010 km',
+            duration: "8 hours, 45 minutes",
+            image: "/image/main/vertical-view-roemerberg-frankfurt-germany.jpg",
+            geometry: { type: "Point", coordinates: [8.6821, 50.1109] }
+        },
+        {
+            id: "hongkong",
+            title: t('hongkong'),
+            country: 'china',
+            distance: '3,350 km',
+            duration: "4 hours, 10 minutes",
+            image: "/image/main/hong-kong-skyline-with-boats.jpg",
+            geometry: { type: "Point", coordinates: [114.2, 22.4] },
+            destinations: [
+                'delhi',
+                'mumbai',
+                'ho_chi_minh',
+                'singapore',
+                'perth',
+                'melbourne',
+                'sydney',
+                'brisbane',
+                'san_francisco',
+                'los_angeles',
+                'chicago',
+                'washington',
+                'new_york',
+                'boston',
+            ]
+        },
+        {
+            id: "tokyo",
+            title: t('tokyo'),
+            country: 'japan',
+            distance: '3,869 km',
+            duration: "4 hours, 22 minutes",
+            image: "/image/main/AdobeStock_268173642.jpg",
+            geometry: { type: "Point", coordinates: [139.6917, 35.6895] },
+            destinations: [
+                'sapporo'
+            ]
+        },
+        {
+            id: "seoul",
+            title: t('seoul'),
+            country: 'south_korea',
+            distance: '2,304 km',
+            duration: "2 hours, 45 minutes",
+            image: "/image/main/seoul-tower-with-gyeongbokgung-roof-red-autumn-maple-leaves-namsan-mountain-south-korea.jpg",
+            geometry: { type: "Point", coordinates: [126.9779, 37.5665] }
+        },
+        {
+            id: "ho_chi_minh",
+            title: t('ho_chi_minh'),
+            country: 'vietnam',
+            distance: '4,563 km',
+            duration: "5 hours, 30 minutes",
+            image: "/image/main/54455949-city-18144-167c85df43f.jpg",
+            geometry: { type: "Point", coordinates: [106.6297, 10.8231] }
+        },
+        {
+            id: "istanbul",
+            title: t('istanbul'),
+            country: 'turkey',
+            distance: '6,702 km',
+            duration: "8 hours, 32 minutes",
+            image: "/image/main/AdobeStock_304983855.jpg",
+            geometry: { type: "Point", coordinates: [28.90, 41.0582] },
+            destinations: [
+                'amsterdam',
+                'brussels',
+                'vienna',
+                'warsaw',
+                'zurich',
+                'barcelona',
+                'rome',
+                'chicago',
+            ]
+        },
+        {
+            id: "busan",
+            title: t('busan'),
+            country: 'south_korea',
+            distance: '2,593 km',
+            duration: "3 hours, 1 minute",
+            image: "/image/main/AdobeStock_306120806.jpg",
+            geometry: { type: "Point", coordinates: [129.0756, 35.1796] }
+        },
+        {
+            id: "bangkok",
+            title: t('bangkok'),
+            country: 'thailand',
+            distance: '4,117 km',
+            duration: "5 hours, 0 minute",
+            image: "/image/main/AdobeStock_105446989.jpg",
+            geometry: { type: "Point", coordinates: [100.5018, 13.7563] }
+        },
+        {
+            id: "beijing",
+            title: t('beijing'),
+            country: 'china',
+            distance: '1,383 km',
+            duration: "1 hour, 50 minutes",
+            image: "/image/main/AdobeStock_38307012.jpg",
+            geometry: { type: "Point", coordinates: [116.4074, 39.9042] }
+        },
+        {
+            id: "osaka",
+            title: t('osaka'),
+            country: 'japan',
+            distance: '3,221 km',
+            duration: "3 hours, 50 minutes",
+            image: "/image/main/osaka-castle-cherry-blossom-spring-sakura-seasons-osaka-japan.jpg",
+            geometry: { type: "Point", coordinates: [135.5022, 34.6937] }
+        },
+        {
+            id: "phuket",
+            title: t('phuket'),
+            country: 'thailand',
+            distance: '4,847 km',
+            duration: "6 hours, 2 minutes",
+            image: "/image/main/beautiful-girl-sitting-rock-james-bond-island-phang-nga-thailand.jpg",
+            geometry: { type: "Point", coordinates: [98.3381, 7.8804] }
+        },
+        {
+            id: "guangzhou",
+            title: t('guangzhou'),
+            country: 'china',
+            distance: '2,965 km',
+            duration: "3 hours, 45 minutes",
+            image: "/image/main/AdobeStock_67203423.jpg",
+            geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
+        }
+    ];
     const [choosedCountry, setChoosedCountry] = useState({});
     const [shownavigate, setShowNavigate] = useState(true);
-
-    const { t } = useTranslation();
+    const [showDirection, setShowDirection] = useState(true);
+    const [point1, setpoint1] = useState(null);
+    const [point3data, setpoint3data] = useState(cities[0]);
+    const [point3, setpoint3] = useState(null);
 
     const colors = {
         G: am5.color("#2652fb"),
@@ -97,158 +251,6 @@ const Destinations = () => {
             image: "/image/main/BagaturgeniiuulsBayanUlgii.jpg",
             geometry: { type: "Point", coordinates: [89.9674, 48.9683] }
         },
-    ];
-
-    const cities = [
-        {
-            id: "ulaanbaatar",
-            title: t('ulaanbaatar'),
-            country: 'mongolia',
-            image: "/image/main/AdobeStock_227948748.jpg",
-            geometry: { type: "Point", coordinates: [106.917, 47.9186] },
-            perspectives: [
-                "singapore",
-                "australia",
-                "usa",
-            ]
-        },
-        {
-            id: "frankfurt",
-            title: t('frankfurt'),
-            country: 'germany',
-            distance: '7,010 km',
-            duration: "8 hours, 45 minutes",
-            image: "/image/main/vertical-view-roemerberg-frankfurt-germany.jpg",
-            geometry: { type: "Point", coordinates: [8.6821, 50.1109] }
-        },
-        {
-            id: "hongkong",
-            title: t('hongkong'),
-            country: 'china',
-            distance: '3,350 km',
-            duration: "4 hours, 10 minutes",
-            image: "/image/main/hong-kong-skyline-with-boats.jpg",
-            geometry: { type: "Point", coordinates: [114.2, 22.3] },
-            destinations: [
-                'delhi',
-                'mumbai',
-                'ho_chi_minh',
-                'singapore',
-                'perth',
-                'melbourne',
-                'sydney',
-                'brisbane',
-                'san_francisco',
-                'los_angeles',
-                'chicago',
-                'washington',
-                'new_york',
-                'boston',
-            ]
-        },
-        {
-            id: "tokyo",
-            title: t('tokyo'),
-            country: 'japan',
-            distance: '3,869 km',
-            duration: "4 hours, 22 minutes",
-            image: "/image/main/AdobeStock_268173642.jpg",
-            geometry: { type: "Point", coordinates: [139.6917, 35.6895] },
-            destinations: [
-                'sapporo'
-            ]
-        },
-        {
-            id: "seoul",
-            title: t('seoul'),
-            country: 'south_korea',
-            distance: '2,304 km',
-            duration: "2 hours, 45 minutes",
-            image: "/image/main/seoul-tower-with-gyeongbokgung-roof-red-autumn-maple-leaves-namsan-mountain-south-korea.jpg",
-            geometry: { type: "Point", coordinates: [126.9779, 37.5665] }
-        },
-        {
-            id: "ho_chi_minh",
-            title: t('ho_chi_minh'),
-            country: 'vietnam',
-            distance: '4,563 km',
-            duration: "5 hours, 30 minutes",
-            image: "/image/main/54455949-city-18144-167c85df43f.jpg",
-            geometry: { type: "Point", coordinates: [106.6297, 10.8231] }
-        },
-        {
-            id: "istanbul",
-            title: t('istanbul'),
-            country: 'turkey',
-            distance: '6,702 km',
-            duration: "8 hours, 32 minutes",
-            image: "/image/main/AdobeStock_304983855.jpg",
-            geometry: { type: "Point", coordinates: [28.9784, 41.0082] },
-            destinations: [
-                'amsterdam',
-                'brussels',
-                'vienna',
-                'warsaw',
-                'zurich',
-                'barcelona',
-                'rome',
-                'chicago',
-            ]
-        },
-        {
-            id: "busan",
-            title: t('busan'),
-            country: 'south_korea',
-            distance: '2,593 km',
-            duration: "3 hours, 1 minute",
-            image: "/image/main/AdobeStock_306120806.jpg",
-            geometry: { type: "Point", coordinates: [129.0756, 35.1796] }
-        },
-        {
-            id: "bangkok",
-            title: t('bangkok'),
-            country: 'thailand',
-            distance: '4,117 km',
-            duration: "5 hours, 0 minute",
-            image: "/image/main/AdobeStock_105446989.jpg",
-            geometry: { type: "Point", coordinates: [100.5018, 13.7563] }
-        },
-        {
-            id: "beijing",
-            title: t('beijing'),
-            country: 'china',
-            distance: '1,383 km',
-            duration: "1 hour, 50 minutes",
-            image: "/image/main/AdobeStock_38307012.jpg",
-            geometry: { type: "Point", coordinates: [116.4074, 39.9042] }
-        },
-        {
-            id: "osaka",
-            title: t('osaka'),
-            country: 'japan',
-            distance: '3,221 km',
-            duration: "3 hours, 50 minutes",
-            image: "/image/main/osaka-castle-cherry-blossom-spring-sakura-seasons-osaka-japan.jpg",
-            geometry: { type: "Point", coordinates: [135.5022, 34.6937] }
-        },
-        {
-            id: "phuket",
-            title: t('phuket'),
-            country: 'thailand',
-            distance: '4,847 km',
-            duration: "6 hours, 2 minutes",
-            image: "/image/main/beautiful-girl-sitting-rock-james-bond-island-phang-nga-thailand.jpg",
-            geometry: { type: "Point", coordinates: [98.3381, 7.8804] }
-        },
-        {
-            id: "guangzhou",
-            title: t('guangzhou'),
-            country: 'china',
-            distance: '2,965 km',
-            duration: "3 hours, 45 minutes",
-            image: "/image/main/AdobeStock_67203423.jpg",
-            geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
-        }
     ];
 
     const subcities = [
@@ -411,13 +413,37 @@ const Destinations = () => {
         setShowNavigate(!shownavigate)
     }
 
+    const changePoint1 = (event) => {
+        const data = event.value;
+        setChoosedCountry(data)
+        if (point3data.id === 'ulaanbaatar') {
+            point3.setAll({
+                longitude: data.geometry.coordinates[0],
+                latitude: data.geometry.coordinates[1]
+            })
+        }
+        point1.setAll({
+            longitude: data.geometry.coordinates[0],
+            latitude: data.geometry.coordinates[1]
+        })
+    }
+
+    const changePoint3 = (event) => {
+        const data = event.value;
+        setpoint3data(data)
+        point3.setAll({
+            longitude: data.geometry.coordinates[0],
+            latitude: data.geometry.coordinates[1]
+        })
+    }
+
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [])
 
     useLayoutEffect(() => {
         let root = am5.Root.new("chartdiv");
-
+        const countryLabels = [];
         // Set themes
         root.setThemes([
             am5themes_Animated.new(root)
@@ -449,7 +475,9 @@ const Destinations = () => {
         cont.children.push(am5.Label.new(root, {
             centerY: am5.p50,
             text: t('connected'),
-            fill: am5.color(0xffffff)
+            fill: am5.color(0xffffff),
+            fontWeight: "bold",
+            fontSize: 12,
         }));
 
         var switchButton = cont.children.push(am5.Button.new(root, {
@@ -464,7 +492,9 @@ const Destinations = () => {
             am5.Label.new(root, {
                 centerY: am5.p50,
                 text: t('routes'),
-                fill: am5.color(0xffffff)
+                fill: am5.color(0xffffff),
+                fontWeight: "bold",
+                fontSize: 12,
             })
         );
 
@@ -476,6 +506,7 @@ const Destinations = () => {
                 perspectiveSeries.show()
                 subcitySeries.show()
                 legend.show()
+                setShowDirection(false)
             }
         });
 
@@ -523,6 +554,7 @@ const Destinations = () => {
                     planeSeriesMn.show();
                     citySeriesMn.show();
                     cont.hide()
+                    setShowDirection(false)
                 });
 
                 // zoomMongolia()
@@ -636,7 +668,7 @@ const Destinations = () => {
         );
 
         let pointSeriesMn = chart.series.push(am5map.MapPointSeries.new(root, {
-            // visible: false,
+            
         }));
         let planeSeriesMn = chart.series.push(am5map.MapPointSeries.new(root, {
             visible: false,
@@ -644,11 +676,12 @@ const Destinations = () => {
         let planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
         let pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
-        let point1 = addCity({ latitude: 47.9186, longitude: 106.917 }, "Ulaanbaatar");
-        let point2 = null;
+        let point1 = null;
+        let point2 = addCity({ latitude: 47.9186, longitude: 106.917 }, "Ulaanbaatar");
         let point3 = null;
+
         if (choosedCountry.id) {
-            point2 = addCity({
+            point1 = addCity({
                 latitude: choosedCountry.geometry.coordinates[1],
                 longitude: choosedCountry.geometry.coordinates[0]
             }, "Frankfurt");
@@ -657,9 +690,12 @@ const Destinations = () => {
                 longitude: choosedCountry.geometry.coordinates[0]
             }, "Frankfurt");
         } else {
-            point2 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
+            point1 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
             point3 = addCity({ latitude: 50.1109, longitude: 8.6821 }, "Frankfurt");
         }
+
+        setpoint1(point1)
+        setpoint3(point3)
 
         let lineDataItem = lineSeries.pushDataItem({
             pointsToConnect: [point1, point2, point3]
@@ -669,7 +705,7 @@ const Destinations = () => {
         const point2Mn = addCityMn({ latitude: 48.0056, longitude: 91.6419 });
 
         let lineDataItemMn = lineSeriesMn.pushDataItem({
-            pointsToConnect: [point1Mn, point2Mn]
+            pointsToConnect: [point1Mn, point2Mn],
         });
 
         let plane = am5.Graphics.new(root, {
@@ -703,6 +739,7 @@ const Destinations = () => {
         });
 
         let circleTemplate = am5.Template.new({});
+        
         // visible city circles
         citySeries.bullets.push(function (root, series, dataItem) {
             let container = am5.Container.new(root, {});
@@ -736,7 +773,7 @@ const Destinations = () => {
                     paddingLeft: 5,
                     populateText: true,
                     fontWeight: "bold",
-                    fontSize: 12,
+                    fontSize: 14,
                     centerY: am5.p50,
                     x: circle.get("radius"),
                     layer: 5,
@@ -747,7 +784,7 @@ const Destinations = () => {
             circle.on("radius", function (radius) {
                 countryLabel.set("x", radius);
             })
-
+            countryLabels.push(countryLabel)
             circle.events.on("pointerover", function (event) {
                 event.target.set("scale", 1.2); // Hover үед хэмжээг томруулах
             })
@@ -763,7 +800,7 @@ const Destinations = () => {
                 var data = dataItem.dataContext;
                 setChoosedCountry(data);
                 setShowNavigate(true)
-                point2.setAll({
+                point1.setAll({
                     longitude: data.geometry.coordinates[0],
                     latitude: data.geometry.coordinates[1]
                 })
@@ -822,7 +859,7 @@ const Destinations = () => {
             circle.on("radius", function (radius) {
                 countryLabel.set("x", radius);
             })
-
+            countryLabels.push(countryLabel)
             circle.events.on("pointerover", function (event) {
                 event.target.set("scale", 1.2); // Hover үед хэмжээг томруулах
             })
@@ -917,7 +954,7 @@ const Destinations = () => {
             circle.on("radius", function (radius) {
                 countryLabel.set("x", radius);
             })
-
+            countryLabels.push(countryLabel)
             circle.events.on("pointerover", function (event) {
                 event.target.set("scale", 1.2); // Hover үед хэмжээг томруулах
             })
@@ -1066,6 +1103,7 @@ const Destinations = () => {
             subcitySeries.hide()
             legend.hide()
             cont.show()
+            setShowDirection(true)
         }
 
         var stateSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -1163,7 +1201,7 @@ const Destinations = () => {
                     <div
                         className={
                             classNames(
-                                'transition absolute bg-black/30 w-80 h-full text-white pt-20',
+                                'transition absolute bg-black/30 w-[22rem] h-full text-white pt-20',
                                 'backdrop-blur-md px-4 py-8 space-y-4 shadow-md z-10 duration-500',
                                 shownavigate ? 'translate-x-0' : '-translate-x-full'
                             )}
@@ -1176,6 +1214,23 @@ const Destinations = () => {
                                 </div> */}
                         <div className="flex flex-col justify-between h-full">
                             <div>
+                                {showDirection && <div className='flex mb-2'>
+                                    <DropDownList
+                                        data={cities}
+                                        textField='title'
+                                        value={choosedCountry}
+                                        onChange={changePoint1}
+                                    />
+                                    <div className='w-16 mx-2'>
+                                        <img src="/image/main/35456.png" alt="" className='w-full' />
+                                    </div>
+                                    <DropDownList
+                                        data={cities}
+                                        textField='title'
+                                        value={point3data}
+                                        onChange={changePoint3}
+                                    />
+                                </div>}
                                 <div
                                     style={{ backgroundImage: `url(${choosedCountry.image ?? "/image/main/plane-500.jpg"})` }}
                                     className='rounded-md bg-cover bg-center bg-no-repeat h-44 w-full'
@@ -1218,8 +1273,8 @@ const Destinations = () => {
                     </div>
                     <div className={
                         classNames(
-                            'transition absolute left-80 top-[calc(50%-24px)] block z-10 duration-500',
-                            shownavigate ? 'translate-x-0' : '-translate-x-80'
+                            'transition absolute left-[22rem] top-[calc(50%-24px)] block z-10 duration-500',
+                            shownavigate ? 'translate-x-0' : '-translate-x-[22rem]'
                         )
                     }>
                         <button
