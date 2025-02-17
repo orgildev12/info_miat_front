@@ -27,7 +27,7 @@ const Destinations = () => {
     const citiesMn = [
         {
             id: "ulaanbaatar",
-            title: "Ulaanbaatar",
+            title: t('ulaanbaatar'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -36,7 +36,7 @@ const Destinations = () => {
         },
         {
             id: "dalanzadgad",
-            title: "Dalanzadgad",
+            title: t('dalanzadgad'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -45,7 +45,7 @@ const Destinations = () => {
         },
         {
             id: "uliastai",
-            title: "Uliastai",
+            title: t('uliastai'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -54,7 +54,7 @@ const Destinations = () => {
         },
         {
             id: "khovd",
-            title: "Khovd",
+            title: t('khovd'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -63,7 +63,7 @@ const Destinations = () => {
         },
         {
             id: "altai",
-            title: "Altai",
+            title: t('altai'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -72,7 +72,7 @@ const Destinations = () => {
         },
         {
             id: "ulaangom",
-            title: "Ulaangom",
+            title: t('ulaangom'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -81,7 +81,7 @@ const Destinations = () => {
         },
         {
             id: "murun",
-            title: "Murun",
+            title: t('murun'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -90,7 +90,7 @@ const Destinations = () => {
         },
         {
             id: "ulgii",
-            title: "Ulgii",
+            title: t('ulgii'),
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -713,10 +713,10 @@ const Destinations = () => {
                     tooltipText: "{title}",
                     tooltipY: 0,
                     fill: am5.color("#2652fb"), // 6 тэмдэгттэй HEX
-                    stroke: am5.color("#2652fb"), // 6 тэмдэгттэй HEX
-                    strokeOpacity: 0.3,
+                    stroke: am5.color(0xffffff), // 6 тэмдэгттэй HEX
+                    strokeOpacity: 0.1,
                     // "scale": 0.7,
-                    "strokeWidth": 5,
+                    "strokeWidth": 2,
                     interactive: true, // Интерактив байдал нэмэх
                     cursorOverStyle: "pointer" // Hover үед курсорыг "pointer" болгох
                 }, circleTemplate)
@@ -725,7 +725,7 @@ const Destinations = () => {
             circle.animate({
                 key: "strokeOpacity",
                 to: 1,
-                duration: 1500, // Animation duration in milliseconds (1s)
+                duration: 1000, // Animation duration in milliseconds (1s)
                 loops: Infinity, // Infinite loop
                 easing: am5.ease.yoyo(am5.ease.linear) // Smooth effect
             });
@@ -784,14 +784,14 @@ const Destinations = () => {
             const data = dataItem.dataContext;
             let circle = container.children.push(
                 am5.Circle.new(root, {
-                    radius: 4,
+                    radius: 6,
                     tooltipText: "{title}",
                     tooltipY: 0,
                     fill: data.perspective ? colors.N : colors.O, // 6 тэмдэгттэй HEX
-                    stroke: data.perspective ? colors.N : colors.O, // 6 тэмдэгттэй HEX
+                    stroke: am5.color(0xffffff), // 6 тэмдэгттэй HEX
                     strokeOpacity: 0.3,
                     // "scale": 0.7,
-                    "strokeWidth": 5,
+                    "strokeWidth": 2,
                     interactive: true, // Интерактив байдал нэмэх
                     cursorOverStyle: "pointer" // Hover үед курсорыг "pointer" болгох
                 }, circleTemplate)
@@ -800,7 +800,7 @@ const Destinations = () => {
             circle.animate({
                 key: "strokeOpacity",
                 to: 1,
-                duration: 1500, // Animation duration in milliseconds (1s)
+                duration: 1000, // Animation duration in milliseconds (1s)
                 loops: Infinity, // Infinite loop
                 easing: am5.ease.yoyo(am5.ease.linear) // Smooth effect
             });
@@ -851,7 +851,7 @@ const Destinations = () => {
                         });
                     }
                 });
-                setChoosedCountry({...data, issub: isfound});
+                setChoosedCountry({ ...data, issub: isfound });
 
                 if (!isfound) {
                     point2.setAll({
@@ -883,10 +883,10 @@ const Destinations = () => {
                     tooltipText: "{title}",
                     tooltipY: 0,
                     fill: am5.color("#2652fb"), // 6 тэмдэгттэй HEX
-                    stroke: am5.color("#2652fb"), // 6 тэмдэгттэй HEX
+                    stroke: am5.color(0xffffff), // 6 тэмдэгттэй HEX
                     strokeOpacity: 0.3,
                     // "scale": 0.7,
-                    "strokeWidth": 5,
+                    "strokeWidth": 2,
                     interactive: true, // Интерактив байдал нэмэх
                     cursorOverStyle: "pointer" // Hover үед курсорыг "pointer" болгох
                 }, circleTemplate)
@@ -1073,6 +1073,11 @@ const Destinations = () => {
             geoJSON: mongoliaGeoJSON
         }));
 
+        stateSeries.mapPolygons.template.setAll({
+            fill: am5.color(0x6771DC),
+            templateField: "polygonSettings"
+        });
+
         var backContainer = chart.children.push(am5.Container.new(root, {
             x: am5.p100,
             centerX: am5.p100,
@@ -1238,9 +1243,9 @@ const Destinations = () => {
                     <div className="layer"></div>
                     <div className="layer"></div>
                 </div>
-                <div className='h-[100px] fixed bottom-2 right-12'>
+                {/* <div className='h-[100px] fixed bottom-2 right-12'>
                     <img src="/image/main/partners.png" alt="" className='w-full h-full' />
-                </div>
+                </div> */}
             </div>
         </div>
     )
