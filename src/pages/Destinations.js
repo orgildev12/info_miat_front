@@ -181,7 +181,7 @@ const Destinations = () => {
     const citiesMn = [
         {
             id: "ulaanbaatar",
-            title: t('ulaanbaatar'),
+            title: "",
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
@@ -533,6 +533,7 @@ const Destinations = () => {
             var dataItem = ev.target.dataItem;
             var data = dataItem.dataContext;
             if (data.id === 'MN') {
+                setChoosedCountry({})
                 var zoomAnimation = polygonSeries.zoomToDataItem(dataItem);
                 Promise.all([
                     zoomAnimation.waitForStop(),
@@ -545,7 +546,8 @@ const Destinations = () => {
                     sublineSeries.hide()
                     perspectiveSeries.hide()
                     legend.hide()
-
+                    planeDataItemMn.set("positionOnLine", 0);
+                    resetPlaneAnimationMn()
                     lineSeriesMn.set("layer", 100);
                     planeSeriesMn.set("layer", 100);
                     citySeriesMn.set("layer", 100);
@@ -622,7 +624,7 @@ const Destinations = () => {
 
         lineSeriesMn.mapLines.template.setAll({
             strokeOpacity: 1,
-            stroke: am5.color("#2259ff"),
+            stroke: am5.color("#FFD700"),
             strokeWidth: 1,
             // strokeDasharray: 1
         });
@@ -668,7 +670,7 @@ const Destinations = () => {
         );
 
         let pointSeriesMn = chart.series.push(am5map.MapPointSeries.new(root, {
-            
+
         }));
         let planeSeriesMn = chart.series.push(am5map.MapPointSeries.new(root, {
             visible: false,
@@ -702,10 +704,13 @@ const Destinations = () => {
         });
 
         const point1Mn = addCityMn({ latitude: 47.9186, longitude: 106.917 }, "Ulaanbaatar");
-        const point2Mn = addCityMn({ latitude: 48.0056, longitude: 91.6419 });
-
         let lineDataItemMn = lineSeriesMn.pushDataItem({
-            pointsToConnect: [point1Mn, point2Mn],
+            geometry: createArcLine({
+                latitude: point1Mn.get("latitude"),
+                longitude: point1Mn.get("longitude")
+            }, {
+                latitude: 48.0056, longitude: 91.6419
+            }, 0.1)
         });
 
         let plane = am5.Graphics.new(root, {
@@ -739,7 +744,7 @@ const Destinations = () => {
         });
 
         let circleTemplate = am5.Template.new({});
-        
+
         // visible city circles
         citySeries.bullets.push(function (root, series, dataItem) {
             let container = am5.Container.new(root, {});
@@ -868,39 +873,7 @@ const Destinations = () => {
             })
 
             circle.events.on("click", function (event) {
-                planeDataItem.set("positionOnLine", 0);
-                // planeDataItem.clear();
-                resetPlaneAnimation()
-                var dataItem = event.target.dataItem;
-                var data = dataItem.dataContext;
-                setShowNavigate(true)
-                let isfound = null;
-                cities.forEach(element => {
-                    if (element.destinations) {
-                        element.destinations.forEach(city => {
-                            if (city === data.id) {
-                                isfound = element;
-                                point2.setAll({
-                                    longitude: element.geometry.coordinates[0],
-                                    latitude: element.geometry.coordinates[1]
-                                })
-                            }
-                        });
-                    }
-                });
-                setChoosedCountry({ ...data, issub: isfound });
-
-                if (!isfound) {
-                    point2.setAll({
-                        longitude: data.geometry.coordinates[0],
-                        latitude: data.geometry.coordinates[1]
-                    })
-                }
-
-                point3.setAll({
-                    longitude: data.geometry.coordinates[0],
-                    latitude: data.geometry.coordinates[1]
-                })
+                setShowNavigate(false)
             });
 
             return am5.Bullet.new(root, {
@@ -963,17 +936,23 @@ const Destinations = () => {
             })
 
             circle.events.on("click", function (event) {
-                planeDataItemMn.set("positionOnLine", 0);
-                // planeDataItem.clear();
-                resetPlaneAnimation()
                 var dataItem = event.target.dataItem;
                 var data = dataItem.dataContext;
+                planeDataItemMn.set("positionOnLine", 0);
+                lineDataItemMn = lineSeriesMn.pushDataItem({
+                    geometry: createArcLine({
+                        latitude: point1Mn.get("latitude"),
+                        longitude: point1Mn.get("longitude")
+                    }, {
+                        longitude: data.geometry.coordinates[0],
+                        latitude: data.geometry.coordinates[1]
+                    }, 0.1)
+                });
+                planeDataItemMn.set("lineDataItem", lineDataItemMn);
+                // planeDataItem.clear();
+                resetPlaneAnimationMn()
                 setChoosedCountry(data);
                 setShowNavigate(true)
-                point2Mn.setAll({
-                    longitude: data.geometry.coordinates[0],
-                    latitude: data.geometry.coordinates[1]
-                })
             });
 
             return am5.Bullet.new(root, {
@@ -984,10 +963,41 @@ const Destinations = () => {
         // Prepare line series data
         let mongoliaDataItem = citySeries.getDataItemById("ulaanbaatar");
 
+        function createArcLine(start, end, curvature = 0.7, segments = 30) {
+            let coords = [];
+            for (let i = 0; i <= segments; i++) {
+                let t = i / segments;
+                let arcFactor = Math.sin(t * Math.PI) * curvature; // Муруйлтын нөлөөлөл
+                let lat = start.latitude + (end.latitude - start.latitude) * t + arcFactor * 10;
+                let lon = start.longitude + (end.longitude - start.longitude) * t;
+                coords.push([lon, lat]);
+            }
+            return {
+                type: "MultiLineString",
+                coordinates: [coords]
+            };
+        }
+
         am5.array.each(citiesMn, function (did) {
-            let destinationDataItem = citySeriesMn.getDataItemById(did.id);
-            let lineDataItem = lineSeriesMn.pushDataItem({});
-            lineDataItem.set("pointsToConnect", [mongoliaDataItem, destinationDataItem])
+            if (did.id !== 'ulaanbaatar') {
+                let destinationDataItem = citySeriesMn.getDataItemById(did.id);
+                // let lineDataItem = lineSeriesMn.pushDataItem({});
+                // lineDataItem.set("pointsToConnect", [mongoliaDataItem, destinationDataItem])
+
+                let startPoint = {
+                    latitude: mongoliaDataItem.get("latitude"),
+                    longitude: mongoliaDataItem.get("longitude")
+                };
+
+                let endPoint = {
+                    latitude: destinationDataItem.get("latitude"),
+                    longitude: destinationDataItem.get("longitude")
+                };
+
+                lineSeriesMn.pushDataItem({
+                    geometry: createArcLine(startPoint, endPoint, 0.1) // 0.7 муруйлттай
+                });
+            }
         });
 
         // this will do all the animations
@@ -1031,6 +1041,7 @@ const Destinations = () => {
 
         planeDataItemMn.dataContext = {};
         resetPlaneAnimation()
+        resetPlaneAnimationMn()
 
         function resetPlaneAnimation() {
             // Re-animate the plane along the line
@@ -1053,7 +1064,9 @@ const Destinations = () => {
                 }
                 planeDataItem.dataContext.prevPosition = value;
             });
-
+        }
+        
+        function resetPlaneAnimationMn() {
             planeDataItemMn.animate({
                 key: "positionOnLine",
                 to: 1,
@@ -1104,6 +1117,9 @@ const Destinations = () => {
             legend.hide()
             cont.show()
             setShowDirection(true)
+            setChoosedCountry({})
+            planeDataItem.set("positionOnLine", 0);
+            resetPlaneAnimation()
         }
 
         var stateSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -1191,8 +1207,8 @@ const Destinations = () => {
     }, []);
 
     return (
-        <div className='mb-[4rem] h-[100vh]'>
-            <div className='w-[100%] h-[100vh] fixed top-0 left-0'>
+        <div className='min-h-[100vh]'>
+            <div className='w-[100%] h-full'>
 
                 <div className={classNames(
                     choosedCountry.title ? 'opacity-100' : 'opacity-0',
@@ -1202,7 +1218,7 @@ const Destinations = () => {
                         className={
                             classNames(
                                 'transition absolute bg-black/30 w-[22rem] h-full text-white pt-20',
-                                'backdrop-blur-md px-4 py-8 space-y-4 shadow-md z-10 duration-500',
+                                'backdrop-blur-md space-y-2 shadow-md z-10 duration-500',
                                 shownavigate ? 'translate-x-0' : '-translate-x-full'
                             )}
                         style={{
@@ -1212,7 +1228,7 @@ const Destinations = () => {
                         {/* <div className='text-center'>
                                     {t('ulaanbaatar')} - {t(choosedCountry.id)}
                                 </div> */}
-                        <div className="flex flex-col justify-between h-full">
+                        <div className="flex flex-col justify-between h-full overflow-y-auto px-4">
                             <div>
                                 {showDirection && <div className='flex mb-2'>
                                     <DropDownList
@@ -1244,30 +1260,51 @@ const Destinations = () => {
                                 </div>}
                             </div>
                             <div>
-                                <div className='absolute right-[20%] pt-3 font-bold'>
-                                    {t(choosedCountry.id)}
-                                </div>
-                                {choosedCountry.distance && <div className='absolute bottom-[12rem] left-[10px]'>
-                                    <div className='flex items-center bg-black/30 p-2 rounded backdrop-blur-md'>
-                                        <div className='text-xs'>Distance: &nbsp;</div>
-                                        <div className='text-sm'>{choosedCountry.distance}</div>
+                                {point3data.id !== 'ulaanbaatar' && <>
+                                    <div className='absolute right-[20%] pt-3 font-bold'>
+                                        {t(point3data.id)}
                                     </div>
-                                    <span className="relative flex h-3 w-3 mx-auto -z-[1]">
-                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
-                                    </span>
-                                </div>}
-                                <img src="/logos/some/flight2.png" alt="" className='h-64' />
-                                {choosedCountry.issub && <div className='absolute bottom-[8rem] left-[50%] font-bold'>
-                                    {t(choosedCountry.issub.id)}
-                                </div>}
-                                <div className='absolute bottom-[3rem] left-[20%] font-bold'>
+                                    <div className='text-xs absolute right-[10%] bg-black/30 p-1 bottom-44 rounded backdrop-blur-md'>
+                                        <div className='absolute -top-2 left-[50%]'>
+                                            <span className="relative flex h-3 w-3 mx-auto -z-[1]">
+                                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                                <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                            </span>
+                                        </div>
+                                        <div className='flex'>
+                                            <div>Distance: &nbsp;</div>
+                                            <div className='font-medium'>{point3data.distance}</div>
+                                        </div>
+                                        <div className='text-justify'>Total travel time: <p className='font-medium'>
+                                            {point3data.duration}
+                                        </p>
+                                        </div>
+                                    </div>
+                                </>}
+
+                                <img src="/logos/some/flight-2.png" alt="" className='h-64' />
+                                <div className='relative bottom-[7rem] font-bold'>
                                     {t('ulaanbaatar')}
                                 </div>
-                                {choosedCountry.duration && <div className='absolute bottom-[6rem] right-[5px] bg-black/30 p-2 rounded backdrop-blur-md'>
-                                    <div className='text-xs'>Total travel time: </div>
-                                    <div className='text-sm'>{choosedCountry.duration}</div>
-                                </div>}
+                                <div className='font-bold text-right -mt-8'>
+                                    {t(choosedCountry.id)}
+                                </div>
+                                <div className='text-xs absolute right-[40%] bg-black/30 bottom-12 p-1 rounded backdrop-blur-md'>
+                                    <div className='absolute -top-2 left-[50%]'>
+                                        <span className="relative flex h-3 w-3 mx-auto -z-[1]">
+                                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                            <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                        </span>
+                                    </div>
+                                    <div className='flex'>
+                                        <div>Distance: &nbsp;</div>
+                                        <div className='font-medium'>{choosedCountry.distance}</div>
+                                    </div>
+                                    <div className='text-justify'>Total travel time: <p className='font-medium'>
+                                        {choosedCountry.duration}
+                                    </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
