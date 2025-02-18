@@ -8,7 +8,7 @@ import { ChangeLanguage } from "../components/language/ChangeLanguage/ChangeLang
 
 const navigation = [
     {
-        name: 'destinations', href: '/', 
+        name: 'destinations', href: '/',
         // subdropdown: [
         //     {
         //         name: 'routes',
@@ -47,7 +47,7 @@ const Header = () => {
 
 
     return (
-        <div className="fixed top-2 z-20 left-1/2 transform -translate-x-1/2 translate-y-0 w-full">
+        <div className="fixed top-2 z-50 left-1/2 transform -translate-x-1/2 translate-y-0 w-full">
             <div className="relative mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 bg-black/50 backdrop-blur-md rounded-full">
                 <div className="relative flex min-h-[4rem] items-center justify-between">
                     <div className="flex flex-1 items-center justify-between sm:items-stretch">
@@ -152,6 +152,9 @@ const Header = () => {
                     <div className="mt-6 flow-root">
                         <div className="-my-6 divide-y divide-gray-500/10">
                             <div className="space-y-1 px-2 pb-3 pt-4">
+                                <div className="flex justify-end">
+                                <ChangeLanguage />
+                                </div>
                                 {navigation.map((item) => (
                                     <Link
                                         key={item.name}
