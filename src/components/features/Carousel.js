@@ -57,8 +57,8 @@ export const Carousel = ({ slides, delay = 7 }) => {
                     return <div
                         key={index}
                         className="
-                            max-w-[100vw] min-w-[100vw] 
-                            h-[100vh] text-white
+                            max-w-[100vw] min-w-[100vw] h-[50vh]
+                            sm:h-[100vh] text-white
                             bg-cover bg-center bg-no-repeat
                         "
                         style={{ backgroundImage: `url(${s.img})` }}>
@@ -78,7 +78,7 @@ export const Carousel = ({ slides, delay = 7 }) => {
                     </div>;
                 })}
             </div>
-            <div className="absolute py-4 bottom-20 left-20 text-white">
+            <div className="absolute py-4 bottom-10 sm:bottom-20 left-4 sm:left-20 text-white">
                 <h2 className="font-medium text-4xl">
                     MIAT MONGOLIAN <br /> AIRLINES
                 </h2>
@@ -86,7 +86,7 @@ export const Carousel = ({ slides, delay = 7 }) => {
                     {t('footerdesc')}
                 </div>
             </div>
-            <div className="absolute bottom-20 right-20 h-full w-full justify-end items-end flex text-white px-5 text-3xl">
+            <div className="absolute bottom-10 right-2 sm:bottom-20 sm:right-20 h-full w-full justify-end items-end flex text-white px-5 text-3xl">
 
                 <button onClick={previousSlide} className="rounded-full border border-white p-2 mr-2 hover:bg-white group">
                     <svg className="w-4 h-4 text-white rtl:rotate-180 group-hover:text-primary-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">

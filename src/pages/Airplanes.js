@@ -4,38 +4,44 @@ import { useTranslation } from 'react-i18next'
 
 const products = [
     {
+        id: 7,
+        name: 'Boeing 787-9',
+        imageSrc: '/background-image/livery/1.webp',
+        imageDetail: '/image/airplanes/plane-7/detail.png',
+    },
+    {
         id: 1,
-        name: 'EI-CXV / Боинг 737-800',
+        name: 'EI-CXV / Boeing 737-800',
         imageSrc: '/image/airplanes/plane-1/plane1.jpg',
         imageDetail: '/image/airplanes/plane-1/ce1cc0ed96c5b39d95bb3f500fb8ae14.jpg',
     },
     {
         id: 2,
-        name: 'JU1088 / Боинг 737-800',
+        name: 'JU1088 / Boeing 737-800',
         imageSrc: '/image/airplanes/plane-2/plane2.jpg',
         imageDetail: '/image/airplanes/plane-2/0b815c4c4bec5fceee64ce8aa32c8bf0.jpg',
     },
     {
         id: 3,
-        name: 'JU1015 / Боинг 737-800',
+        name: 'JU1015 / Boeing 737-800',
         imageSrc: '/image/airplanes/plane-3/plane3.jpg',
         imageDetail: '/image/airplanes/plane-3/4a41a048773c35e79fd1ae099224401e.jpg',
     },
     {
         id: 4,
-        name: 'EI-MNG / Боинг 737-MAX8',
+        name: 'EI-MNG / Boeing 737-MAX8',
         imageSrc: '/image/airplanes/plane-4/plane4.jpg',
         imageDetail: '/image/airplanes/plane-4/29cd7f57cab47d3acb101f3d021e869f.jpg',
     },
     {
         id: 5,
-        name: 'JU1021 / Боинг 767-300ER',
+        name: 'JU1021 / Boeing 767-300ER',
         imageSrc: '/image/airplanes/plane-5/plane5.jpg',
         imageDetail: '/image/airplanes/plane-5/7d2d313bf023c58a8a3ae77677777837.jpg',
     },
     {
         id: 6,
-        name: 'JU1109 / Боинг 757-222 Cargo',
+        name: 'JU1109 / Boeing 757-222 Cargo',
         imageSrc: '/image/airplanes/plane-6/plane6.jpg',
         imageDetail: '/image/airplanes/plane-6/a24833f8f70495bc448dd8ab2d2da981.jpg',
     },
@@ -52,19 +58,20 @@ const Airplanes = ({ className }) => {
 
     return (
         <div className={`min-h-screen w-full mx-0 ${className}`}>
-            <div className="mx-auto max-w-2xl px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8">
+            <div className="mx-auto max-w-2xl px-4 pb-16 pt-20 sm:px-6 sm:pb-24 lg:pt-12 lg:max-w-7xl lg:px-8">
                 <div className="overflow-hidden">
                     <div className="mx-auto px-6 lg:px-8">
-                        <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
-                            <div className="relative w-full lg:max-w-sm lg:shrink-0 xl:max-w-md">
-                                <h1 className="text-white text-5xl font-semibold tracking-tight text-justify sm:text-7xl">
+                        <div className="mx-auto max-w-2xl gap-x-7 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
+                            <div className="relative w-full lg:max-w-md lg:shrink-0 xl:max-w-md">
+                                <h1 className="text-white text-5xl font-semibold tracking-tight text-justify sm:text-7xl w-full">
                                     Boeing 787-9
                                 </h1>
+                                <img src="/image/airplanes/plane-7/plane7.png" alt="" className='w-full'/>
                                 <p className="mt-8 text-justify text-lg font-medium text-white sm:max-w-md sm:text-xl/8 lg:max-w-none">
                                     {t('boeing787desc')}
                                 </p>
                             </div>
-                            <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+                            <div className="mt-4 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
                                 <div className="ml-auto w-56 flex-none space-y-8 pt-16 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-none xl:pt-80">
                                     <div className="relative">
                                         <img
@@ -133,7 +140,7 @@ const Airplanes = ({ className }) => {
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 
                 <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div className="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
                         <Dialog.Panel
                             transition
                             className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in sm:my-8 sm:w-full sm:max-w-2xl sm:p-6 data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95"
