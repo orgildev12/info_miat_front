@@ -194,7 +194,7 @@ const Destinations = () => {
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
-            image: "/image/main/_MG_9388KhermenTsavUmnugovi.jpg",
+            image: "/image/main/MG_9388KhermenTsavUmnugovi.jpg",
             geometry: { type: "Point", coordinates: [104.416, 43.5708] }
         },
         {
