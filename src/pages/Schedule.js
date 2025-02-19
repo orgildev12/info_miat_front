@@ -35,7 +35,7 @@ const photos = {
     ],
     domestic: [
         { img: "/image/main/AdobeStock_227948748.jpg" },
-        { img: "/image/main/_MG_9388KhermenTsavUmnugovi.jpg" },
+        { img: "/image/main/MG_9388KhermenTsavUmnugovi.jpg" },
         { img: "/image/main/OtgontengerZavhan.jpg" },
         { img: "/image/main/AltanHuhiiHovd.jpg" },
         { img: "/image/main/photo_2024-02-14_15-53-24.jpg" },
@@ -46,7 +46,7 @@ const photos = {
 }
 
 const mongoliaschedules = {
-    "hovd": {
+    "khovd": {
         "to": [
             {
                 "flightno": "OM031",
