@@ -19,17 +19,25 @@ let slides = [
         title: ""
     },
     {
+        img: "/background-image/livery/6.webp",
+        title: ""
+    },
+    {
         img: "/background-image/livery/2.webp",
+        title: ""
+    },
+    {
+        img: "/background-image/livery/5.webp",
         title: ""
     },
     {
         img: "/background-image/livery/3.webp",
         title: ""
     },
-    {
-        img: "/background-image/livery/4.webp",
-        title: ""
-    }
+    // {
+    //     img: "/background-image/livery/4.webp",
+    //     title: ""
+    // }
 ];
 
 const planes = [

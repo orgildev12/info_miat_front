@@ -474,7 +474,7 @@ const Destinations = () => {
         // Add labels and controls
         cont.children.push(am5.Label.new(root, {
             centerY: am5.p50,
-            text: t('connected'),
+            text: t('scheduled_routes'),
             fill: am5.color(0xffffff),
             fontWeight: "bold",
             fontSize: 12,
@@ -491,7 +491,7 @@ const Destinations = () => {
         cont.children.push(
             am5.Label.new(root, {
                 centerY: am5.p50,
-                text: t('routes'),
+                text: t('codeshare_routes'),
                 fill: am5.color(0xffffff),
                 fontWeight: "bold",
                 fontSize: 12,
@@ -748,13 +748,13 @@ const Destinations = () => {
         // visible city circles
         citySeries.bullets.push(function (root, series, dataItem) {
             let container = am5.Container.new(root, {});
-
+            const data = dataItem.dataContext;
             let circle = container.children.push(
                 am5.Circle.new(root, {
                     radius: 6,
                     tooltipText: "{title}",
                     tooltipY: 0,
-                    fill: am5.color("#2652fb"), // 6 тэмдэгттэй HEX
+                    fill: data.id === 'ulaanbaatar' ? am5.color("#FFD700") : am5.color("#2652fb"), // 6 тэмдэгттэй HEX
                     stroke: am5.color(0xffffff), // 6 тэмдэгттэй HEX
                     strokeOpacity: 0.1,
                     // "scale": 0.7,
@@ -805,14 +805,16 @@ const Destinations = () => {
                 var data = dataItem.dataContext;
                 setChoosedCountry(data);
                 setShowNavigate(true)
-                point1.setAll({
-                    longitude: data.geometry.coordinates[0],
-                    latitude: data.geometry.coordinates[1]
-                })
-                point3.setAll({
-                    longitude: data.geometry.coordinates[0],
-                    latitude: data.geometry.coordinates[1]
-                })
+                if (data.id !== 'ulaanbaatar') {
+                    point1.setAll({
+                        longitude: data.geometry.coordinates[0],
+                        latitude: data.geometry.coordinates[1]
+                    })
+                    point3.setAll({
+                        longitude: data.geometry.coordinates[0],
+                        latitude: data.geometry.coordinates[1]
+                    })
+                }
             });
 
             return am5.Bullet.new(root, {
@@ -938,19 +940,22 @@ const Destinations = () => {
             circle.events.on("click", function (event) {
                 var dataItem = event.target.dataItem;
                 var data = dataItem.dataContext;
-                planeDataItemMn.set("positionOnLine", 0);
-                lineDataItemMn = lineSeriesMn.pushDataItem({
-                    geometry: createArcLine({
-                        latitude: point1Mn.get("latitude"),
-                        longitude: point1Mn.get("longitude")
-                    }, {
-                        longitude: data.geometry.coordinates[0],
-                        latitude: data.geometry.coordinates[1]
-                    }, 0.1)
-                });
-                planeDataItemMn.set("lineDataItem", lineDataItemMn);
-                // planeDataItem.clear();
-                resetPlaneAnimationMn()
+                if (data.id !== 'ulaanbaatar') {
+                    planeDataItemMn.set("positionOnLine", 0);
+                    lineDataItemMn = lineSeriesMn.pushDataItem({
+                        geometry: createArcLine({
+                            latitude: point1Mn.get("latitude"),
+                            longitude: point1Mn.get("longitude")
+                        }, {
+                            longitude: data.geometry.coordinates[0],
+                            latitude: data.geometry.coordinates[1]
+                        }, 0.1)
+                    });
+                    planeDataItemMn.set("lineDataItem", lineDataItemMn);
+                    // planeDataItem.clear();
+                    resetPlaneAnimationMn()
+                }
+
                 setChoosedCountry(data);
                 setShowNavigate(true)
             });
@@ -1065,7 +1070,7 @@ const Destinations = () => {
                 planeDataItem.dataContext.prevPosition = value;
             });
         }
-        
+
         function resetPlaneAnimationMn() {
             planeDataItemMn.animate({
                 key: "positionOnLine",

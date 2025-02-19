@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { CarouselSimple } from '../components/features/CarouselSimple';
 
 const days = {
     1: 'monday',
@@ -15,6 +16,34 @@ const flightstype = [
     'international',
     'domestic'
 ]
+
+const photos = {
+    international: [
+        { img: '/image/international/Bangkok_360x150.png' },
+        { img: '/image/international/Beijing_360x150.png' },
+        { img: '/image/international/Busan_360x150.png' },
+        { img: '/image/international/business_class.png' },
+        { img: '/image/international/Frankfurt_360x150.png' },
+        { img: '/image/international/Guangzhou_360x150.png' },
+        { img: '/image/international/Ho_Chi_Minh_360x150.png' },
+        { img: '/image/international/Hongkong_360x150.png' },
+        { img: '/image/international/Istanbul_360x150.png' },
+        { img: '/image/international/Osaka_360x150.png' },
+        { img: '/image/international/Phuket_360x150.png' },
+        { img: '/image/international/Seoul_360x150.png' },
+        { img: '/image/international/Tokyo_360x150.png' },
+    ],
+    domestic: [
+        { img: "/image/main/AdobeStock_227948748.jpg" },
+        { img: "/image/main/_MG_9388KhermenTsavUmnugovi.jpg" },
+        { img: "/image/main/OtgontengerZavhan.jpg" },
+        { img: "/image/main/AltanHuhiiHovd.jpg" },
+        { img: "/image/main/photo_2024-02-14_15-53-24.jpg" },
+        { img: "/image/main/IMG_4013TurgenMountainsUvs.jpg" },
+        { img: "/image/main/DJI_0077.jpg" },
+        { img: "/image/main/BagaturgeniiuulsBayanUlgii.jpg" },
+    ]
+}
 
 const mongoliaschedules = {
     "hovd": {
@@ -1187,6 +1216,10 @@ const Schedule = () => {
                     </button>
                 })}
             </div>
+            <div className='mt-2'>
+                <CarouselSimple slides={photos[selectedtabmain]} />
+            </div>
+
 
             <div className='p-3'>
                 <div className='flex border-b border-b-primary-500 flex-wrap'>
