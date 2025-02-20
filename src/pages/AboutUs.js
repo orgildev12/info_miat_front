@@ -19,7 +19,7 @@ let slides = [
         title: ""
     },
     {
-        img: "/background-image/livery/6.webp",
+        img: "/background-image/livery/7.jpg",
         title: ""
     },
     {
@@ -27,7 +27,7 @@ let slides = [
         title: ""
     },
     {
-        img: "/background-image/livery/5.webp",
+        img: "/background-image/livery/8.jpg",
         title: ""
     },
     {
@@ -73,6 +73,10 @@ const planes = [
         image: "/logos/airlines/korean-air.png",
         name: "korean-air",
     },
+    {
+        image: "/logos/airlines/airchina.png",
+        name: "airchina",
+    },
 ]
 
 const Home = () => {
@@ -104,7 +108,7 @@ const Home = () => {
                             <img
                                 alt=""
                                 src="/image/main/miat-7.jpg"
-                                className="mt-10 aspect-[6/5] w-full max-w-lg rounded-2xl object-cover sm:mt-8 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-12"
+                                className="mt-2 aspect-[6/4] w-full max-w-lg rounded-2xl object-cover sm:mt-4 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2 xl:mt-5"
                             />
                         </div>
                     </div>
@@ -178,44 +182,27 @@ const Home = () => {
                 <div className="-mt-[4rem] py-8 overflow-hidden sm:py-16 bg-background1 bg-cover rounded-[4rem] z-10 relative">
                     <div className="mx-auto max-w-7xl px-6 lg:flex lg:px-8">
                         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 lg:mx-0 lg:min-w-full lg:max-w-none lg:flex-none lg:gap-y-8">
-                            <div className="lg:col-end-1 lg:w-full lg:max-w-lg lg:pb-8">
-                                <h2 className="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                                    MIAT Mongolian Airlines
-                                </h2>
-                                <p className="mt-6 text-xl/8 text-gray-600 text-justify">
-                                    {t('collaborates')}
-                                </p>
-                            </div>
-                            <div className="flex flex-wrap items-start justify-end gap-6 sm:gap-8 lg:contents">
-                                <div className="w-0 flex-auto lg:ml-auto lg:w-auto lg:flex-none lg:self-end">
+                            <div className="flex justify-center flex-wrap gap-4">
+                                <div className="order-first w-64 lg:w-auto flex sm:items-end">
                                     <img
                                         alt=""
-                                        src="/image/main/miat-1.jpg"
-                                        className="aspect-[7/5] w-[37rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                                        src="/image/main/miat-11.jpg"
+                                        className="aspect-[5/4] sm:w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover w-full"
                                     />
                                 </div>
-                                <div className="contents lg:col-span-2 lg:col-end-2 lg:ml-auto lg:flex lg:w-[37rem] lg:items-start lg:justify-end lg:gap-x-8">
-                                    <div className="order-first flex w-64 flex-none justify-end self-end lg:w-auto">
-                                        <img
-                                            alt=""
-                                            src="/image/main/miat-11.jpg"
-                                            className="aspect-[4/3] w-[24rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
-                                        />
-                                    </div>
-                                    <div className="flex w-96 flex-auto justify-end lg:w-auto lg:flex-none">
-                                        <img
-                                            alt=""
-                                            src="/image/main/miat-8.jpg"
-                                            className="aspect-[7/5] w-[37rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover"
-                                        />
-                                    </div>
-                                    <div className="hidden sm:block sm:w-0 sm:flex-auto lg:w-auto lg:flex-none">
-                                        <img
-                                            alt=""
-                                            src="/image/main/miat-4.jpg"
-                                            className="aspect-[4/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
-                                        />
-                                    </div>
+                                <div className="w-96 lg:w-auto">
+                                    <img
+                                        alt=""
+                                        src="/image/main/miat-8.jpg"
+                                        className="aspect-[7/5] sm:w-[30rem] max-w-none flex-none rounded-2xl bg-gray-50 object-cover w-full"
+                                    />
+                                </div>
+                                <div className="w-auto">
+                                    <img
+                                        alt=""
+                                        src="/image/main/miat-4.jpg"
+                                        className="aspect-[5/3] w-[24rem] max-w-none rounded-2xl bg-gray-50 object-cover"
+                                    />
                                 </div>
                             </div>
                         </div>

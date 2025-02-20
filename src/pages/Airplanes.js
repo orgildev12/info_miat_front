@@ -45,6 +45,12 @@ const products = [
         imageSrc: '/image/airplanes/plane-6/plane6.jpg',
         imageDetail: '/image/airplanes/plane-6/a24833f8f70495bc448dd8ab2d2da981.jpg',
     },
+    {
+        id: 8,
+        name: 'CRJ-700',
+        imageSrc: '/image/airplanes/plane-8/8.jpg',
+        imageDetail: '/image/airplanes/plane-8/detail.jpg',
+    },
 ]
 
 const Airplanes = ({ className }) => {
@@ -66,7 +72,7 @@ const Airplanes = ({ className }) => {
                                 <h1 className="text-white text-5xl font-semibold tracking-tight text-justify sm:text-7xl w-full">
                                     Boeing 787-9
                                 </h1>
-                                <img src="/image/airplanes/plane-7/plane7.png" alt="" className='w-full'/>
+                                <img src="/image/airplanes/plane-7/plane7.png" alt="" className='w-full' />
                                 <p className="mt-8 text-justify text-lg font-medium text-white sm:max-w-md sm:text-xl/8 lg:max-w-none">
                                     {t('boeing787desc')}
                                 </p>
@@ -104,14 +110,15 @@ const Airplanes = ({ className }) => {
                         </div>
                     </div>
                 </div>
-                <div className='text-white text-2xl font-semibold'>
+                <div className='text-white text-5xl font-semibold tracking-tight text-center mt-4'>
                     {t('airplanes')}
                 </div>
                 <hr />
-                <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
+                <img src="/image/airplanes/park.png" alt="" className='mx-auto max-w-3xl mt-8' />
+                <div className="mt-6 flex flex-wrap gap-x-8 gap-y-8 sm:gap-y-10 justify-center">
                     {products.map((product) => (
                         <div
-                            key={product.id} className="group relative rounded-lg"
+                            key={product.id} className="group relative rounded-lg max-w-[250px]"
                             onClick={() => {
                                 setOpen(true)
                                 setChoosed(product)
@@ -136,7 +143,7 @@ const Airplanes = ({ className }) => {
                     ))}
                 </div>
             </div>
-            <Dialog open={open} onClose={setOpen} className="relative z-30">
+            <Dialog open={open} onClose={setOpen} className="relative z-50">
                 <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
 
                 <div className="fixed inset-0 z-10 w-screen overflow-y-auto">

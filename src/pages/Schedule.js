@@ -226,20 +226,22 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM051",
-                direction: "ULO-MXV",
+                direction: "ULO-MXV-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
                 "departure": "14:35",
                 "arrival": "16:45",
+                "stop": 1,
                 "effectivedate": "2025.04.01 - 2025.05.30"
             },
             {
                 "flightno": "OM051",
-                direction: "ULO-MXV",
+                direction: "ULO-MXV-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
                 "departure": "14:35",
                 "arrival": "16:45",
+                "stop": 1,
                 "effectivedate": "2025.09.02 - 2025.10.24"
             }
         ]
@@ -286,20 +288,22 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM061",
-                direction: "ULZ-LTI",
+                direction: "ULZ-LTI-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "15:40",
                 "arrival": "16:20",
+                "stop": 1,
                 "effectivedate": "2025.03.31 - 2025.05.29"
             },
             {
                 "flightno": "OM061",
-                direction: "ULZ-LTI",
+                direction: "ULZ-LTI-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "15:40",
                 "arrival": "16:20",
+                "stop": 1,
                 "effectivedate": "2025.09.01 - 2025.10.23"
             }
         ]
@@ -424,121 +428,121 @@ const mongoliaschedules = {
             }
         ]
     },
-    "dalanzadgad": {
-        "to": [
-            {
-                "flightno": "OM091",
-                direction: "UBN-DLZ",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [3],
-                "departure": "13:35",
-                "arrival": "14:35",
-                "effectivedate": "2025.04.02 - 2025.10.22"
-            },
-            {
-                "flightno": "OM091",
-                direction: "UBN-DLZ",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [7],
-                "departure": "07:50",
-                "arrival": "08:50",
-                "effectivedate": "2025.03.30 - 2025.05.25"
-            },
-            {
-                "flightno": "OM091",
-                direction: "UBN-DLZ",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [7],
-                "departure": "13:35",
-                "arrival": "14:35",
-                "effectivedate": "2025.06.01 - 2025.08.31"
-            },
-            {
-                "flightno": "OM091",
-                direction: "UBN-DLZ",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [7],
-                "departure": "07:50",
-                "arrival": "08:50",
-                "effectivedate": "2025.09.07 - 2025.10.19"
-            },
-            {
-                "flightno": "OM091",
-                direction: "UBN-DLZ",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [5],
-                "departure": "18:30",
-                "arrival": "19:30",
-                "effectivedate": "2025.06.06 - 2025.08.29"
-            },
-            {
-                "flightno": "OM091",
-                direction: "UBN-DLZ",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [6],
-                "departure": "13:35",
-                "arrival": "14:35",
-                "effectivedate": "2025.06.07 - 2025.08.30"
-            }
-        ],
-        "from": [
-            {
-                "flightno": "OM092",
-                direction: "DLZ-UBN",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [3],
-                "departure": "15:15",
-                "arrival": "16:20",
-                "effectivedate": "2025.04.02 - 2025.10.22"
+    // "dalanzadgad": {
+    //     "to": [
+    //         {
+    //             "flightno": "OM091",
+    //             direction: "UBN-DLZ",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [3],
+    //             "departure": "13:35",
+    //             "arrival": "14:35",
+    //             "effectivedate": "2025.04.02 - 2025.10.22"
+    //         },
+    //         {
+    //             "flightno": "OM091",
+    //             direction: "UBN-DLZ",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [7],
+    //             "departure": "07:50",
+    //             "arrival": "08:50",
+    //             "effectivedate": "2025.03.30 - 2025.05.25"
+    //         },
+    //         {
+    //             "flightno": "OM091",
+    //             direction: "UBN-DLZ",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [7],
+    //             "departure": "13:35",
+    //             "arrival": "14:35",
+    //             "effectivedate": "2025.06.01 - 2025.08.31"
+    //         },
+    //         {
+    //             "flightno": "OM091",
+    //             direction: "UBN-DLZ",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [7],
+    //             "departure": "07:50",
+    //             "arrival": "08:50",
+    //             "effectivedate": "2025.09.07 - 2025.10.19"
+    //         },
+    //         {
+    //             "flightno": "OM091",
+    //             direction: "UBN-DLZ",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [5],
+    //             "departure": "18:30",
+    //             "arrival": "19:30",
+    //             "effectivedate": "2025.06.06 - 2025.08.29"
+    //         },
+    //         {
+    //             "flightno": "OM091",
+    //             direction: "UBN-DLZ",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [6],
+    //             "departure": "13:35",
+    //             "arrival": "14:35",
+    //             "effectivedate": "2025.06.07 - 2025.08.30"
+    //         }
+    //     ],
+    //     "from": [
+    //         {
+    //             "flightno": "OM092",
+    //             direction: "DLZ-UBN",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [3],
+    //             "departure": "15:15",
+    //             "arrival": "16:20",
+    //             "effectivedate": "2025.04.02 - 2025.10.22"
 
-            },
-            {
-                "flightno": "OM092",
-                direction: "DLZ-UBN",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [7],
-                "departure": "09:30",
-                "arrival": "10:35",
-                "effectivedate": "2025.03.30 - 2025.05.25"
-            },
-            {
-                "flightno": "OM092",
-                direction: "DLZ-UBN",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [7],
-                "departure": "15:15",
-                "arrival": "16:20",
-                "effectivedate": "2025.06.01 - 2025.08.31"
-            },
-            {
-                "flightno": "OM092",
-                direction: "DLZ-UBN",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [7],
-                "departure": "09:30",
-                "arrival": "10:35",
-                "effectivedate": "2025.09.07 - 2025.10.19"
-            },
-            {
-                "flightno": "OM092",
-                direction: "DLZ-UBN",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [5],
-                "departure": "20:10",
-                "arrival": "21:15",
-                "effectivedate": "2025.06.06 - 2025.08.29"
-            },
-            {
-                "flightno": "OM092",
-                direction: "DLZ-UBN",
-                "flight": "CRJ700 JU-1700",
-                "frequency": [6],
-                "departure": "15:15",
-                "arrival": "16:20",
-                "effectivedate": "2025.06.07 - 2025.08.30"
-            }
-        ]
-    }
+    //         },
+    //         {
+    //             "flightno": "OM092",
+    //             direction: "DLZ-UBN",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [7],
+    //             "departure": "09:30",
+    //             "arrival": "10:35",
+    //             "effectivedate": "2025.03.30 - 2025.05.25"
+    //         },
+    //         {
+    //             "flightno": "OM092",
+    //             direction: "DLZ-UBN",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [7],
+    //             "departure": "15:15",
+    //             "arrival": "16:20",
+    //             "effectivedate": "2025.06.01 - 2025.08.31"
+    //         },
+    //         {
+    //             "flightno": "OM092",
+    //             direction: "DLZ-UBN",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [7],
+    //             "departure": "09:30",
+    //             "arrival": "10:35",
+    //             "effectivedate": "2025.09.07 - 2025.10.19"
+    //         },
+    //         {
+    //             "flightno": "OM092",
+    //             direction: "DLZ-UBN",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [5],
+    //             "departure": "20:10",
+    //             "arrival": "21:15",
+    //             "effectivedate": "2025.06.06 - 2025.08.29"
+    //         },
+    //         {
+    //             "flightno": "OM092",
+    //             direction: "DLZ-UBN",
+    //             "flight": "CRJ700 JU-1700",
+    //             "frequency": [6],
+    //             "departure": "15:15",
+    //             "arrival": "16:20",
+    //             "effectivedate": "2025.06.07 - 2025.08.30"
+    //         }
+    //     ]
+    // }
 }
 
 
@@ -1152,6 +1156,9 @@ const Schedule = () => {
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
                         {t('arrival')}
                     </th>
+                    {selectedtabmain !== 'international' && <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
+                        {t('stop')}
+                    </th>}
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-80">
                         {t('effectivedate')}
                     </th>
@@ -1180,6 +1187,9 @@ const Schedule = () => {
                         </td>
                         <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.departure}</td>
                         <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.arrival}</td>
+                        {selectedtabmain !== 'international' &&
+                            <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.stop ?? '0'}</td>
+                        }
                         <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.effectivedate}</td>
                     </tr>
                 ))}
@@ -1193,7 +1203,7 @@ const Schedule = () => {
     return (
         <div className="px-4 sm:px-6 lg:px-8 pb-16 pt-8 my-16 min-h-[80vh]">
             <div className="mx-auto max-w-4xl text-center mb-8">
-                <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-black sm:text-5xl">
+                <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-black sm:text-5xl uppercase">
                     {t('summer_flight')}
                 </p>
             </div>

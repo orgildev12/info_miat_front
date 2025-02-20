@@ -193,7 +193,15 @@ const Destinations = () => {
             title: t('dalanzadgad'),
             country: "Mongolia",
             distance: "N/A",
-            duration: "N/A",
+            duration: "49 minutes",
+            to: {
+                distance: "533 km",
+                duration: "49 minutes",
+            },
+            from: {
+                distance: "578 km",
+                duration: "49 minutes",
+            },
             image: "/image/main/MG_9388KhermenTsavUmnugovi.jpg",
             geometry: { type: "Point", coordinates: [104.416, 43.5708] }
         },
@@ -203,6 +211,14 @@ const Destinations = () => {
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
+            to: {
+                distance: "817 km",
+                duration: "1 hour, 16 minutes",
+            },
+            from: {
+                distance: "817 km",
+                duration: "1 hour, 5 minutes",
+            },
             image: "/image/main/OtgontengerZavhan.jpg",
             geometry: { type: "Point", coordinates: [97.7694, 47.7417] }
         },
@@ -212,6 +228,14 @@ const Destinations = () => {
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
+            to: {
+                distance: "1228 km",
+                duration: "1 hour, 52 minutes",
+            },
+            from: {
+                distance: "1198 km",
+                duration: "1 hour, 33 minutes",
+            },
             image: "/image/main/AltanHuhiiHovd.jpg",
             geometry: { type: "Point", coordinates: [91.6419, 48.0056] }
         },
@@ -221,6 +245,14 @@ const Destinations = () => {
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
+            to: {
+                distance: "861 km",
+                duration: "1 hour, 22 minutes",
+            },
+            from: {
+                distance: "889 km",
+                duration: "1 hour, 13 minutes",
+            },
             image: "/image/main/photo_2024-02-14_15-53-24.jpg",
             geometry: { type: "Point", coordinates: [96.2491, 46.3722] }
         },
@@ -230,6 +262,14 @@ const Destinations = () => {
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
+            to: {
+                distance: "1150 km",
+                duration: "1 hour, 46 minutes",
+            },
+            from: {
+                distance: "1176 km",
+                duration: "1 hour, 31 minutes",
+            },
             image: "/image/main/IMG_4013TurgenMountainsUvs.jpg",
             geometry: { type: "Point", coordinates: [92.0667, 49.9811] }
         },
@@ -239,6 +279,14 @@ const Destinations = () => {
             country: "Mongolia",
             distance: "N/A",
             duration: "N/A",
+            to: {
+                distance: "591 km",
+                duration: "59 minutes",
+            },
+            from: {
+                distance: "593 km",
+                duration: "49 minutes",
+            },
             image: "/image/main/DJI_0077.jpg",
             geometry: { type: "Point", coordinates: [100.155, 49.6342] }
         },
