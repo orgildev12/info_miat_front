@@ -301,6 +301,34 @@ const Destinations = () => {
         },
     ];
 
+    const overtime = {
+        beijing: {
+            frankfurt: "10 hours",
+            istanbul: "11 hours, 50 minutes",
+        },
+        frankfurt: {
+            beijing: "2 hours, 45 minutes",
+            seoul: "7 hours, 40 minutes",
+            tokyo: "4 hours, 10 minutes",
+            hongkong: "2 hours",
+        },
+        seoul: {
+            frankfurt: "22 hours, 40 minutes",
+            istanbul: "17 hours",
+        },
+        tokyo: {
+            frankfurt: "12 hours",
+            istanbul: "12 hours, 40 minutes",
+        },
+        hongkong: {
+            frankfurt: "16 hours"
+        },
+        istanbul: {
+            beijing: "19 hours, 55 minutes",
+            seoul: "2 hours, 20 minutes",
+            tokyo: "3 hours, 30 minutes",
+        },
+    };
     const subcities = [
         {
             id: "amsterdam",
@@ -563,7 +591,6 @@ const Destinations = () => {
             paddingTop: 1,
             paddingRight: 1,
             paddingLeft: 2,
-            width: 170,
             x: am5.p100,
             y: 100,
             centerX: am5.p100,
@@ -1358,51 +1385,118 @@ const Destinations = () => {
                                 </div>}
                             </div>
                             <div>
-                                {point3data.id !== 'ulaanbaatar' && <>
-                                    <div className='absolute right-[20%] pt-3 font-bold'>
-                                        {t(point3data.id)}
-                                    </div>
-                                    <div className='text-xs absolute right-[10%] bg-black/30 p-1 bottom-44 rounded backdrop-blur-md'>
-                                        <div className='absolute -top-2 left-[50%]'>
-                                            <span className="relative flex h-3 w-3 mx-auto -z-[1]">
-                                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                                <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
-                                            </span>
+                                {
+                                    point3data.id !== 'ulaanbaatar' ? <>
+                                        <div className='text-right pt-3 font-bold'>
+                                            {t(point3data.id)}
                                         </div>
-                                        <div className='flex'>
-                                            <div>Distance: &nbsp;</div>
-                                            <div className='font-medium'>{point3data.distance}</div>
+                                        <div className='relative'>
+                                            <div className='text-xs absolute right-[5%] bg-black/30 p-1 top-14 rounded backdrop-blur-md'>
+                                                <div className='absolute -top-2 left-[50%]'>
+                                                    <span className="relative flex h-3 w-3 mx-auto -z-[1]">
+                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                    </span>
+                                                </div>
+                                                <div className='flex'>
+                                                    <div>Distance: &nbsp;</div>
+                                                    <div className='font-medium'>{point3data.distance}</div>
+                                                </div>
+                                                <div className='text-justify'>Total travel time: <p className='font-medium'>
+                                                    {point3data.duration}
+                                                </p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className='text-justify'>Total travel time: <p className='font-medium'>
-                                            {point3data.duration}
-                                        </p>
+                                        <img src="/logos/some/flight-3.png" alt="" className='h-64' />
+                                        {overtime?.[choosedCountry.id]?.[point3data.id] && <div className="relative">
+                                            <div className='text-xs absolute bg-black/30 bottom-32 p-1 rounded backdrop-blur-md'>
+                                                <div className='text-justify'>
+                                                    Stopover time:
+                                                    <p className='font-medium'>
+                                                        {overtime?.[choosedCountry.id]?.[point3data.id]}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>}
+                                        <div className='relative bottom-[8rem] text-right pr-20 font-bold text-lg'>
+                                            {t('ulaanbaatar')}
                                         </div>
-                                    </div>
-                                </>}
+                                        <div className='font-bold -mt-8'>
+                                            {t(choosedCountry.id)}
+                                        </div>
+                                        <div className='relative'>
+                                            <div className='text-xs absolute right-[45%] bg-black/30 bottom-8 p-1 rounded backdrop-blur-md'>
+                                                <div className='absolute -top-2 left-[50%]'>
+                                                    <span className="relative flex h-3 w-3 mx-auto -z-[1]">
+                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                    </span>
+                                                </div>
+                                                <div className='flex'>
+                                                    <div>Distance: &nbsp;</div>
+                                                    <div className='font-medium'>{choosedCountry.distance}</div>
+                                                </div>
+                                                <div className='text-justify'>Total travel time: <p className='font-medium'>
+                                                    {choosedCountry.duration}
+                                                </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </> : <>
+                                        <div className='text-right -mb-4 font-bold'>
+                                            {t('ulaanbaatar')}
+                                        </div>
+                                        {choosedCountry.to && <div className='relative'>
+                                            <div className='text-xs absolute top-6 bg-black/30 p-1 rounded backdrop-blur-md'>
+                                                <div className='absolute -top-2 left-[50%]'>
+                                                    <span className="relative flex h-3 w-3 mx-auto -z-[1]">
+                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                    </span>
+                                                </div>
+                                                <div className='font-medium'>{t(choosedCountry.id)}&rarr;{t('ulaanbaatar')}</div>
+                                                <hr />
+                                                <div className='flex'>
+                                                    <div>Distance: &nbsp;</div>
+                                                    <div className='font-medium'>{choosedCountry.to.distance}</div>
+                                                </div>
+                                                <div className='text-justify'>Total travel time: <p className='font-medium'>
+                                                    {choosedCountry.to.duration}
+                                                </p>
+                                                </div>
+                                            </div>
+                                        </div>}
+                                        <img src="/logos/some/flight2point.png" alt="" className='h-64' />
+                                        <div className='font-bold'>
+                                            {t(choosedCountry.id)}
+                                        </div>
+                                        {(choosedCountry.from || choosedCountry.distance) && <div className='relative'>
+                                            <div className='text-xs absolute right-[30%] bg-black/30 bottom-12 p-1 rounded backdrop-blur-md'>
+                                                <div className='absolute -top-2 left-[50%]'>
+                                                    <span className="relative flex h-3 w-3 mx-auto -z-[1]">
+                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                    </span>
+                                                </div>
+                                                {choosedCountry.from && <>
+                                                    <div className='font-medium'>{t('ulaanbaatar')}&rarr;{t(choosedCountry.id)}</div>
+                                                    <hr />
+                                                </>}
+                                                <div className='flex'>
+                                                    <div>Distance: &nbsp;</div>
+                                                    <div className='font-medium'>{choosedCountry.from ? choosedCountry.from.distance : choosedCountry.distance}</div>
+                                                </div>
+                                                <div className='text-justify'>Total travel time: <p className='font-medium'>
+                                                    {choosedCountry.from ? choosedCountry.from.duration : choosedCountry.duration}
+                                                </p>
+                                                </div>
+                                            </div>
+                                        </div>}
+                                    </>
+                                }
 
-                                <img src="/logos/some/flight-2.png" alt="" className='h-64' />
-                                <div className='relative bottom-[7rem] font-bold'>
-                                    {t('ulaanbaatar')}
-                                </div>
-                                <div className='font-bold text-right -mt-8'>
-                                    {t(choosedCountry.id)}
-                                </div>
-                                <div className='text-xs absolute right-[40%] bg-black/30 bottom-12 p-1 rounded backdrop-blur-md'>
-                                    <div className='absolute -top-2 left-[50%]'>
-                                        <span className="relative flex h-3 w-3 mx-auto -z-[1]">
-                                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                            <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
-                                        </span>
-                                    </div>
-                                    <div className='flex'>
-                                        <div>Distance: &nbsp;</div>
-                                        <div className='font-medium'>{choosedCountry.distance}</div>
-                                    </div>
-                                    <div className='text-justify'>Total travel time: <p className='font-medium'>
-                                        {choosedCountry.duration}
-                                    </p>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
