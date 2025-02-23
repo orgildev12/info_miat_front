@@ -114,7 +114,7 @@ const Airplanes = ({ className }) => {
                     {t('airplanes')}
                 </div>
                 <hr />
-                <img src="/image/airplanes/park.png" alt="" className='mx-auto max-w-3xl mt-8 rounded-xl' />
+                <img src="/image/airplanes/park.png" alt="" className='mx-auto w-full mt-8 rounded-xl md:w-[70vw]' />
                 <div className="mt-6 flex flex-wrap gap-x-8 gap-y-8 sm:gap-y-10 justify-center">
                     {products.map((product) => (
                         <div
