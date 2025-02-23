@@ -218,7 +218,7 @@ export default function Bonus() {
                 </p>
 
                 {/* xs to lg */}
-                <div className="mx-auto mt-4 max-w-md space-y-8 sm:mt-12 lg:hidden">
+                <div className="mx-auto mt-4 max-w-md space-y-4 sm:mt-12 lg:hidden">
                     {tiers.map((tier) => (
                         <section
                             key={tier.id}
@@ -264,9 +264,9 @@ export default function Bonus() {
                         {tiers.map((tier) => tier.mostPopular) ? (
                             <div className="absolute inset-x-4 inset-y-0 -z-10 flex">
                                 <div
-                                    style={{ marginLeft: `${(tiers.findIndex((tier) => tier.mostPopular) + 1) * 20}%` }}
+                                    style={{ marginLeft: `${(tiers.findIndex((tier) => tier.mostPopular) + 2) * 16.6}%` }}
                                     aria-hidden="true"
-                                    className="flex w-1/5 px-4"
+                                    className="flex w-1/6 px-2"
                                 >
                                     <div className="w-full rounded-t-xl border-x border-t border-gray-900/10 bg-gray-400/5" />
                                 </div>
@@ -275,17 +275,17 @@ export default function Bonus() {
                         <table className="w-full table-fixed border-separate border-spacing-x-8 text-left">
                             <caption className="sr-only">Pricing plan comparison</caption>
                             <colgroup>
-                                <col className="w-1/5" />
-                                <col className="w-1/5" />
-                                <col className="w-1/5" />
-                                <col className="w-1/5" />
-                                <col className="w-1/5" />
+                                <col className="w-2/6" />
+                                <col className="w-1/6" />
+                                <col className="w-1/6" />
+                                <col className="w-1/6" />
+                                <col className="w-1/6" />
                             </colgroup>
                             <thead>
                                 <tr>
                                     <td />
                                     {tiers.map((tier) => (
-                                        <th key={tier.id} scope="col" className="px-6 pt-6 xl:px-8 xl:pt-8">
+                                        <th key={tier.id} scope="col" className="px-3 pt-3">
                                             <img src={tier.image} alt={tier.name} className='w-2/3 rounded mx-auto' />
                                         </th>
                                     ))}
@@ -297,7 +297,7 @@ export default function Bonus() {
                                         <span className="sr-only">Price</span>
                                     </th>
                                     {tiers.map((tier) => (
-                                        <td key={tier.id} className="px-6 pt-2 xl:px-8 text-center">
+                                        <td key={tier.id} className="px-6 pt-1 text-center">
                                             <div className="text-sm/7 font-semibold text-black">{t(tier.name)}</div>
                                         </td>
                                     ))}
@@ -309,22 +309,21 @@ export default function Bonus() {
                                                 scope="colgroup"
                                                 colSpan={5}
                                                 className={classNames(
-                                                    sectionIdx === 0 ? 'pt-8' : 'pt-16',
-                                                    'pb-4 text-sm/6 font-semibold text-black',
+                                                    'py-2 text-sm/5 font-semibold text-black',
                                                 )}
                                             >
                                                 {t(section.name)}
-                                                <div className="absolute inset-x-8 mt-4 h-px bg-gray-900/10" />
+                                                <div className="absolute inset-x-8 mt-2 h-px bg-gray-900/10" />
                                             </th>
                                         </tr>
                                         {section.features.map((feature) => (
                                             <tr key={feature.name}>
-                                                <th scope="row" className="py-4 text-sm/6 font-normal text-black">
+                                                <th scope="row" className="py-1 text-sm/6 font-normal text-black">
                                                     {t(feature.name)}
-                                                    <div className="absolute inset-x-8 mt-4 h-px bg-gray-900/5" />
+                                                    <div className="absolute inset-x-8 mt-1 h-px bg-gray-900/5" />
                                                 </th>
                                                 {tiers.map((tier) => (
-                                                    <td key={tier.id} className="px-6 py-4 xl:px-8">
+                                                    <td key={tier.id} className="px-3 py-1">
                                                         {typeof feature.tiers[tier.name] === 'string' ? (
                                                             <div className="text-center text-sm/6 text-gray-800">{feature.tiers[tier.name]}</div>
                                                         ) : (
@@ -334,10 +333,6 @@ export default function Bonus() {
                                                                 ) : (
                                                                     <MinusIcon aria-hidden="true" className="mx-auto w-5 h-5 text-gray-400" />
                                                                 )}
-
-                                                                <span className="sr-only">
-                                                                    {feature.tiers[tier.name] === true ? 'Included' : 'Not included'} in {tier.name}
-                                                                </span>
                                                             </>
                                                         )}
                                                     </td>

@@ -8,7 +8,7 @@ export const CarouselSimple = ({ slides, delay = 7 }) => {
         <div className="overflow-hidden relative">
             <div className="flex mask-gradient">
                 <div className={classNames(
-                    "mx-auto items-center gap-x-20",
+                    "mx-auto items-center gap-x-5",
                     "scroll reverse w-full flex"
                 )}>
                     {
@@ -20,14 +20,14 @@ export const CarouselSimple = ({ slides, delay = 7 }) => {
                                 className={
                                     classNames(item.className,
                                         'opacity-90 hover:opacity-100 cursor-pointer transition-opacity duration-300',
-                                        'object-contain h-[100px]'
+                                        'object-cover w-[400px] h-[100px] rounded-md aspect-[8/4]'
                                     )
                                 }
                             />
                         })
                     }
                     {
-                        slides.length < 10 &&  slides.map((item, index) => {
+                        slides.map((item, index) => {
                             return <img
                                 alt={item.name}
                                 src={item.img}
@@ -35,7 +35,7 @@ export const CarouselSimple = ({ slides, delay = 7 }) => {
                                 className={
                                     classNames(item.className,
                                         'opacity-90 hover:opacity-100 cursor-pointer transition-opacity duration-300',
-                                        'object-contain h-[100px]'
+                                        'object-cover w-[400px] h-[100px] rounded-md aspect-[8/4]'
                                     )
                                 }
                             />

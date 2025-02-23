@@ -137,7 +137,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM061",
-                direction: "UBN-LTI",
+                direction: "UBN-ULZ-LTI",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "15:40",
@@ -146,7 +146,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM061",
-                direction: "UBN-LTI",
+                direction: "UBN-ULZ-LTI",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "15:40",
@@ -372,7 +372,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM051",
-                direction: "UBN-MXV",
+                direction: "UBN-ULO-MXV",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
                 "departure": "14:35",
@@ -381,7 +381,7 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM051",
-                direction: "UBN-MXV",
+                direction: "UBN-ULO-MXV",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
                 "departure": "14:35",
@@ -1141,10 +1141,10 @@ const Schedule = () => {
         return <table className="min-w-full divide-y divide-gray-300">
             <thead>
                 <tr className='bg-white/50'>
-                    <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900 w-20">
+                    <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900 sm:w-35">
                         {t('flightno')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 sm:w-30">
                         {t('direction')}
                     </th>
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">

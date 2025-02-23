@@ -63,7 +63,7 @@ export const Carousel = ({ slides, delay = 7 }) => {
                         "
                         style={{ backgroundImage: `url(${s.img})` }}>
                         <div
-                            className="w-full h-full bg-gradient-to-br from-primary-500 via-transparent to-primary-500 justify-center items-center flex px-10"
+                            className="w-full h-full justify-center items-center flex px-10"
                             style={{ backgroundColor: "radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 90%)" }}
                         >
                             {(current === index) && <div className="max-w-4xl text-center transition ease-out duration-40 fadeInDown animated delay-[3000ms]">

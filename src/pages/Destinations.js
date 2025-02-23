@@ -558,6 +558,46 @@ const Destinations = () => {
             }
         });
 
+        const buttonSettings = {
+            paddingBottom: 1,
+            paddingTop: 1,
+            paddingRight: 1,
+            paddingLeft: 2,
+            width: 170,
+            x: am5.p100,
+            y: 100,
+            centerX: am5.p100,
+            dx: -10,
+        }
+        let button2 = root.container.children.push(
+            am5.Button.new(root, {
+                ...buttonSettings,
+                y: 140,
+                label: am5.Label.new(root, {
+                    text: t('domestic'),
+                    centerY: am5.p50,
+                    fontSize: 14
+                }),
+                // icon: am5.Graphics.new(root, plane2),
+                icon: am5.Picture.new(root, {
+                    interactive: true,
+                    src: "/image/main/mongolia.png",
+                    cursorOverStyle: "pointer",
+                    width: 50,
+                    centerY: am5.p50  // Center vertically
+                }),
+                cursorOverStyle: "pointer",
+            })
+        );
+
+        button2.get("background").setAll({
+            fill: am5.color(0x000000),
+            fillOpacity: 0.4
+        });
+
+        button2.events.on("click", function () {
+            gotoMongolia()
+        });
 
         let zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
         zoomControl.homeButton.set("visible", true);
@@ -581,33 +621,7 @@ const Destinations = () => {
             var dataItem = ev.target.dataItem;
             var data = dataItem.dataContext;
             if (data.id === 'MN') {
-                setChoosedCountry({})
-                var zoomAnimation = polygonSeries.zoomToDataItem(dataItem);
-                Promise.all([
-                    zoomAnimation.waitForStop(),
-                ]).then(function (results) {
-                    stateSeries.show();
-                    // polygonSeries.hide(100)
-                    backContainer.show();
-                    lineSeries.hide()
-                    planeSeries.hide()
-                    sublineSeries.hide()
-                    perspectiveSeries.hide()
-                    legend.hide()
-                    planeDataItemMn.set("positionOnLine", 0);
-                    resetPlaneAnimationMn()
-                    lineSeriesMn.set("layer", 100);
-                    planeSeriesMn.set("layer", 100);
-                    citySeriesMn.set("layer", 100);
-                    // pointSeriesMn.show();
-                    lineSeriesMn.show();
-                    planeSeriesMn.show();
-                    citySeriesMn.show();
-                    cont.hide()
-                    setShowDirection(false)
-                });
-
-                // zoomMongolia()
+                gotoMongolia(dataItem)
             }
         });
 
@@ -1169,6 +1183,7 @@ const Destinations = () => {
             subcitySeries.hide()
             legend.hide()
             cont.show()
+            button2.show()
             setShowDirection(true)
             setChoosedCountry({})
             planeDataItem.set("positionOnLine", 0);
@@ -1252,6 +1267,36 @@ const Destinations = () => {
             name: t("perspective"),
             color: colors.N
         }]);
+
+        function gotoMongolia() {
+            var dataItem = polygonSeries.getDataItemById('MN');
+            setChoosedCountry({})
+            var zoomAnimation = polygonSeries.zoomToDataItem(dataItem);
+            Promise.all([
+                zoomAnimation.waitForStop(),
+            ]).then(function (results) {
+                stateSeries.show();
+                // polygonSeries.hide(100)
+                backContainer.show();
+                lineSeries.hide()
+                planeSeries.hide()
+                sublineSeries.hide()
+                perspectiveSeries.hide()
+                legend.hide()
+                button2.hide()
+                planeDataItemMn.set("positionOnLine", 0);
+                resetPlaneAnimationMn()
+                lineSeriesMn.set("layer", 100);
+                planeSeriesMn.set("layer", 100);
+                citySeriesMn.set("layer", 100);
+                // pointSeriesMn.show();
+                lineSeriesMn.show();
+                planeSeriesMn.show();
+                citySeriesMn.show();
+                cont.hide()
+                setShowDirection(false)
+            });
+        }
 
         return () => {
             root.dispose();
