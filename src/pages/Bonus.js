@@ -326,7 +326,7 @@ export default function Bonus() {
                                         </tr>
                                         {section.features.map((feature) => (
                                             <tr key={feature.name}>
-                                                <th scope="row" className="py-1 text-sm/6 font-normal text-black pl-4">
+                                                <th scope="row" className="py-1 text-sm/6 font-normal text-black pl-4 leading-tight">
                                                     {t(feature.name)}
                                                     <div className="absolute inset-x-8 mt-1 h-px bg-gray-900/5" />
                                                 </th>
@@ -352,27 +352,27 @@ export default function Bonus() {
                             </tbody>
                         </table>
                     </div>
-                    <div className='mt-4'>
-                        <table className="w-full table-fixed">
+                    <div className='mt-8'>
+                        <table className="w-full table-fixed rounded">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th width="150"></th>
                                     <th>{t("Requirements")}</th>
                                     <th>{t("Conditions")}</th>
-                                    <th>{t("Additional miles")}</th>
-                                    <th>{t("Bonus miles")}</th>
+                                    <th width="150">{t("Additional miles")}</th>
+                                    <th width="100">{t("Bonus miles")}</th>
                                     <th>{t("Valid period")}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {tiers2.map((tier, index) => (
-                                    <tr key={index} className={`${tier.bgColor} text-justify text-white text-sm/6 font-normal`}>
-                                        <td className=" font-bold">{t(tier.level)}</td>
-                                        <td className="">{t(tier.requirements)}</td>
-                                        <td className="">{t(tier.conditions)}</td>
-                                        <td className="">{t(tier.additionalMiles)}</td>
-                                        <td className="">{t(tier.bonusMiles)}</td>
-                                        <td className="">{t(tier.validPeriod)}</td>
+                                    <tr key={index} className={`text-justify text-sm/6 font-normal`}>
+                                        <td className={`${tier.bgColor} p-2 leading-tight font-bold`}>{t(tier.level)}</td>
+                                        <td className="p-2 leading-tight">{t(tier.requirements)}</td>
+                                        <td className="p-2 leading-tight">{t(tier.conditions)}</td>
+                                        <td className="p-2 leading-tight text-center">{t(tier.additionalMiles)}</td>
+                                        <td className="p-2 leading-tight">{t(tier.bonusMiles)}</td>
+                                        <td className="p-2 leading-tight">{t(tier.validPeriod)}</td>
                                     </tr>
                                 ))}
                             </tbody>
