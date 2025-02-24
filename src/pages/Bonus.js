@@ -146,11 +146,42 @@ const sections = [
 ]
 
 const tiers2 = [
-    { level: "Junior", bgColor: "", requirements: "Children aged 2-12 years", conditions: "-", additionalMiles: "-", bonusMiles: "-", validPeriod: "-" },
-    { level: "Blue", bgColor: "bg-blue-500", requirements: "12 years of age or older", conditions: "-", additionalMiles: "-", bonusMiles: "300 miles by online registration", validPeriod: "-" },
-    { level: "Silver", bgColor: "bg-gray-400", requirements: "Members who have accumulated 40,000 miles", conditions: "Have to accumulate a minimum of 5,000 miles within one year", additionalMiles: "25%", bonusMiles: "2500 miles if upgraded", validPeriod: "24 months. If the tier requirements are fulfilled, the validity will be extended for another 24 months" },
-    { level: "Gold", bgColor: "bg-yellow-400", requirements: "Members who have accumulated 70,000 miles during the Silver tier. Miles start from 0 every time a tier upgrade or downgrade", conditions: "Have to accumulate a minimum of 10,000 miles within one year", additionalMiles: "50%", bonusMiles: "5000 miles if upgraded", validPeriod: "24 months. If the tier requirements are fulfilled, the validity will be extended for another 24 months" },
-    { level: "Platinum", bgColor: "bg-gray-600", requirements: "Members who have accumulated 70,000 miles during the Gold tier. Miles start from 0 every time a tier upgrade or downgrade", conditions: "Have to accumulate a minimum of 15,000 miles within one year", additionalMiles: "75%", bonusMiles: "7500 miles if upgraded", validPeriod: "24 months. If the tier requirements are fulfilled, the validity will be extended for another 24 months" },
+    {
+        level: "Junior", bgColor: "bg-white/50",
+        requirements: "requirementsJun",
+        conditions: "-", additionalMiles: "-",
+        bonusMiles: "-", validPeriod: "-"
+    },
+    {
+        level: "Blue", bgColor: "bg-blue-500/50",
+        requirements: "requirementsBlue",
+        conditions: "-", additionalMiles: "-",
+        bonusMiles: "bonusMilesBlue", validPeriod: "-"
+    },
+    {
+        level: "Silver", bgColor: "bg-gray-400/60",
+        requirements: "requirementsSil",
+        conditions: "conditionsSil",
+        additionalMiles: "additionalMilesSil",
+        bonusMiles: "bonusMilesSil",
+        validPeriod: "validPeriodSil"
+    },
+    {
+        level: "Gold", bgColor: "bg-yellow-500/60",
+        requirements: "requirementsGold",
+        conditions: "conditionsGold",
+        additionalMiles: "additionalMilesGold",
+        bonusMiles: "bonusMilesGold",
+        validPeriod: "validPeriodSil"
+    },
+    {
+        level: "Platinum", bgColor: "bg-gray-600/60",
+        requirements: "requirementsPlat",
+        conditions: "conditionsPlat",
+        additionalMiles: "additionalMilesPlat",
+        bonusMiles: "bonusMilesPlat",
+        validPeriod: "validPeriodSil"
+    },
 ];
 
 function classNames(...classes) {
@@ -205,7 +236,7 @@ export default function Bonus() {
                     <img src="/logos/main-logo/blue_sky.png" alt="" className='w-full' />
                 </div>
                 <div className="mx-auto max-w-7xl sm:px-2 lg:px-4 mt-2">
-                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 px-4 lg:max-w-none lg:grid-cols-5 md:grid-cols-3">
+                    <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-2 sm:gap-y-10 px-4 lg:max-w-none lg:grid-cols-5 md:grid-cols-3">
                         {incentives.map((incentive) => (
                             <div key={incentive.name} className="rounded-lg text-center sm:flex sm:text-left lg:block lg:text-center bg-white/30 backdrop-blur-md py-4">
                                 <div className="sm:shrink-0">
@@ -226,13 +257,13 @@ export default function Bonus() {
                 </p>
 
                 {/* xs to lg */}
-                <div className="mx-auto mt-4 max-w-md space-y-4 sm:mt-12 lg:hidden">
+                <div className="mx-auto mt-4 max-w-md space-y-2 lg:hidden">
                     {tiers.map((tier) => (
                         <section
                             key={tier.id}
                             className={classNames(
                                 tier.mostPopular ? 'rounded-xl bg-gray-400/5 ring-1 ring-inset ring-gray-200' : '',
-                                'p-8',
+                                'p-2',
                             )}
                         >
                             <h3 id={tier.id} className="text-sm/6 font-semibold text-black">
@@ -244,7 +275,7 @@ export default function Bonus() {
                             <ul className="mt-10 space-y-4 text-sm/6 text-black">
                                 {sections.map((section) => (
                                     <li key={section.name}>
-                                        <ul className="space-y-4">
+                                        <ul>
                                             {section.features.map((feature) =>
                                                 feature.tiers[tier.name] ? (
                                                     <li key={feature.name} className="flex gap-x-3">
@@ -264,6 +295,26 @@ export default function Bonus() {
                             </ul>
                         </section>
                     ))}
+                    <div>
+                        {tiers2.map(section => (
+                            <div key={section.name} className='mb-4'>
+                                <div className={`${section.bgColor} text-2xl font-medium rounded-lg p-2`}>{t(section.level)}</div>
+                                <div className='px-5'>
+                                    <div className='font-medium mt-2'>{t('requirements')}:</div>
+                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.requirements)}</div>
+                                    <div className='font-medium mt-2'>{t('conditions')}:</div>
+                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.conditions)}</div>
+                                    <div className='font-medium mt-2'>{t('additionalMiles')}:</div>
+                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.additionalMiles)}</div>
+                                    <div className='font-medium mt-2'>{t('bonusMiles')}:</div>
+                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.bonusMiles)}</div>
+                                    {section.validPeriod !== '-' && <div className='font-medium mt-2'>{t('validPeriod')}:</div>}
+                                    {section.validPeriod !== '-' && <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.validPeriod)}</div>}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
 
                 {/* lg+ */}
@@ -369,10 +420,14 @@ export default function Bonus() {
                                     <tr key={index} className={`text-justify text-sm/6 font-normal border-t border-t-gray-900/5`}>
                                         <td className={`${tier.bgColor} p-2 leading-tight font-bold`}>{t(tier.level)}</td>
                                         <td className="p-2 leading-tight">{t(tier.requirements)}</td>
-                                        <td className="p-2 leading-tight">{t(tier.conditions)}</td>
+                                        <td className={`${tier.conditions === '-' ? 'text-center' : ''} p-2 leading-tight`}>
+                                            {t(tier.conditions)}
+                                        </td>
                                         <td className="p-2 leading-tight text-center">{t(tier.additionalMiles)}</td>
                                         <td className="p-2 leading-tight">{t(tier.bonusMiles)}</td>
-                                        <td className="p-2 leading-tight">{t(tier.validPeriod)}</td>
+                                        <td className={`${tier.conditions === '-' ? 'text-center' : ''} p-2 leading-tight`}>
+                                            {t(tier.validPeriod)}
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
