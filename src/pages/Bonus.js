@@ -145,6 +145,14 @@ const sections = [
     }
 ]
 
+const tiers2 = [
+    { level: "Junior", bgColor: "", requirements: "Children aged 2-12 years", conditions: "-", additionalMiles: "-", bonusMiles: "-", validPeriod: "-" },
+    { level: "Blue", bgColor: "bg-blue-500", requirements: "12 years of age or older", conditions: "-", additionalMiles: "-", bonusMiles: "300 miles by online registration", validPeriod: "-" },
+    { level: "Silver", bgColor: "bg-gray-400", requirements: "Members who have accumulated 40,000 miles", conditions: "Have to accumulate a minimum of 5,000 miles within one year", additionalMiles: "25%", bonusMiles: "2500 miles if upgraded", validPeriod: "24 months. If the tier requirements are fulfilled, the validity will be extended for another 24 months" },
+    { level: "Gold", bgColor: "bg-yellow-400", requirements: "Members who have accumulated 70,000 miles during the Silver tier. Miles start from 0 every time a tier upgrade or downgrade", conditions: "Have to accumulate a minimum of 10,000 miles within one year", additionalMiles: "50%", bonusMiles: "5000 miles if upgraded", validPeriod: "24 months. If the tier requirements are fulfilled, the validity will be extended for another 24 months" },
+    { level: "Platinum", bgColor: "bg-gray-600", requirements: "Members who have accumulated 70,000 miles during the Gold tier. Miles start from 0 every time a tier upgrade or downgrade", conditions: "Have to accumulate a minimum of 15,000 miles within one year", additionalMiles: "75%", bonusMiles: "7500 miles if upgraded", validPeriod: "24 months. If the tier requirements are fulfilled, the validity will be extended for another 24 months" },
+];
+
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
@@ -194,7 +202,7 @@ export default function Bonus() {
                     {t('loyaltyprogramdesc')}
                 </p>
                 <div className='mx-auto max-w-sm'>
-                    <img src="/logos/main-logo/blue_sky.png" alt="" className='w-full'/>
+                    <img src="/logos/main-logo/blue_sky.png" alt="" className='w-full' />
                 </div>
                 <div className="mx-auto max-w-7xl sm:px-2 lg:px-4 mt-2">
                     <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 px-4 lg:max-w-none lg:grid-cols-5 md:grid-cols-3">
@@ -272,7 +280,7 @@ export default function Bonus() {
                                 </div>
                             </div>
                         ) : null}
-                        <table className="w-full table-fixed border-separate border-spacing-x-8 text-left">
+                        <table className="w-full table-fixed border-separate border-spacing-x-4 text-left">
                             <caption className="sr-only">Pricing plan comparison</caption>
                             <colgroup>
                                 <col className="w-2/6" />
@@ -340,6 +348,32 @@ export default function Bonus() {
                                             </tr>
                                         ))}
                                     </Fragment>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className='mt-4'>
+                        <table className="w-full table-fixed">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>{t("Requirements")}</th>
+                                    <th>{t("Conditions")}</th>
+                                    <th>{t("Additional miles")}</th>
+                                    <th>{t("Bonus miles")}</th>
+                                    <th>{t("Valid period")}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {tiers2.map((tier, index) => (
+                                    <tr key={index} className={`${tier.bgColor} text-justify text-white text-sm/6 font-normal`}>
+                                        <td className=" font-bold">{t(tier.level)}</td>
+                                        <td className="">{t(tier.requirements)}</td>
+                                        <td className="">{t(tier.conditions)}</td>
+                                        <td className="">{t(tier.additionalMiles)}</td>
+                                        <td className="">{t(tier.bonusMiles)}</td>
+                                        <td className="">{t(tier.validPeriod)}</td>
+                                    </tr>
                                 ))}
                             </tbody>
                         </table>
