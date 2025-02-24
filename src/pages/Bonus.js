@@ -318,7 +318,7 @@ export default function Bonus() {
                                         </tr>
                                         {section.features.map((feature) => (
                                             <tr key={feature.name}>
-                                                <th scope="row" className="py-1 text-sm/6 font-normal text-black">
+                                                <th scope="row" className="py-1 text-sm/6 font-normal text-black pl-4">
                                                     {t(feature.name)}
                                                     <div className="absolute inset-x-8 mt-1 h-px bg-gray-900/5" />
                                                 </th>
