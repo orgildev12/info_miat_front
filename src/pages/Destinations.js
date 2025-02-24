@@ -1322,6 +1322,7 @@ const Destinations = () => {
                 citySeriesMn.show();
                 cont.hide()
                 setShowDirection(false)
+                setpoint3data(cities[0]);
             });
         }
 
@@ -1498,6 +1499,7 @@ const Destinations = () => {
 
 
                             </div>
+                            <div></div>
                         </div>
                     </div>
                     <div className={
