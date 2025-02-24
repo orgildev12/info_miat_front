@@ -356,7 +356,7 @@ export default function Bonus() {
                         <table className="w-full table-fixed rounded">
                             <thead>
                                 <tr>
-                                    <th width="150"></th>
+                                    <th width="100"></th>
                                     <th>{t("Requirements")}</th>
                                     <th>{t("Conditions")}</th>
                                     <th width="150">{t("Additional miles")}</th>
@@ -366,7 +366,7 @@ export default function Bonus() {
                             </thead>
                             <tbody>
                                 {tiers2.map((tier, index) => (
-                                    <tr key={index} className={`text-justify text-sm/6 font-normal`}>
+                                    <tr key={index} className={`text-justify text-sm/6 font-normal border-t border-t-gray-900/5`}>
                                         <td className={`${tier.bgColor} p-2 leading-tight font-bold`}>{t(tier.level)}</td>
                                         <td className="p-2 leading-tight">{t(tier.requirements)}</td>
                                         <td className="p-2 leading-tight">{t(tier.conditions)}</td>
