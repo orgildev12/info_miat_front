@@ -137,20 +137,20 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM061",
-                direction: "UBN-ULZ-LTI",
+                direction: "UBN-LTI",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
-                "departure": "15:40",
+                "departure": "13:35",
                 "arrival": "16:20",
                 "stop": 1,
                 "effectivedate": "2025.03.31 - 2025.05.29"
             },
             {
                 "flightno": "OM061",
-                direction: "UBN-ULZ-LTI",
+                direction: "UBN-LTI",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
-                "departure": "15:40",
+                "departure": "13:35",
                 "arrival": "16:20",
                 "stop": 1,
                 "effectivedate": "2025.09.01 - 2025.10.23"
@@ -228,21 +228,21 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM051",
-                direction: "ULO-MXV-UBN",
+                direction: "ULO-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
                 "departure": "14:35",
-                "arrival": "16:45",
+                "arrival": "18:40",
                 "stop": 1,
                 "effectivedate": "2025.04.01 - 2025.05.30"
             },
             {
                 "flightno": "OM051",
-                direction: "ULO-MXV-UBN",
+                direction: "ULO-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
                 "departure": "14:35",
-                "arrival": "16:45",
+                "arrival": "18:40",
                 "stop": 1,
                 "effectivedate": "2025.09.02 - 2025.10.24"
             }
@@ -290,21 +290,21 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM061",
-                direction: "ULZ-LTI-UBN",
+                direction: "ULZ-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "15:40",
-                "arrival": "16:20",
+                "arrival": "18:55",
                 "stop": 1,
                 "effectivedate": "2025.03.31 - 2025.05.29"
             },
             {
                 "flightno": "OM061",
-                direction: "ULZ-LTI-UBN",
+                direction: "ULZ-UBN",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [1, 4],
                 "departure": "15:40",
-                "arrival": "16:20",
+                "arrival": "18:55",
                 "stop": 1,
                 "effectivedate": "2025.09.01 - 2025.10.23"
             }
@@ -374,20 +374,20 @@ const mongoliaschedules = {
             },
             {
                 "flightno": "OM051",
-                direction: "UBN-ULO-MXV",
+                direction: "UBN-MXV",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
-                "departure": "14:35",
+                "departure": "12:50",
                 "arrival": "16:45",
                 "stop": 1,
                 "effectivedate": "2025.04.01 - 2025.05.30"
             },
             {
                 "flightno": "OM051",
-                direction: "UBN-ULO-MXV",
+                direction: "UBN-MXV",
                 "flight": "CRJ700 JU-1700",
                 "frequency": [2, 5],
-                "departure": "14:35",
+                "departure": "12:50",
                 "arrival": "16:45",
                 "stop": 1,
                 "effectivedate": "2025.09.02 - 2025.10.24"
@@ -926,9 +926,9 @@ const countryschedules = {
                 flightno: "OM303",
                 direction: "UBN-ICN",
                 frequency: [3, 5],
-                departure: "11:10",
-                arrival: "15:20",
-                effectivedate: "2025.06.27 - 2025.09.19"
+                departure: "10:45",
+                arrival: "14:55",
+                effectivedate: "2025.06.27 - 2025.09.26"
             }
         ],
         from: [
@@ -968,9 +968,9 @@ const countryschedules = {
                 flightno: "OM304",
                 direction: "ICN-UBN",
                 frequency: [3, 5],
-                departure: "16:20",
-                arrival: "19:00",
-                effectivedate: "2025.06.27 - 2025.09.19"
+                departure: "16:05",
+                arrival: "18:45",
+                effectivedate: "2025.06.27 - 2025.09.26"
             }
         ]
     },
@@ -1148,16 +1148,16 @@ const Schedule = () => {
                     <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900 sm:w-40">
                         {t('flightno')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 sm:w-30">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 sm:w-48">
                         {t('direction')}
                     </th>
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
                         {t('frequency')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-28">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-32">
                         {t('departure')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-32">
                         {t('arrival')}
                     </th>
                     {selectedtabmain !== 'international' && <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">

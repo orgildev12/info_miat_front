@@ -192,8 +192,6 @@ const Destinations = () => {
             id: "dalanzadgad",
             title: t('dalanzadgad'),
             country: "Mongolia",
-            distance: "N/A",
-            duration: "49 minutes",
             to: {
                 distance: "533 km",
                 duration: "49 minutes",
@@ -209,8 +207,6 @@ const Destinations = () => {
             id: "uliastai",
             title: t('uliastai'),
             country: "Mongolia",
-            distance: "N/A",
-            duration: "N/A",
             to: {
                 distance: "817 km",
                 duration: "1 hour, 16 minutes",
@@ -226,8 +222,6 @@ const Destinations = () => {
             id: "khovd",
             title: t('khovd'),
             country: "Mongolia",
-            distance: "N/A",
-            duration: "N/A",
             to: {
                 distance: "1228 km",
                 duration: "1 hour, 52 minutes",
@@ -243,8 +237,6 @@ const Destinations = () => {
             id: "altai",
             title: t('altai'),
             country: "Mongolia",
-            distance: "N/A",
-            duration: "N/A",
             to: {
                 distance: "861 km",
                 duration: "1 hour, 22 minutes",
@@ -260,8 +252,6 @@ const Destinations = () => {
             id: "ulaangom",
             title: t('ulaangom'),
             country: "Mongolia",
-            distance: "N/A",
-            duration: "N/A",
             to: {
                 distance: "1150 km",
                 duration: "1 hour, 46 minutes",
@@ -277,8 +267,6 @@ const Destinations = () => {
             id: "murun",
             title: t('murun'),
             country: "Mongolia",
-            distance: "N/A",
-            duration: "N/A",
             to: {
                 distance: "591 km",
                 duration: "59 minutes",
@@ -294,8 +282,6 @@ const Destinations = () => {
             id: "ulgii",
             title: t('ulgii'),
             country: "Mongolia",
-            distance: "N/A",
-            duration: "N/A",
             image: "/image/main/BagaturgeniiuulsBayanUlgii.jpg",
             geometry: { type: "Point", coordinates: [89.9674, 48.9683] }
         },
@@ -1387,7 +1373,7 @@ const Destinations = () => {
                             </div>
                             <div>
                                 {
-                                    point3data.id !== 'ulaanbaatar' ? <>
+                                    (point3data.id !== 'ulaanbaatar' && choosedCountry.id !== 'ulaanbaatar') ? <>
                                         <div className='text-right pt-3 font-bold'>
                                             {t(point3data.id)}
                                         </div>
@@ -1446,9 +1432,9 @@ const Destinations = () => {
                                         </div>
                                     </> : <>
                                         <div className='text-right -mb-4 font-bold'>
-                                            {t('ulaanbaatar')}
+                                            {choosedCountry.id === 'ulaanbaatar' ? t(point3data.id) : t('ulaanbaatar')}
                                         </div>
-                                        {choosedCountry.to && <div className='relative'>
+                                        {((choosedCountry.id === 'ulaanbaatar' && point3data.distance) || choosedCountry.to) && <div className='relative'>
                                             <div className='text-xs absolute top-6 bg-black/30 p-1 rounded backdrop-blur-md'>
                                                 <div className='absolute -top-2 left-[50%]'>
                                                     <span className="relative flex h-3 w-3 mx-auto -z-[1]">
@@ -1456,14 +1442,15 @@ const Destinations = () => {
                                                         <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
                                                     </span>
                                                 </div>
-                                                <div className='font-medium'>{t(choosedCountry.id)}&rarr;{t('ulaanbaatar')}</div>
+                                                {choosedCountry.id === 'ulaanbaatar' ? <div className='font-medium'>{t(choosedCountry.id)}&rarr;{t(point3data.id)}</div> :
+                                                    <div className='font-medium'>{t(choosedCountry.id)}&rarr;{t('ulaanbaatar')}</div>}
                                                 <hr />
                                                 <div className='flex'>
                                                     <div>Distance: &nbsp;</div>
-                                                    <div className='font-medium'>{choosedCountry.to.distance}</div>
+                                                    <div className='font-medium'>{choosedCountry.id === 'ulaanbaatar' ? point3data.distance : choosedCountry.to.distance}</div>
                                                 </div>
                                                 <div className='text-justify'>Total travel time: <p className='font-medium'>
-                                                    {choosedCountry.to.duration}
+                                                    {choosedCountry.id === 'ulaanbaatar' ? point3data.duration : choosedCountry.to.duration}
                                                 </p>
                                                 </div>
                                             </div>
