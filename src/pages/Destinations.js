@@ -247,11 +247,11 @@ const Destinations = () => {
             title: t('khovd'),
             country: "Mongolia",
             to: {
-                distance: "1228 km",
+                distance: "1,228 km",
                 duration: "1 hour, 52 minutes",
             },
             from: {
-                distance: "1198 km",
+                distance: "1,198 km",
                 duration: "1 hour, 33 minutes",
             },
             image: "/image/main/AltanHuhiiHovd.jpg",
@@ -277,11 +277,11 @@ const Destinations = () => {
             title: t('ulaangom'),
             country: "Mongolia",
             to: {
-                distance: "1150 km",
+                distance: "1,150 km",
                 duration: "1 hour, 46 minutes",
             },
             from: {
-                distance: "1176 km",
+                distance: "1,176 km",
                 duration: "1 hour, 31 minutes",
             },
             image: "/image/main/IMG_4013TurgenMountainsUvs.jpg",
@@ -306,6 +306,14 @@ const Destinations = () => {
             id: "ulgii",
             title: t('ulgii'),
             country: "Mongolia",
+            to: {
+                distance: "1,260 km",
+                duration: "1 hour 53 minutes",
+            },
+            from: {
+                distance: "1,342 km",
+                duration: "1 hour 51 minutes",
+            },
             image: "/image/main/BagaturgeniiuulsBayanUlgii.jpg",
             geometry: { type: "Point", coordinates: [89.9674, 48.9683] }
         },
