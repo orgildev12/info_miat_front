@@ -142,6 +142,7 @@ const mongoliaschedules = {
                 "frequency": [1, 4],
                 "departure": "15:40",
                 "arrival": "16:20",
+                "stop": 1,
                 "effectivedate": "2025.03.31 - 2025.05.29"
             },
             {
@@ -151,6 +152,7 @@ const mongoliaschedules = {
                 "frequency": [1, 4],
                 "departure": "15:40",
                 "arrival": "16:20",
+                "stop": 1,
                 "effectivedate": "2025.09.01 - 2025.10.23"
             }
         ],
@@ -377,6 +379,7 @@ const mongoliaschedules = {
                 "frequency": [2, 5],
                 "departure": "14:35",
                 "arrival": "16:45",
+                "stop": 1,
                 "effectivedate": "2025.04.01 - 2025.05.30"
             },
             {
@@ -386,6 +389,7 @@ const mongoliaschedules = {
                 "frequency": [2, 5],
                 "departure": "14:35",
                 "arrival": "16:45",
+                "stop": 1,
                 "effectivedate": "2025.09.02 - 2025.10.24"
             }
         ],
@@ -1141,7 +1145,7 @@ const Schedule = () => {
         return <table className="min-w-full divide-y divide-gray-300">
             <thead>
                 <tr className='bg-white/50'>
-                    <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900 sm:w-35">
+                    <th scope="col" className="py-2 pl-2 pr-3 text-left text-sm font-semibold text-gray-900 sm:w-40">
                         {t('flightno')}
                     </th>
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 sm:w-30">
@@ -1150,7 +1154,7 @@ const Schedule = () => {
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900">
                         {t('frequency')}
                     </th>
-                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-28">
                         {t('departure')}
                     </th>
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
