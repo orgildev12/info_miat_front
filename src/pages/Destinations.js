@@ -33,6 +33,8 @@ const Destinations = () => {
             country: 'germany',
             distance: '7,010 km',
             duration: "8 hours, 45 minutes",
+            distanceto: '6,941 km',
+            durationto: "7 hours, 34 minutes",
             image: "/image/main/vertical-view-roemerberg-frankfurt-germany.jpg",
             geometry: { type: "Point", coordinates: [8.6821, 50.1109] }
         },
@@ -42,6 +44,8 @@ const Destinations = () => {
             country: 'china',
             distance: '3,350 km',
             duration: "4 hours, 10 minutes",
+            distanceto: "3,167 km",
+            durationto: "4 hours, 1 minute",
             image: "/image/main/hong-kong-skyline-with-boats.jpg",
             geometry: { type: "Point", coordinates: [114.2, 22.4] },
             destinations: [
@@ -67,6 +71,8 @@ const Destinations = () => {
             country: 'japan',
             distance: '3,869 km',
             duration: "4 hours, 22 minutes",
+            distanceto: "3,635 km",
+            durationto: "4 hours, 45 minutes",
             image: "/image/main/AdobeStock_268173642.jpg",
             geometry: { type: "Point", coordinates: [139.6917, 35.6895] },
             destinations: [
@@ -79,6 +85,8 @@ const Destinations = () => {
             country: 'south_korea',
             distance: '2,304 km',
             duration: "2 hours, 45 minutes",
+            distanceto: "2,276 km",
+            durationto: "3 hours, 10 minutes",
             image: "/image/main/seoul-tower-with-gyeongbokgung-roof-red-autumn-maple-leaves-namsan-mountain-south-korea.jpg",
             geometry: { type: "Point", coordinates: [126.9779, 37.5665] }
         },
@@ -88,6 +96,8 @@ const Destinations = () => {
             country: 'vietnam',
             distance: '4,563 km',
             duration: "5 hours, 30 minutes",
+            distanceto: "4,595 km",
+            durationto: "5 hours, 16 minutes",
             image: "/image/main/54455949-city-18144-167c85df43f.jpg",
             geometry: { type: "Point", coordinates: [106.6297, 10.8231] }
         },
@@ -97,6 +107,8 @@ const Destinations = () => {
             country: 'turkey',
             distance: '6,702 km',
             duration: "8 hours, 32 minutes",
+            distanceto: "6,700 km",
+            durationto: "7 hours, 30 minutes",
             image: "/image/main/AdobeStock_304983855.jpg",
             geometry: { type: "Point", coordinates: [28.90, 41.0582] },
             destinations: [
@@ -116,6 +128,8 @@ const Destinations = () => {
             country: 'south_korea',
             distance: '2,593 km',
             duration: "3 hours, 1 minute",
+            distanceto: "2,630 km",
+            durationto: "3 hours, 35 minutes",
             image: "/image/main/AdobeStock_306120806.jpg",
             geometry: { type: "Point", coordinates: [129.0756, 35.1796] }
         },
@@ -125,6 +139,8 @@ const Destinations = () => {
             country: 'thailand',
             distance: '4,117 km',
             duration: "5 hours, 0 minute",
+            distanceto: "4,232 km",
+            durationto: "4 hours, 51 minutes",
             image: "/image/main/AdobeStock_105446989.jpg",
             geometry: { type: "Point", coordinates: [100.5018, 13.7563] }
         },
@@ -134,6 +150,8 @@ const Destinations = () => {
             country: 'china',
             distance: '1,383 km',
             duration: "1 hour, 50 minutes",
+            distanceto: "1,287 km",
+            durationto: "1 hour, 55 minutes",
             image: "/image/main/AdobeStock_38307012.jpg",
             geometry: { type: "Point", coordinates: [116.4074, 39.9042] }
         },
@@ -143,6 +161,8 @@ const Destinations = () => {
             country: 'japan',
             distance: '3,221 km',
             duration: "3 hours, 50 minutes",
+            distanceto: "3,119 km",
+            durationto: "4 hour, 30 minutes",
             image: "/image/main/osaka-castle-cherry-blossom-spring-sakura-seasons-osaka-japan.jpg",
             geometry: { type: "Point", coordinates: [135.5022, 34.6937] }
         },
@@ -152,6 +172,8 @@ const Destinations = () => {
             country: 'thailand',
             distance: '4,847 km',
             duration: "6 hours, 2 minutes",
+            distanceto: "4,915 km",
+            durationto: "5 hours, 37 minutes",
             image: "/image/main/beautiful-girl-sitting-rock-james-bond-island-phang-nga-thailand.jpg",
             geometry: { type: "Point", coordinates: [98.3381, 7.8804] }
         },
@@ -161,6 +183,8 @@ const Destinations = () => {
             country: 'china',
             distance: '2,965 km',
             duration: "3 hours, 45 minutes",
+            distanceto: "2,908 km",
+            durationto: "3 hours, 48 minutes",
             image: "/image/main/AdobeStock_67203423.jpg",
             geometry: { type: "Point", coordinates: [113.2644, 23.1291] }
         }
@@ -704,15 +728,6 @@ const Destinations = () => {
             // strokeDasharray: 1
         });
 
-        // this will be visible line. Lines will connectg animating points so they will look like animated
-        // let animatedLineSeries = chart.series.push(am5map.MapLineSeries.new(root, {}));
-        // animatedLineSeries.mapLines.template.setAll({
-        //     // stroke: am5.color(0xffba00),
-        //     // strokeOpacity: 0.6,
-        //     strokeWidth: 1,
-        // });
-
-        // invisible series which will animate along invisible lines
         let animatedBulletSeries = chart.series.push(
             am5map.MapPointSeries.new(root, {})
         );
@@ -1422,10 +1437,10 @@ const Destinations = () => {
                                                 </div>
                                                 <div className='flex'>
                                                     <div>Distance: &nbsp;</div>
-                                                    <div className='font-medium'>{choosedCountry.distance}</div>
+                                                    <div className='font-medium'>{choosedCountry.distanceto}</div>
                                                 </div>
                                                 <div className='text-justify'>Total travel time: <p className='font-medium'>
-                                                    {choosedCountry.duration}
+                                                    {choosedCountry.durationto}
                                                 </p>
                                                 </div>
                                             </div>
@@ -1473,10 +1488,10 @@ const Destinations = () => {
                                                 </>}
                                                 <div className='flex'>
                                                     <div>Distance: &nbsp;</div>
-                                                    <div className='font-medium'>{choosedCountry.from ? choosedCountry.from.distance : choosedCountry.distance}</div>
+                                                    <div className='font-medium'>{choosedCountry.from ? choosedCountry.from.distance : choosedCountry.distanceto}</div>
                                                 </div>
                                                 <div className='text-justify'>Total travel time: <p className='font-medium'>
-                                                    {choosedCountry.from ? choosedCountry.from.duration : choosedCountry.duration}
+                                                    {choosedCountry.from ? choosedCountry.from.duration : choosedCountry.durationto}
                                                 </p>
                                                 </div>
                                             </div>
