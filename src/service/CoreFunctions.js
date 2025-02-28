@@ -1,5 +1,6 @@
 import hmacSHA512 from 'crypto-js/hmac-sha512';
 import Base64 from 'crypto-js/enc-base64';
+import { useEffect, useState } from 'react';
 
 export function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -72,3 +73,18 @@ export function getLastDayOfNextMonth(dateString) {
 
     return lastDayOfMonth;
 }
+
+export const useIsPhone = () => {
+    const [isPhone, setIsPhone] = useState(window.innerWidth < 768); // Assuming <768px is a phone
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsPhone(window.innerWidth < 768);
+        };
+
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    return isPhone;
+};

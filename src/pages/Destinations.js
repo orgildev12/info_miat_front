@@ -7,6 +7,7 @@ import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { useTranslation } from 'react-i18next';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { DropDownList } from '@progress/kendo-react-dropdowns';
+import { useIsPhone } from '../service/CoreFunctions';
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -195,7 +196,7 @@ const Destinations = () => {
     const [point1, setpoint1] = useState(null);
     const [point3data, setpoint3data] = useState(cities[0]);
     const [point3, setpoint3] = useState(null);
-
+    const isphone = useIsPhone()
     const colors = {
         G: am5.color("#2652fb"),
         O: am5.color(0xFFA500),
@@ -547,13 +548,11 @@ const Destinations = () => {
             am5map.MapChart.new(root, {
                 panX: "rotateX",
                 panY: "rotateY",
-                // projection: am5map.geoMercator(),
-                // projection: am5map.geoNaturalEarth1(),
                 projection: am5map.geoOrthographic(),
-                // homeGeoPoint: { latitude: 46.8625, longitude: 103.8467 },
-                // wheelY: "none",
-                // rotationX: -130.8467,
-                // scale: 1.5
+                paddingLeft: 20,
+                paddingRight: 20,
+                paddingTop: 20,
+                paddingBottom: 20,
             })
         );
 
@@ -669,15 +668,6 @@ const Destinations = () => {
                 gotoMongolia(dataItem)
             }
         });
-
-        // let colors = am5.ColorSet.new(root, {
-        //     step: 2
-        // });
-        // colors.next();
-
-        // polygonSeries.mapPolygons.template.states.create("hover", {
-        //     fill: am5.Color.brighten(colors.next(), -0.3)
-        // });
 
         var backgroundSeries = chart.series.unshift(
             am5map.MapPolygonSeries.new(root, {})
@@ -876,7 +866,7 @@ const Destinations = () => {
                     paddingLeft: 5,
                     populateText: true,
                     fontWeight: "bold",
-                    fontSize: 14,
+                    fontSize: isphone ? 12 : 14,
                     centerY: am5.p50,
                     x: circle.get("radius"),
                     layer: 5,
@@ -1343,7 +1333,7 @@ const Destinations = () => {
 
     return (
         <div className='min-h-[100vh]'>
-            <div className='w-[100%] h-full'>
+            <div className={`w-[100%] h-full`}>
 
                 <div className={classNames(
                     choosedCountry.title ? 'opacity-100' : 'opacity-0',
@@ -1532,7 +1522,10 @@ const Destinations = () => {
                         </button>
                     </div>
                 </div>
-                <div id="chartdiv" className="h-[100vh]"></div>
+                <div
+                    id="chartdiv"
+                    className={`h-[100vh]`}
+                ></div>
                 <div className="bg"></div>
                 <div className="star-field">
                     <div className="layer"></div>
