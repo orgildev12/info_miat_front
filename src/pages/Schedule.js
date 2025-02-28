@@ -1202,8 +1202,8 @@ const Schedule = () => {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8 pb-16 pt-8 my-16 min-h-[80vh]">
-            <div className="mx-auto max-w-4xl text-center mb-8">
-                <p className="mt-2 text-balance text-4xl font-semibold tracking-tight text-black sm:text-5xl uppercase">
+            <div className="mx-auto max-w-4xl text-center mb-4 sm:mb-8">
+                <p className="mt-2 text-balance text-2xl font-semibold tracking-tight text-black sm:text-5xl uppercase">
                     {t('summer_flight')}
                 </p>
             </div>
@@ -1253,18 +1253,18 @@ const Schedule = () => {
                 <div className='mt-6 text-xl font-bold'>
                     {t('ulaanbaatar')} - {t(selectedtab)}
                 </div>
-                <div className='overflow-x-auto mt-6'>
+                <div className='overflow-x-auto sm:mt-6'>
                     <ScheduleTable data={schedules.to} direction="to" />
                 </div>
                 <div className='mt-6 text-xl font-bold'>
                     {t(selectedtab)} - {t('ulaanbaatar')}
                 </div>
-                <div className='overflow-x-auto mt-6'>
+                <div className='overflow-x-auto sm:mt-6'>
                     <ScheduleTable data={schedules.from} />
-                    <div className="p-0 mt-3 text-sm font-bold text-gray-700">{t('local_time')} <br />
-                        (+1) : {t('next_day')} <br />
-                        {t('schedule_change_notice')}
-                    </div>
+                </div>
+                <div className="p-0 mt-3 text-sm font-bold text-gray-700">{t('local_time')} <br />
+                    (+1) : {t('next_day')} <br />
+                    {t('schedule_change_notice')}
                 </div>
             </div>
         </div>

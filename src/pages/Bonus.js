@@ -297,19 +297,19 @@ export default function Bonus() {
                     ))}
                     <div>
                         {tiers2.map(section => (
-                            <div key={section.name} className='mb-4'>
-                                <div className={`${section.bgColor} text-2xl font-medium rounded-lg p-2`}>{t(section.level)}</div>
-                                <div className='px-5'>
-                                    <div className='font-medium mt-2'>{t('requirements')}:</div>
-                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.requirements)}</div>
-                                    <div className='font-medium mt-2'>{t('conditions')}:</div>
-                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.conditions)}</div>
-                                    <div className='font-medium mt-2'>{t('additionalMiles')}:</div>
-                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.additionalMiles)}</div>
-                                    <div className='font-medium mt-2'>{t('bonusMiles')}:</div>
-                                    <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.bonusMiles)}</div>
-                                    {section.validPeriod !== '-' && <div className='font-medium mt-2'>{t('validPeriod')}:</div>}
-                                    {section.validPeriod !== '-' && <div className='-mt-1 text-sm/6 text-gray-800 leading-tight text-justify'>{t(section.validPeriod)}</div>}
+                            <div key={section.name} className='mb-2'>
+                                <div className={`${section.bgColor} text-sm/6 font-semibold text-black rounded-lg p-1`}>{t(section.level)}</div>
+                                <div className='px-5 text-sm/6'>
+                                    <div className='font-medium'>{t('requirements')}:</div>
+                                    <div className='-mt-1 text-gray-800 leading-tight text-justify'>{t(section.requirements)}</div>
+                                    <div className='font-medium'>{t('conditions')}:</div>
+                                    <div className='-mt-1 text-gray-800 leading-tight text-justify'>{t(section.conditions)}</div>
+                                    <div className='font-medium'>{t('additionalMiles')}:</div>
+                                    <div className='-mt-1 text-gray-800 leading-tight text-justify'>{t(section.additionalMiles)}</div>
+                                    <div className='font-medium'>{t('bonusMiles')}:</div>
+                                    <div className='-mt-1 text-gray-800 leading-tight text-justify'>{t(section.bonusMiles)}</div>
+                                    {section.validPeriod !== '-' && <div className='font-medium'>{t('validPeriod')}:</div>}
+                                    {section.validPeriod !== '-' && <div className='-mt-1 text-gray-800 leading-tight text-justify'>{t(section.validPeriod)}</div>}
                                 </div>
                             </div>
                         ))}
