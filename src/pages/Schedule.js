@@ -1170,7 +1170,7 @@ const Schedule = () => {
                             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-75"></span>
                             <span class="relative inline-flex w-2 h-2 rounded-full bg-primary-500"></span>
                         </span>
-                        - {t('perspective')}
+                        - {t('addionalFlight')}
                 </div>
             </div>
         </div>

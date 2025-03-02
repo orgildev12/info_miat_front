@@ -322,8 +322,12 @@ const Destinations = () => {
 
     const overtime = {
         beijing: {
-            frankfurt: "10 hours",
-            istanbul: "11 hours, 50 minutes",
+            frankfurt: "10 hours, 30 minutes",
+            istanbul: "8 hours, 15 minutes",
+        },
+        guangzhou: {
+            frankfurt: "3 hours, 55 minutes",
+            istanbul: "1 hour, 40 minutes",
         },
         frankfurt: {
             beijing: "1 hour",
@@ -335,15 +339,22 @@ const Destinations = () => {
             osaka: "7 hours, 50 minutes"
         },
         seoul: {
-            frankfurt: "22 hours, 40 minutes",
-            istanbul: "17 hours",
+            frankfurt: "17 hours, 10 minutes",
+            istanbul: "5 hours, 10 minutes",
+        },
+        busan: {
+            frankfurt: "18 hours"
         },
         tokyo: {
-            frankfurt: "12 hours",
+            frankfurt: "14 hours, 55 minutes",
             istanbul: "12 hours, 40 minutes",
         },
         hongkong: {
-            frankfurt: "16 hours"
+            frankfurt: "17 hours, 35 minutes",
+            istanbul: "15 hours, 10 minutes",
+        },
+        osaka: {
+            istanbul: "9 hours, 15 minutes",
         },
         istanbul: {
             beijing: "2 hours, 40 minutes",
@@ -355,6 +366,7 @@ const Destinations = () => {
             osaka: "6 hours, 30 minutes"
         },
     };
+    
     const subcities = [
         {
             id: "amsterdam",
