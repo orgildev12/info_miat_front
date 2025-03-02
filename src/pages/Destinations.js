@@ -661,6 +661,11 @@ const Destinations = () => {
             })
         );
 
+        polygonSeries.mapPolygons.template.setAll({
+            strokeWidth: 0.5,
+            templateField: "polygonSettings"
+        });
+
         polygonSeries.mapPolygons.template.events.on("click", (ev) => {
             var dataItem = ev.target.dataItem;
             var data = dataItem.dataContext;
@@ -757,9 +762,7 @@ const Destinations = () => {
             })
         );
 
-        let pointSeriesMn = chart.series.push(am5map.MapPointSeries.new(root, {
-
-        }));
+        let pointSeriesMn = chart.series.push(am5map.MapPointSeries.new(root, {}));
         let planeSeriesMn = chart.series.push(am5map.MapPointSeries.new(root, {
             visible: false,
         }));
