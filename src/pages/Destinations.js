@@ -326,10 +326,13 @@ const Destinations = () => {
             istanbul: "11 hours, 50 minutes",
         },
         frankfurt: {
-            beijing: "2 hours, 45 minutes",
-            seoul: "7 hours, 40 minutes",
-            tokyo: "4 hours, 10 minutes",
-            hongkong: "2 hours",
+            beijing: "1 hour",
+            seoul: "3 hours, 30 minutes",
+            tokyo: "2 hours, 35 minutes",
+            hongkong: "1 hour, 10 minutes",
+            guangzhou: "15 hours, 45 minutes",
+            busan: "2 hours, 20 minutes",
+            osaka: "7 hours, 50 minutes"
         },
         seoul: {
             frankfurt: "22 hours, 40 minutes",
@@ -343,9 +346,13 @@ const Destinations = () => {
             frankfurt: "16 hours"
         },
         istanbul: {
-            beijing: "19 hours, 55 minutes",
-            seoul: "2 hours, 20 minutes",
-            tokyo: "3 hours, 30 minutes",
+            beijing: "2 hours, 40 minutes",
+            seoul: "5 hours, 10 minutes",
+            tokyo: "4 hours, 14 minutes",
+            hongkong: "2 hour, 50 minutes",
+            guangzhou: "17 hours, 35 minutes",
+            busan: "4 hours",
+            osaka: "6 hours, 30 minutes"
         },
     };
     const subcities = [
@@ -663,7 +670,8 @@ const Destinations = () => {
 
         polygonSeries.mapPolygons.template.setAll({
             strokeWidth: 0.5,
-            templateField: "polygonSettings"
+            templateField: "polygonSettings",
+            stroke: root.interfaceColors.get("background")
         });
 
         polygonSeries.mapPolygons.template.events.on("click", (ev) => {
@@ -1217,6 +1225,7 @@ const Destinations = () => {
             setChoosedCountry({})
             planeDataItem.set("positionOnLine", 0);
             resetPlaneAnimation()
+            switchButton.set("active", false)
         }
 
         var stateSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
@@ -1327,6 +1336,8 @@ const Destinations = () => {
                 setpoint3data(cities[0]);
             });
         }
+
+        chart.appear(1000, 100);
 
         return () => {
             root.dispose();
