@@ -10,8 +10,6 @@ import Experience from '../pages/Experience'
 import HeaderRoute from './HeaderRoute'
 // import Destinations from '../pages/Destinations'
 const Destinations = React.lazy(() => import('../pages/Destinations'));
-const Vrtour = React.lazy(() => import('../pages/Vrtour/Vrtour'));
-const Vrtour2 = React.lazy(() => import('../pages/Vrtour/Vrtour2'));
 
 const loadingComp = <div className="k-loading-mask" style={{ zIndex: 100000 }}>
     <span className="k-loading-text">Loading</span>
@@ -29,8 +27,8 @@ export default function CoreRoutes() {
                         <Route path='/bonus' element={<Bonus />} />
                         <Route path='/cargo' element={<Cargo />} />
                         <Route path='/experience' element={<Experience />} />
-                        <Route path='/vrtour' element={<Vrtour />} />
-                        <Route path='/vrtour2' element={<Vrtour2 />} />
+                        {/* <Route path='/vrtour' element={<Vrtour />} />
+                        <Route path='/vrtour2' element={<Vrtour2 />} /> */}
                         <Route path='/about-us' element={<AboutUs />} />
                     </Route>
                     <Route exact path='/' element={<HeaderRoute />}>

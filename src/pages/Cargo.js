@@ -49,13 +49,12 @@ const Cargo = () => {
     return (
         <div className='py-20'>
             <div className='bg-background1 fixed bg-cover h-full w-full top-0 left-0 -z-10'></div>
-            <div className="mx-auto max-w-7xl px-6 lg:px-8 my-4">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8 my-4 min-h-screen">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-4 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-5">
                     <div className="col-span-2">
                         <p className="mb-2 text-4xl text-center font-semibold tracking-tight text-gray-900 sm:text-5xl">
                             MIAT Cargo
                         </p>
-                        {/* <img src="/image/airplanes/plane-6/heavy-plane.png" alt="MIAT Cargo" /> */}
                         <img src="/image/airplanes/plane-6/cargo.jpg" alt="MIAT Cargo" className='w-80 mx-auto rounded-lg' />
                     </div>
                     <dl className="col-span-3 grid grid-cols-1 gap-x-8 gap-y-2 text-base/7 text-gray-600 sm:grid-cols-2 sm:pt-3">

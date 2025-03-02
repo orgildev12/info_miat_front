@@ -94,14 +94,14 @@ const Home = () => {
                     "relative isolate overflow-hidden pt-4 z-20",
                     "bg-background1 bg-login_pattern bg-cover rounded-[4rem]"
                 )}>
-                    <div className="mx-auto max-w-7xl px-6 py-12 sm:py-12 lg:px-8">
+                    <div className="mx-auto max-w-7xl px-6 py-4 sm:py-12 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
                             {/* <h1 class="max-w-2xl text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">We’re changing the way people connect</h1> */}
-                            <h1 className="max-w-2xl text-balance text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:col-span-2 xl:col-auto">
+                            <h1 className="max-w-2xl text-balance text-2xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:col-span-2 xl:col-auto">
                                 {t('bluesky')}
                             </h1>
-                            <div className="mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
-                                <p className="text-pretty text-lg font-medium text-black sm:text-xl/8 text-justify">
+                            <div className="mt-2 sm:mt-6 max-w-xl lg:mt-0 xl:col-end-1 xl:row-start-1">
+                                <p className="text-pretty text-lg font-medium text-black sm:text-xl/8 text-justify leading-none sm:leading-normal">
                                     {t('airlinehistory')}
                                 </p>
                             </div>
@@ -117,16 +117,16 @@ const Home = () => {
 
                 {/* Logo cloud */}
                 <div className="mx-auto bg-gray-900 -mt-[4rem] pt-4 relative">
-                    <div className="relative isolate overflow-hidden px-6 py-24 text-justify sm:px-16">
-                        <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl text-center">
+                    <div className="relative isolate overflow-hidden px-6 py-14 sm:py-24 text-justify sm:px-16">
+                        <h2 className="mx-auto max-w-2xl text-2xl font-bold tracking-tight text-white sm:text-4xl text-center">
                             {t('priority')}
                         </h2>
-                        <p className="mx-auto mt-6 max-w-3xl text-lg/8 text-gray-300">
+                        <p className="mx-auto sm:mt-6 mt-2 max-w-3xl text-lg/8 text-gray-300 leading-none sm:leading-normal">
                             {t('routemap')}
                         </p>
                         <div className="flex mask-gradient pb-10">
                             <div className={classNames(
-                                "mx-auto mt-20 items-center gap-x-20",
+                                "mx-auto mt-5 sm:mt-20 items-center gap-x-20",
                                 "scroll reverse w-full flex"
                             )}>
                                 {
