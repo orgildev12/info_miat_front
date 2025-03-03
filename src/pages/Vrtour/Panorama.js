@@ -19,10 +19,9 @@ const Panorama = ({ panoramaDatas }) => {
         controls.current = CONTROLS;
 
         panorama.current = new ImagePanorama(panoramaDatas.image);
-        // panorama.current = new ImagePanorama('/image/main/miat-1.jpg');
         for (let index2 = 0; index2 < panoramaDatas.infospots.length; index2++) {
             const element2 = panoramaDatas.infospots[index2];
-            infospot.current = new Infospot(200, element2.image, true);
+            infospot.current = new Infospot(100, element2.image, true);
             infospot.current.position.set(element2.position.x, element2.position.y, element2.position.z);
             infospot.current.addHoverText(element2.texthover);
             infospot.current.addEventListener('click', () => {
@@ -34,6 +33,7 @@ const Panorama = ({ panoramaDatas }) => {
         }
         viewer.current = new Viewer({ container: containerRef.current });
         viewer.current.add(panorama.current);
+        
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

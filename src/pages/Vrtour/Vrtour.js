@@ -4,17 +4,27 @@ import Panorama from './Panorama';
 const panoramaDatas =
 {
     index: 1,
-    image: "https://pchen66.github.io/Panolens/examples/asset/textures/equirectangular/tunnel.jpg",
+    image: "/image/vrtour/Business_aisle.jpg",
     infospots: [
         {
-            texthover: "MIAT Mongolian Airlines",
+            texthover: "Economy",
             position: {
-                x: 1000,
+                x: -2000,
                 y: 0,
-                z: -2000
+                z: 100
             },
             switchindex: 2,
             switchhref: "/vrtour2"
+        },
+        {
+            texthover: "Business twin",
+            position: {
+                x: 0,
+                y: -200,
+                z: -1000
+            },
+            switchindex: 3,
+            switchhref: "/vrtour3"
         }
     ]
 };

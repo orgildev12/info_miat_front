@@ -3,8 +3,8 @@ import Panorama from './Panorama';
 
 
 const panoramaDatas = {
-    index: 2,
-    image: "/image/vrtour/economy1.jpg",
+    index: 3,
+    image: "/image/vrtour/Business_twin_general.jpg",
     infospots: [
         {
             image: "/logos/main-logo/logo_w.png",
@@ -20,10 +20,10 @@ const panoramaDatas = {
     ]
 };
 
-const Vrtour2 = () => {
+const Vrtour3 = () => {
     return (
         <Panorama panoramaDatas={panoramaDatas} />
     )
 }
 
-export default Vrtour2
+export default Vrtour3
