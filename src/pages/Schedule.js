@@ -978,6 +978,28 @@ const countryschedules = {
                 "effectivedate": "2025.06.04 - 2025.09.27"
             }
         ]
+    },
+    shanghai: {
+        "to": [
+            {
+                "flightno": "OM265",
+                "direction": "UBN-PVG",
+                "frequency": [3, 6],
+                "departure": "20:40",
+                "arrival": "00:10(+1)",
+                "effectivedate": "2025.07.02 - 2025.08.30"
+            },
+        ],
+        "from": [
+            {
+                "flightno": "OM266",
+                "direction": "PVG-UBN",
+                "frequency": [4, 7],
+                "departure": "01:10",
+                "arrival": "05:00",
+                "effectivedate": "2025.07.03 - 2025.08.31"
+            }
+        ]
     }
 };
 
@@ -1164,13 +1186,13 @@ const Schedule = () => {
                 <div className="p-0 mt-3 text-sm font-bold text-gray-700">{t('local_time')} <br />
                     (+1) : {t('next_day')} <br />
                     {t('schedule_change_notice')}
-                    </div>
-                    <div className='mt-1 text-sm font-bold text-gray-700 flex'>
-                        <span class="relative flex w-2 h-2 mr-2 pt-1">
-                            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-75"></span>
-                            <span class="relative inline-flex w-2 h-2 rounded-full bg-primary-500"></span>
-                        </span>
-                        - {t('additionalFlight')}
+                </div>
+                <div className='mt-1 text-sm font-bold text-gray-700 flex'>
+                    <span class="relative flex w-2 h-2 mr-2 pt-1">
+                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-75"></span>
+                        <span class="relative inline-flex w-2 h-2 rounded-full bg-primary-500"></span>
+                    </span>
+                    - {t('additionalFlight')}
                 </div>
             </div>
         </div>
