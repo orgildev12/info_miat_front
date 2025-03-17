@@ -1073,9 +1073,9 @@ const Schedule = () => {
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-32">
                         {t('arrival')}
                     </th>
-                    {selectedtabmain !== 'international' && <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
+                    <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-24">
                         {t('stop')}
-                    </th>}
+                    </th>
                     <th scope="col" className="px-3 py-2 text-left text-sm font-semibold text-gray-900 w-80">
                         {t('effectivedate')}
                     </th>
@@ -1108,9 +1108,7 @@ const Schedule = () => {
                         </td>
                         <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.departure}</td>
                         <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.arrival}</td>
-                        {selectedtabmain !== 'international' &&
-                            <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.stop ?? '0'}</td>
-                        }
+                        <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.stop ?? '0'}</td>
                         <td className="whitespace-nowrap py-2 px-3 text-sm">{schedule.effectivedate}</td>
                     </tr>
                 ))}
