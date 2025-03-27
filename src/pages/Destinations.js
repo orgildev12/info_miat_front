@@ -1,7 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from 'react';
 import * as am5 from "@amcharts/amcharts5";
 import * as am5map from "@amcharts/amcharts5/map";
-import mongoliaGeoJSON from './mn.json';
 import am5geodataWorldLow from "@amcharts/amcharts5-geodata/worldLow";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 import { useTranslation } from 'react-i18next';
@@ -366,7 +365,7 @@ const Destinations = () => {
             osaka: "6 hours, 30 minutes"
         },
     };
-    
+
     const subcities = [
         {
             id: "amsterdam",
@@ -1240,15 +1239,21 @@ const Destinations = () => {
             switchButton.set("active", false)
         }
 
-        var stateSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
-            visible: false,
-            geoJSON: mongoliaGeoJSON
-        }));
-
-        stateSeries.mapPolygons.template.setAll({
-            fill: am5.color(0x6771DC),
-            templateField: "polygonSettings"
-        });
+        var stateSeries = null;
+        fetch("/json-data/mn.json")
+            .then(response => response.json())
+            .then(data => {
+                stateSeries = chart.series.push(am5map.MapPolygonSeries.new(root, {
+                    visible: false,
+                    geoJSON: data
+                }));
+        
+                stateSeries.mapPolygons.template.setAll({
+                    fill: am5.color(0x6771DC),
+                    templateField: "polygonSettings"
+                });
+            })
+            .catch(error => console.error("JSON ачаалж чадсангүй:", error));
 
         var backContainer = chart.children.push(am5.Container.new(root, {
             x: am5.p100,
@@ -1379,7 +1384,7 @@ const Destinations = () => {
                         {/* <div className='text-center'>
                                     {t('ulaanbaatar')} - {t(choosedCountry.id)}
                                 </div> */}
-                        <div className="flex flex-col justify-between h-full overflow-y-auto px-4">
+                        <div className="flex flex-col justify-between h-full px-4 overflow-y-auto">
                             <div>
                                 {showDirection && <div className='flex mb-2'>
                                     <DropDownList
@@ -1400,28 +1405,28 @@ const Destinations = () => {
                                 </div>}
                                 <div
                                     style={{ backgroundImage: `url(${choosedCountry.image ?? "/image/main/plane-500.jpg"})` }}
-                                    className='rounded-md bg-cover bg-center bg-no-repeat h-44 w-full'
+                                    className='w-full bg-center bg-no-repeat bg-cover rounded-md h-44'
                                 >
                                     {/* <img src={choosedCountry.image ?? "/image/main/plane-500.jpg"} alt=""
                                                 className="rounded-md h-60"
                                             /> */}
                                 </div>
-                                {choosedCountry.image && <div className='text-justify text-sm mt-4'>
+                                {choosedCountry.image && <div className='mt-4 text-sm text-justify'>
                                     {t(choosedCountry.id + 'desc')}
                                 </div>}
                             </div>
                             <div>
                                 {
                                     (point3data.id !== 'ulaanbaatar' && choosedCountry.id !== 'ulaanbaatar') ? <>
-                                        <div className='text-right pt-3 font-bold'>
+                                        <div className='pt-3 font-bold text-right'>
                                             {t(point3data.id)}
                                         </div>
                                         <div className='relative'>
                                             <div className='text-xs absolute right-[5%] bg-black/30 p-1 top-14 rounded backdrop-blur-md'>
                                                 <div className='absolute -top-2 left-[50%]'>
                                                     <span className="relative flex h-3 w-3 mx-auto -z-[1]">
-                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                        <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400"></span>
+                                                        <span className="relative w-3 h-3 rounded-full bg-sky-500"></span>
                                                     </span>
                                                 </div>
                                                 <div className='flex'>
@@ -1436,7 +1441,7 @@ const Destinations = () => {
                                         </div>
                                         <img src="/logos/some/flight-3.png" alt="" className='h-64' />
                                         {overtime?.[choosedCountry.id]?.[point3data.id] && <div className="relative">
-                                            <div className='text-xs absolute bg-black/30 bottom-32 p-1 rounded backdrop-blur-md'>
+                                            <div className='absolute p-1 text-xs rounded bg-black/30 bottom-32 backdrop-blur-md'>
                                                 <div className='text-justify'>
                                                     Stopover time:
                                                     <p className='font-medium'>
@@ -1448,15 +1453,15 @@ const Destinations = () => {
                                         <div className='relative bottom-[8rem] text-right pr-20 font-bold text-lg'>
                                             {t('ulaanbaatar')}
                                         </div>
-                                        <div className='font-bold -mt-8'>
+                                        <div className='-mt-8 font-bold'>
                                             {t(choosedCountry.id)}
                                         </div>
                                         <div className='relative'>
                                             <div className='text-xs absolute right-[45%] bg-black/30 bottom-8 p-1 rounded backdrop-blur-md'>
                                                 <div className='absolute -top-2 left-[50%]'>
                                                     <span className="relative flex h-3 w-3 mx-auto -z-[1]">
-                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                        <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400"></span>
+                                                        <span className="relative w-3 h-3 rounded-full bg-sky-500"></span>
                                                     </span>
                                                 </div>
                                                 <div className='flex'>
@@ -1470,15 +1475,15 @@ const Destinations = () => {
                                             </div>
                                         </div>
                                     </> : <>
-                                        <div className='text-right -mb-4 font-bold'>
+                                        <div className='-mb-4 font-bold text-right'>
                                             {choosedCountry.id === 'ulaanbaatar' ? t(point3data.id) : t('ulaanbaatar')}
                                         </div>
                                         {((choosedCountry.id === 'ulaanbaatar' && point3data.distance) || choosedCountry.to) && <div className='relative'>
-                                            <div className='text-xs absolute top-6 bg-black/30 p-1 rounded backdrop-blur-md'>
+                                            <div className='absolute p-1 text-xs rounded top-6 bg-black/30 backdrop-blur-md'>
                                                 <div className='absolute -top-2 left-[50%]'>
                                                     <span className="relative flex h-3 w-3 mx-auto -z-[1]">
-                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                        <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400"></span>
+                                                        <span className="relative w-3 h-3 rounded-full bg-sky-500"></span>
                                                     </span>
                                                 </div>
                                                 {choosedCountry.id === 'ulaanbaatar' ? <div className='font-medium'>{t(choosedCountry.id)}&rarr;{t(point3data.id)}</div> :
@@ -1502,8 +1507,8 @@ const Destinations = () => {
                                             <div className='text-xs absolute right-[30%] bg-black/30 bottom-12 p-1 rounded backdrop-blur-md'>
                                                 <div className='absolute -top-2 left-[50%]'>
                                                     <span className="relative flex h-3 w-3 mx-auto -z-[1]">
-                                                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                                        <span className="relative h-3 w-3 rounded-full bg-sky-500"></span>
+                                                        <span className="absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping bg-sky-400"></span>
+                                                        <span className="relative w-3 h-3 rounded-full bg-sky-500"></span>
                                                     </span>
                                                 </div>
                                                 {choosedCountry.from && <>
@@ -1544,7 +1549,7 @@ const Destinations = () => {
                             }}
                             onClick={clickShowNavigate}
                         >
-                            {shownavigate ? <ChevronLeftIcon className='h-4 w-4 text-white' /> : <ChevronRightIcon className='h-4 w-4 text-white' />}
+                            {shownavigate ? <ChevronLeftIcon className='w-4 h-4 text-white' /> : <ChevronRightIcon className='w-4 h-4 text-white' />}
                         </button>
                     </div>
                 </div>

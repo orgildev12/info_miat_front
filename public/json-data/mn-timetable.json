@@ -1,0 +1,388 @@
+{
+    "khovd": {
+        "to": [
+            {
+                "flightno": "OM031",
+                "direction": "UBN-HVD",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "06:50",
+                "arrival": "08:00",
+                "effectivedate": "2025.04.01 - 2025.10.24"
+            },
+            {
+                "flightno": "OM031",
+                "direction": "UBN-HVD",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "11:45",
+                "arrival": "12:55",
+                "effectivedate": "2025.03.30 - 2025.05.25"
+            },
+            {
+                "flightno": "OM031",
+                "direction": "UBN-HVD",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "06:50",
+                "arrival": "08:00",
+                "effectivedate": "2025.06.01 - 2025.08.31"
+            },
+            {
+                "flightno": "OM031",
+                "direction": "UBN-HVD",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "11:45",
+                "arrival": "12:55",
+                "effectivedate": "2025.09.07 - 2025.10.19"
+            }
+        ],
+        "from": [
+            {
+                "flightno": "OM032",
+                "direction": "HVD-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "08:40",
+                "arrival": "11:35",
+                "effectivedate": "2025.04.01 - 2025.10.24"
+            },
+            {
+                "flightno": "OM032",
+                "direction": "HVD-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "13:35",
+                "arrival": "16:30",
+                "effectivedate": "2025.03.30 - 2025.05.25"
+            },
+            {
+                "flightno": "OM032",
+                "direction": "HVD-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "08:40",
+                "arrival": "11:35",
+                "effectivedate": "2025.06.01 - 2025.08.31"
+            },
+            {
+                "flightno": "OM032",
+                "direction": "HVD-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [7],
+                "departure": "13:35",
+                "arrival": "16:30",
+                "effectivedate": "2025.09.07 - 2025.10.19"
+            }
+        ]
+    },
+    "altai": {
+        "to": [
+            {
+                "flightno": "OM041",
+                "direction": "UBN-LTI",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "18:20",
+                "arrival": "20:00",
+                "effectivedate": "2025.06.02 - 2025.08.28"
+            },
+            {
+                "flightno": "OM061",
+                "direction": "UBN-LTI",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "13:35",
+                "arrival": "16:20",
+                "stop": 1,
+                "effectivedate": "2025.03.31 - 2025.05.29"
+            },
+            {
+                "flightno": "OM061",
+                "direction": "UBN-LTI",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "13:35",
+                "arrival": "16:20",
+                "stop": 1,
+                "effectivedate": "2025.09.01 - 2025.10.23"
+            }
+        ],
+        "from": [
+            {
+                "flightno": "OM042",
+                "direction": "LTI-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "20:40",
+                "arrival": "22:05",
+                "effectivedate": "2025.06.02 - 2025.08.28"
+            },
+            {
+                "flightno": "OM062",
+                "direction": "LTI-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "17:30",
+                "arrival": "18:55",
+                "effectivedate": "2025.03.31 - 2025.05.29"
+            },
+            {
+                "flightno": "OM062",
+                "direction": "LTI-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "17:30",
+                "arrival": "18:55",
+                "effectivedate": "2025.09.01 - 2025.10.23"
+            }
+        ]
+    },
+    "ulaangom": {
+        "to": [
+            {
+                "flightno": "OM051",
+                "direction": "UBN-ULO",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "12:45 ",
+                "arrival": "13:55",
+                "effectivedate": "2025.06.03 - 2025.08.29"
+            },
+            {
+                "flightno": "OM051",
+                "direction": "UBN-ULO",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "12:50",
+                "arrival": "13:55",
+                "effectivedate": "2025.04.01 - 2025.05.30"
+            },
+            {
+                "flightno": "OM051",
+                "direction": "UBN-ULO",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "12:50",
+                "arrival": "13:55",
+                "effectivedate": "2025.09.02 - 2025.10.24"
+            }
+        ],
+        "from": [
+            {
+                "flightno": "OM052",
+                "direction": "ULO-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "14:30",
+                "arrival": "17:20",
+                "effectivedate": "2025.06.03 - 2025.08.29"
+            },
+            {
+                "flightno": "OM052",
+                "direction": "ULO-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "14:35",
+                "arrival": "18:40",
+                "stop": 1,
+                "effectivedate": "2025.04.01 - 2025.05.30"
+            },
+            {
+                "flightno": "OM052",
+                "direction": "ULO-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "14:35",
+                "arrival": "18:40",
+                "stop": 1,
+                "effectivedate": "2025.09.02 - 2025.10.24"
+            }
+        ]
+    },
+    "uliastai": {
+        "to": [
+            {
+                "flightno": "OM061",
+                "direction": "UBN-ULZ",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "13:30",
+                "arrival": "14:05",
+                "effectivedate": "2025.06.02 - 2025.08.28"
+            },
+            {
+                "flightno": "OM061",
+                "direction": "UBN-ULZ",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "13:35",
+                "arrival": "15:00",
+                "effectivedate": "2025.03.31 - 2025.05.29"
+            },
+            {
+                "flightno": "OM061",
+                "direction": "UBN-ULZ",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "13:35",
+                "arrival": "15:00",
+                "effectivedate": "2025.09.01 - 2025.10.23"
+            }
+        ],
+        "from": [
+            {
+                "flightno": "OM062",
+                "direction": "ULZ-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "14:45",
+                "arrival": "17:10",
+                "effectivedate": "2025.06.02 - 2025.08.28"
+            },
+            {
+                "flightno": "OM061",
+                "direction": "ULZ-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "15:40",
+                "arrival": "18:55",
+                "stop": 1,
+                "effectivedate": "2025.03.31 - 2025.05.29"
+            },
+            {
+                "flightno": "OM061",
+                "direction": "ULZ-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1, 4],
+                "departure": "15:40",
+                "arrival": "18:55",
+                "stop": 1,
+                "effectivedate": "2025.09.01 - 2025.10.23"
+            }
+        ]
+    },
+    "ulgii": {
+        "to": [
+            {
+                "flightno": "OM067",
+                "direction": "UBN-ULG",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [3, 6],
+                "departure": "07:25",
+                "arrival": "08:40",
+                "effectivedate": "2025.04.02 - 2025.10.25"
+            },
+            {
+                "flightno": "OM067",
+                "direction": "UBN-ULG",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1],
+                "departure": "07:25",
+                "arrival": "08:40",
+                "effectivedate": "2025.06.02 - 2025.10.20"
+            }
+        ],
+        "from": [
+            {
+                "flightno": "OM068",
+                "direction": "ULG-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [3, 6],
+                "departure": "09:20",
+                "arrival": "12:20",
+                "effectivedate": "2025.04.02 - 2025.10.25"
+            },
+            {
+                "flightno": "OM068",
+                "direction": "ULG-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [1],
+                "departure": "09:20",
+                "arrival": "12:20",
+                "effectivedate": "2025.06.02 - 2025.10.20"
+            }
+        ]
+    },
+    "murun": {
+        "to": [
+            {
+                "flightno": "OM081",
+                "direction": "UBN-MXV",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 6],
+                "departure": "18:30",
+                "arrival": "19:45",
+                "effectivedate": "2025.06.03 - 2025.08.30"
+            },
+            {
+                "flightno": "OM081",
+                "direction": "UBN-MXV",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [4],
+                "departure": "09:25",
+                "arrival": "10:35",
+                "effectivedate": "2025.06.05 - 2025.08.28"
+            },
+            {
+                "flightno": "OM051",
+                "direction": "UBN-MXV",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "12:50",
+                "arrival": "16:45",
+                "stop": 1,
+                "effectivedate": "2025.04.01 - 2025.05.30"
+            },
+            {
+                "flightno": "OM051",
+                "direction": "UBN-MXV",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "12:50",
+                "arrival": "16:45",
+                "stop": 1,
+                "effectivedate": "2025.09.02 - 2025.10.24"
+            }
+        ],
+        "from": [
+            {
+                "flightno": "OM082",
+                "direction": "MXV-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 6],
+                "departure": "20:25",
+                "arrival": "21:30",
+                "effectivedate": "2025.06.03 - 2025.08.30"
+            },
+            {
+                "flightno": "OM082",
+                "direction": "MXV-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [4],
+                "departure": "11:15",
+                "arrival": "12:20",
+                "effectivedate": "2025.06.05 - 2025.08.28"
+            },
+            {
+                "flightno": "OM052",
+                "direction": "MXV-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "17:30",
+                "arrival": "18:40",
+                "effectivedate": "2025.04.01 - 2025.05.30"
+            },
+            {
+                "flightno": "OM052",
+                "direction": "MXV-UBN",
+                "flight": "CRJ700 JU-1700",
+                "frequency": [2, 5],
+                "departure": "17:30",
+                "arrival": "18:40",
+                "effectivedate": "2025.09.02 - 2025.10.24"
+            }
+        ]
+    }
+}
