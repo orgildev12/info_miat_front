@@ -103,18 +103,24 @@ const Schedule = () => {
 
     useEffect(() => {
         showLoading(true)
-        fetch("/json-data/international-timetable.json")
+        fetch(`/json-data/international-timetable.json?ts=${Date.now()}`, {
+            cache: "no-store"
+        })
             .then(response => response.json())
             .then(data => {
-                setCountryschedules(data)
+                setCountryschedules(data);
             })
-            .catch(error => console.error("JSON ачаалж чадсангүй:", error)).finally(() => {
-                showLoading(false)
+            .catch(error => console.error("JSON ачаалж чадсангүй:", error))
+            .finally(() => {
+                showLoading(false);
             });
-        fetch("/json-data/mn-timetable.json")
+
+        fetch(`/json-data/mn-timetable.json?ts=${Date.now()}`, {
+            cache: "no-store"
+        })
             .then(response => response.json())
             .then(data => {
-                setMongoliaschedules(data)
+                setMongoliaschedules(data);
             })
             .catch(error => console.error("JSON ачаалж чадсангүй:", error));
         // eslint-disable-next-line react-hooks/exhaustive-deps
