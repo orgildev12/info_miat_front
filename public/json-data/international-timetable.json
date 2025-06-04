@@ -508,5 +508,43 @@
         "effectivedate": "2025.07.03 - 2025.10.23"
       }
     ]
+  },
+  "huh_hot": {
+    "to": [
+      {
+        "flightno": "OM257",
+        "direction": "UBN-HET",
+        "frequency": [3, 5, 7],
+        "departure": "21:25",
+        "arrival": "23:15",
+        "effectivedate": "2025.06.06 - 2025.10.24"
+      },
+      {
+        "flightno": "OM257",
+        "direction": "UBN-HET",
+        "frequency": [1, 2, 4, 6],
+        "departure": "21:25",
+        "arrival": "23:15",
+        "effectivedate": "2025.06.23 - 2025.10.23"
+      }
+    ],
+    "from": [
+      {
+        "flightno": "OM258",
+        "direction": "HET-UBN",
+        "frequency": [1, 4, 6],
+        "departure": "00:15",
+        "arrival": "02:15",
+        "effectivedate": "2025.06.06 - 2025.10.25"
+      },
+      {
+        "flightno": "OM258",
+        "direction": "HET-UBN",
+        "frequency": [2, 3, 5, 7],
+        "departure": "00:15",
+        "arrival": "02:15",
+        "effectivedate": "2025.06.24 - 2025.10.24"
+      }
+    ]
   }
 }

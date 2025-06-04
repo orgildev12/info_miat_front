@@ -21,6 +21,10 @@ i18n.use(LanguageDetector)
         react: {
             useSuspense: true,
         },
+        backend: {
+            // cache-гүй болгохын тулд loadPath дээр timestamp нэмнэ
+            loadPath: `/locales/{{lng}}/{{ns}}.json?v=${Date.now()}`
+        }
     })
 
 export default i18n
