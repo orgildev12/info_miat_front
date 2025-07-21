@@ -36,7 +36,7 @@ export default function CoreRoutes() {
                         <Route path='/about-us' element={<AboutUs />} />
                     </Route>
                     <Route exact path='/' element={<HeaderRoute />}>
-                        <Route exact path='/' element={<Destinations />} />
+                        <Route exact path='/' element={<Schedule />} />
                     </Route>
                     <Route path='*' element={<NotFound />} />
                 </Routes>
