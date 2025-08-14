@@ -5,7 +5,7 @@
         "flightno": "OM137",
         "direction": "UBN-FRA",
         "frequency": [1, 3, 6],
-        "departure": "10:10",
+        "departure": "09:50",
         "arrival": "12:50",
         "effectivedate": "2025.03.31 - 2025.10.25"
       },
@@ -13,7 +13,7 @@
         "flightno": "OM137",
         "direction": "UBN-FRA",
         "frequency": [5, 7],
-        "departure": "10:10",
+        "departure": "09:50",
         "arrival": "12:50",
         "effectivedate": "2025.06.01 - 2025.09.28"
       },
@@ -21,7 +21,7 @@
         "flightno": "OM137",
         "direction": "UBN-FRA",
         "frequency": [2],
-        "departure": "10:10",
+        "departure": "09:50",
         "arrival": "12:50",
         "effectivedate": "2025.07.01 - 2025.09.16",
         "perspective": true
@@ -30,7 +30,7 @@
         "flightno": "OM137",
         "direction": "UBN-FRA",
         "frequency": [4],
-        "departure": "10:10",
+        "departure": "09:50",
         "arrival": "12:50",
         "effectivedate": "2025.06.26 - 2025.09.18",
         "perspective": true
@@ -518,14 +518,6 @@
         "departure": "21:25",
         "arrival": "23:15",
         "effectivedate": "2025.06.06 - 2025.10.24"
-      },
-      {
-        "flightno": "OM257",
-        "direction": "UBN-HET",
-        "frequency": [1, 2, 4, 6],
-        "departure": "21:25",
-        "arrival": "23:15",
-        "effectivedate": "2025.06.23 - 2025.10.23"
       }
     ],
     "from": [
@@ -536,14 +528,6 @@
         "departure": "00:15",
         "arrival": "02:15",
         "effectivedate": "2025.06.06 - 2025.10.25"
-      },
-      {
-        "flightno": "OM258",
-        "direction": "HET-UBN",
-        "frequency": [2, 3, 5, 7],
-        "departure": "00:15",
-        "arrival": "02:15",
-        "effectivedate": "2025.06.24 - 2025.10.24"
       }
     ]
   }
