@@ -58,6 +58,7 @@ const Schedule = () => {
         from: []
     })
     const [countries, setCountries] = useState([])
+    const [season, setSeason] = useState('summer')
     const [countryschedules, setCountryschedules] = useState({})
     const [mongoliaschedules, setMongoliaschedules] = useState({})
     const [selectedtab, setSelectedTab] = useState()
@@ -102,29 +103,52 @@ const Schedule = () => {
     }, [selectedtabmain, countryschedules])
 
     useEffect(() => {
-        showLoading(true)
-        fetch(`/json-data/international-timetable.json?ts=${Date.now()}`, {
-            cache: "no-store"
-        })
-            .then(response => response.json())
-            .then(data => {
-                setCountryschedules(data);
+        if (season === 'summer') {
+            showLoading(true)
+            fetch(`/json-data/international-timetable.json?ts=${Date.now()}`, {
+                cache: "no-store"
             })
-            .catch(error => console.error("JSON ачаалж чадсангүй:", error))
-            .finally(() => {
-                showLoading(false);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    setCountryschedules(data);
+                })
+                .catch(error => console.error("JSON ачаалж чадсангүй:", error))
+                .finally(() => {
+                    showLoading(false);
+                });
 
-        fetch(`/json-data/mn-timetable.json?ts=${Date.now()}`, {
-            cache: "no-store"
-        })
-            .then(response => response.json())
-            .then(data => {
-                setMongoliaschedules(data);
+            fetch(`/json-data/mn-timetable.json?ts=${Date.now()}`, {
+                cache: "no-store"
             })
-            .catch(error => console.error("JSON ачаалж чадсангүй:", error));
+                .then(response => response.json())
+                .then(data => {
+                    setMongoliaschedules(data);
+                })
+                .catch(error => console.error("JSON ачаалж чадсангүй:", error));
+        } else {
+            showLoading(true)
+            fetch(`/json-data/international-winter-timetable.json?ts=${Date.now()}`, {
+                cache: "no-store"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setCountryschedules(data);
+                })
+                .catch(error => console.error("JSON ачаалж чадсангүй:", error))
+                .finally(() => {
+                    showLoading(false);
+                });
+            fetch(`/json-data/mn-winter-timetable.json?ts=${Date.now()}`, {
+                cache: "no-store"
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setMongoliaschedules(data);
+                })
+                .catch(error => console.error("JSON ачаалж чадсангүй:", error));
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [season])
 
     const ScheduleTable = ({ data, direction }) => {
         return <table className="min-w-full divide-y divide-gray-300">
@@ -193,11 +217,29 @@ const Schedule = () => {
 
     return (
         <div className="px-4 sm:px-6 lg:px-8 pb-16 pt-8 my-16 min-h-[80vh]">
-            <div className="max-w-4xl mx-auto mb-4 text-center sm:mb-8">
-                <p className="mt-2 text-2xl font-semibold tracking-tight text-black uppercase text-balance sm:text-5xl">
+            <div className="mb-4 text-center sm:mb-8 flex justify-center text-xl sm:text-2xl font-semibold tracking-tight text-black uppercase text-balance space-x-2">
+                <button className={classNames(
+                    "border border-gray-500 rounded-full px-3 py-1 transition duration-300",
+                    season === 'summer' ? 'hover:text-primary-500' : 'bg-primary-500 text-white hover:bg-primary-700 hover:border-white'
+                )}
+                    onClick={() => {
+                        setSeason("summer")
+                    }}
+                >
                     {t('summer_flight')}
-                </p>
+                </button>
+                <button className={classNames(
+                    "border border-gray-500 rounded-full px-3 py-1 transition duration-300",
+                    season === 'winter' ? 'hover:text-primary-500' : 'bg-primary-500 text-white hover:bg-primary-700 hover:border-white'
+                )}
+                    onClick={() => {
+                        setSeason("winter")
+                    }}
+                >
+                    {t('winter_flight')}
+                </button>
             </div>
+
             <div className='fixed top-0 left-0 w-full h-full bg-cover bg-background1 -z-10'></div>
 
             <div className='flex border-b border-b-primary-500'>

@@ -9,7 +9,7 @@ import Cargo from '../pages/Cargo'
 import Experience from '../pages/Experience'
 import HeaderRoute from './HeaderRoute'
 // import Destinations from '../pages/Destinations'
-const Destinations = React.lazy(() => import('../pages/Destinations'));
+// const Destinations = React.lazy(() => import('../pages/Destinations'));
 const Vrtour = React.lazy(() => import('../pages/Vrtour/Vrtour'));
 const Vrtour2 = React.lazy(() => import('../pages/Vrtour/Vrtour2'));
 const Vrtour3 = React.lazy(() => import('../pages/Vrtour/Vrtour3'));
