@@ -8,7 +8,7 @@ import Bonus from '../pages/Bonus'
 import Cargo from '../pages/Cargo'
 import Experience from '../pages/Experience'
 import HeaderRoute from './HeaderRoute'
-// import Destinations from '../pages/Destinations'
+import Destinations from '../pages/Destinations'
 // const Destinations = React.lazy(() => import('../pages/Destinations'));
 const Vrtour = React.lazy(() => import('../pages/Vrtour/Vrtour'));
 const Vrtour2 = React.lazy(() => import('../pages/Vrtour/Vrtour2'));
@@ -34,6 +34,7 @@ export default function CoreRoutes() {
                         <Route path='/vrtour2' element={<Vrtour2 />} />
                         <Route path='/vrtour3' element={<Vrtour3 />} />
                         <Route path='/about-us' element={<AboutUs />} />
+                        <Route path='/destinations' element={<Destinations/>}></Route>
                     </Route>
                     <Route exact path='/' element={<HeaderRoute />}>
                         <Route exact path='/' element={<Schedule />} />

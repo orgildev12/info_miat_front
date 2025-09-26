@@ -9,30 +9,30 @@ import { ChangeLanguage } from "../components/language/ChangeLanguage/ChangeLang
 const navigation = [
     // {
     //     name: 'destinations', href: '/',
-    //     // subdropdown: [
-    //     //     {
-    //     //         name: 'routes',
-    //     //         href: '/routes'
-    //     //     },
-    //     //     {
-    //     //         name: 'connected',
-    //     //         href: '/'
-    //     //     },
-    //     //     {
-    //     //         name: 'domestic',
-    //     //         href: '/domestic'
-    //     //     },
-    //     // ]
+    //     subdropdown: [
+    //         {
+    //             name: 'routes',
+    //             href: '/routes'
+    //         },
+    //         {
+    //             name: 'connected',
+    //             href: '/'
+    //         },
+    //         {
+    //             name: 'domestic',
+    //             href: '/domestic'
+    //         },
+    //     ]
     // },
-    // { name: 'destinations', href: '/destinations' },
+    { name: 'destinations', href: '/destinations' },
     // { name: 'airplanes', href: '/airplanes' },
     { name: 'timetable', href: '/timetable' },
-    // { name: 'bonus', href: '/bonus' },
-    // { name: 'cargo', href: '/cargo' },
+    { name: 'bonus', href: '/bonus' },
+    { name: 'cargo', href: '/cargo' },
     // { name: 'videos', href: '/videos' },
     // { name: 'experience', href: '/experience' },
-    // { name: 'vrtour', href: '/vrtour' },
-    // { name: 'our', href: '/about-us' },
+    { name: 'vrtour', href: '/vrtour' },
+    { name: 'our', href: '/about-us' },
     // { name: 'contact', href: '/contact' },
 ]
 
